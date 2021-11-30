@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+
+\input{../../preamble}
+\usepackage{amsmath, latexsym,amssymb}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\begin{document}
+
+\newcommand{\Tcp}{T_{\mathrm{CP}}}
+\newcommand{\Fix}{\mathrm{Fix}}
+\problemset{7}{October 27, 2016}{7}{November 3, 2016}
+
+\begin{enumerate}
+
+\item Let $\gamma$ and $\tau$ be positive real numbers \textbf{that satisfy} $\gamma \tau < \frac{1}{\|A\|^2}$. Consider the Chambolle-Pock operator
+\begin{align*}
+T_{\mathrm{CP}} : \RR^m \times \RR^n &\rightarrow \RR^m \times \RR^n\\
+T_{\mathrm{CP}} \begin{bmatrix} 
+y \\ 
+x
+\end{bmatrix} &:= 
+\begin{bmatrix} 
+y - \gamma  \left(Ax - b\right) \\
+\max\{ x + \tau \left(A^T(y - 2\gamma(Ax - b)) - c\right), 0\}
+\end{bmatrix},
+\end{align*}
+In this exercise, we're going to prove that $\Tcp$ is firmly-nonexpansive in a Mahalanobis norm $\|x\|_Q$, i.e., 
+\begin{align*}
+&\left(\forall z_1 \in \RR^{m+n}\right), \left(\forall z_2 \in \RR^{m+n}\right) \\
+&\hspace{20pt}\|\Tcp z_1 - \Tcp z_2\|_Q^2 \leq \|z_1 - z_2\|_Q^2 - \|(z_1 - \Tcp z_1) - (z_2 - \Tcp z_2)\|_Q^2, \numberthis\label{eq:firmnonexpansive}
+\end{align*}
+where 
+$$
+Q = \begin{bmatrix}
+\frac{1}{\gamma} I  &  - A \\
+- A^T & \frac{1}{\tau} I 
+\end{bmatrix}.
+$$
+~\\
+Define the \textit{set-valued} mapping $M : \RR^{m+n} \rightarrow 2^{\RR^{m + n}}$: for all $z = (y, x) \in \RR^{m+n}$,
+\begin{align*}
+Mz := \{-b\} \times (c + N_{\RR^m_{\geq 0}}(x)) + \begin{bmatrix} 
+0 & A \\
+-A^T & 0 
+\end{bmatrix}\begin{bmatrix} 
+y \\
+x
+\end{bmatrix}.
+\end{align*}
+\begin{enumerate}
+\item \label{item:a}Let $z =  (y,x) \in \RR^{m + n}$. Show that
+\begin{align*}
+Q \left(z - \Tcp z\right) \in M \Tcp z
+\end{align*}
+(\textbf{Hint:} use the projection inclusion formula $x - P_C(x) \in N_{C}(P_C(x))$).
+\item Let $z_1 =  (y_1,x_1) \in \RR^{m + n}$ and $z_2 = (y_2, x_2) \in \RR^{m+n}$. Show that 
+\begin{align*}
+&\left(\forall u_1 \in Mz_1\right), \left(\forall u_2 \in M z_2 \right) \qquad \langle z_1 - z_2, u_1 - u_2\rangle \geq 0
+\end{align*}
+(this condition states that $M$ is a \textit{monotone operator}). Using Part~\ref{item:a}, conclude that 
+\begin{align*}
+\langle  (z_1 - \Tcp z_1) - (z_2 - \Tcp z_2), \Tcp z_1 - \Tcp z_2\rangle_Q \geq 0.
+\end{align*}
+where for all $z, z' \in \RR^{m+n}$, we have $\langle z, z' \rangle_Q  = \langle Qz, z'\rangle$.
+\item Prove~\eqref{eq:firmnonexpansive}.
+\end{enumerate}
+
+\item This exercise shows that solving a system of linear inequalities is essentially as hard as solving an LP.
+
+Let $P(A, b) = \{x \mid Ax = b, x \geq 0\}$. Suppose that $x^\ast$ is a minimizer of $\min_{x \in P(A, b)} c^T x$. Let $x_0 \in \RR^n$ and for all $\gamma > 0$, define 
+$$
+x_\gamma = P_{P(A, b)} (x_0 - \gamma c).
+$$
+Prove that 
+\begin{align*}
+\langle c, x_\gamma\rangle \leq \langle c, x^\ast\rangle  + \frac{1}{2\gamma}\|x_0 - x^\ast\|^2.
+\end{align*}
+For which $\gamma > 0$ is $x_\gamma$ an $\varepsilon$-accuracy solution of the LP? (Recall that $x$ is an $\varepsilon$-accuracy solution if it is feasible and $\langle c, x\rangle < \langle c, x^\ast \rangle + \varepsilon.$) 
+
+\item In this exercise, we learn how to parallelize the Douglas-Rachford Splitting (DRS) algorithm and the Method of Alternating Projections (MAP) through the \textit{product-space trick.}
+
+Consider $l$ closed convex sets $C_1, \ldots, C_l \subseteq \RR^r$. Assume that $C_1 \cap \ldots\cap C_l \neq \emptyset.$ Define $C = C_1\times \cdots \times C_l$. Define the \textit{diagonal} vector subspace $V \subseteq \RR^{rl}$:
+\begin{align*}
+V : = \{(x_1, \ldots, x_l)  \in \RR^{rl} \mid \left(\forall i \right)\;  x_i \in \RR^r, x_1 = x_2 = \cdots= x_l\}.
+\end{align*} 
+\begin{enumerate}
+\item Given $z \in\RR^{rl}$, compute $P_Vz$ and determine $\Fix(P_V)$.
+\item Given $z \in \RR^{rl}$, compute $P_{C}z$ and determine $\Fix(P_{C})$.
+\item Determine $\Fix(P_V P_C)$ and $\Fix\left(\frac{1}{2}(2P_V - I) \circ (2P_C - I) + \frac{1}{2} I\right)$
+\item Consider the primal-dual pair of linear programs
+\begin{align*}
+\min\{ c^Tx \mid Ax = b, x \geq 0\} && \text{and} && \max\{b^T y \mid A^T y\leq  c\},
+\end{align*}
+and assume that there exists a primal-dual optimal solution, e.g., $(x^\ast, y^\ast) \in \RR^{n+m}$. Define
+\begin{align*}
+D := \begin{bmatrix}
+A & 0 & 0 \\
+0 & A^T & I \\
+c^T & - b^T & 0 
+\end{bmatrix}
+&& \text{and} && d := \begin{bmatrix} 
+b \\
+c \\ 
+0
+\end{bmatrix}.
+\end{align*}
+Note that $Dz = d$ has at least one solution because the LPs are solvable. Let $l = n + m +2$ and define
+\begin{align*}
+C_l := \left\{ \begin{bmatrix} x \\ y \\ s \end{bmatrix} \mid  x \geq 0, s \geq 0\right\}.
+\end{align*}
+Provide $l - 1$ sets $C_1, \ldots, C_{l-1} \subseteq \RR^{m + 2n}$ such that (1) $\{ z \mid Dz = d\} = C_1 \cap \ldots \cap C_{l-1}$ and (2) for each $i = 1, \ldots, l-1$, the set $C_i$ is defined purely in terms of the $i$th rows of $D$ and $d$.
+
+As before, define $V \subseteq \RR^{l(m+2n)}$  and $C := C_1 \times \ldots \times C_l$. Given $z \in \RR^{l(m + 2n)}$ compute  $P_V P_C (z)$.  What is the biggest computational drawback of this approach? Are there other ways to split $\{z \mid Dz = d\}$ into fewer sets? (There is no single correct answer.) 
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

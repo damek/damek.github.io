@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\input{../../preamble.tex}
+\usepackage{amsmath, latexsym, epsf, amssymb}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\minimize}{\mathrm{minimize}}
+\begin{document}
+
+\problemset{1}{August 25, 2016}{1}{September 1, 2016}
+
+\begin{enumerate}
+\item Let $A \in \mathbb{R}^{m \times n}$ be a matrix. Suppose there exists $d \in \RR^n$ such that 
+\begin{enumerate}
+\item $Ad = 0$; and 
+\item $d > 0$.
+\end{enumerate}
+Show that the system of \textbf{strict} inequalities $A^T x < 0$ has no solution. 
+\item  Show that the following two statements are equivalent
+\begin{enumerate}
+\item Let $A \in \mathbb{R}^{ m\times n}$ and let $b \in \RR^m$ be a vector. The system $Ax = b$ has a nonnegative solution if, and only if, every $y \in \RR^m$ with $y^TA \geq 0$ also satisfies $y^Tb \geq 0$.
+\item Let $\hat{A} \in \mathbb{R}^{ \hat{m}\times \hat{n}}$ and let $\hat{b} \in \RR^{\hat{m}}$ be a vector. The system $\hat{A}\hat{x} \leq \hat{b}$ has a nonnegative solution if, and only if, every nonnegative $\hat{y} \in \RR^{\hat{m}}$ with $\hat{y}^T \hat{A} \geq 0$ also satisfies $\hat{y}^T \hat{b} \geq 0$.
+\end{enumerate}
+\item Let $A \in \mathbb{R}^{m\times n}$ and let $b \in \RR^m$ be a vector. Consider the following compressive sensing problem:
+\begin{align*}
+\minimize &\; \|x\|_1 \\
+\text{subject to:}& \; A x = b. 
+\end{align*}
+\begin{enumerate}
+\item Reformulate this problem as an equivalent LP and
+\item take its dual. Simplify the dual LP until the decision variable is a vector $z \in \RR^m$.
+\end{enumerate}
+
+\item What is the dual of the linear program with variables $x \ge 0$ and
+an additional single variable $\lambda$ with constraints $Ax \le \lambda b$,
+where the objective is to minimize $\lambda$?
+
+\item Consider the following LP:
+\begin{eqnarray*}
+\mbox{Max} \sum_{i=1}^n v_i x_i\\
+\sum_{i=1}^n s_i x_i & \leq & B\\
+x_i & \leq & 1 \qquad i = 1,\ldots, n\\
+x_i & \geq & 0 \qquad i = 1,\ldots, n
+\end{eqnarray*}
+\begin{enumerate}
+\item Show the dual of the LP above.  Use the variable $y_0$ for the constraint with right-hand side $B$, and the variables $y_i$ for the $x_i \leq 1$ constraints.
+\item Assume that the numbers $v_i$ and $s_i$ are positive and that
+$$\frac{v_1}{s_1} \geq \frac{v_2}{s_2} \geq \cdots \geq \frac{v_n}{s_n}.$$  Let $k$ be the largest index such that $s_1 + s_2 + \cdots + s_{k-1} \leq B$.
+Show that the following primal and dual LP solutions must be optimal:
+\begin{align*}
+x_i & = \left\{ \begin{array}{ll}
+1 & i < k\\
+\frac{B-(s_1 + s_2 + \cdots + s_{k-1})}{s_k} & i = k\\
+0 & i > k
+\end{array} \right. \\
+y_i & = \left\{ \begin{array}{ll}
+\frac{v_k}{s_k} & i = 0\\
+s_i \left(\frac{v_i}{s_i} - \frac{v_k}{s_k}\right) & 0 < i < k\\
+0 & i \geq k
+\end{array} \right.
+\end{align*}
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
