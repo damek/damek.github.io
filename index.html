@@ -6,381 +6,343 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="bear-note-unique-identifier" content="5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E">
         <meta name="created" content="2023-03-27T13:48:16-0400"/>
-        <meta name="modified" content="2023-07-16T10:49:22-0400"/>
+        <meta name="modified" content="2023-07-21T10:35:12-0400"/>
         <meta name="tags" content=""/>
         <meta name="last device" content="Damek’s MacBook Pro (2)"/>
+        
     </head>
-    <body>
-        <div class="note-wrapper">
-            <h1 id="Damek Davis">Damek Davis</h1>
-<p>I am an associate professor of operations research at Cornell University. I received my Ph.D. in mathematics from the University of California, Los Angeles in 2015. My PhD advisors were <a href="https://wotaoyin.mathopt.com/">Wotao Yin</a> and <a href="https://web.cs.ucla.edu/~soatto/">Stefano Soatto</a>. </p>
-<br>
-<p>I am broadly interested in the mathematics of data science, particularly the interplay of optimization, signal processing, statistics, and machine learning.  I enjoy designing and analyzing learning algorithms based on optimization.  You can read more about my research in my <a href="#Research overview"">research overview</a> or <a href="#Publications"">publications</a>.</p>
-<br>
-<p>My research has received several awards, including a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, the <a href="https://www.informs.org/Recognizing-Excellence/Award-Recipients/Damek-Davis">INFORMS Optimization Society Young Researchers Prize</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.</p>
-<br>
-<p><a href="cv.pdf">CV</a> | <a href="mailto:dsd95@cornell.edu">Email</a> | <a href="https://twitter.com/damekdavis">Twitter</a> | <a href="https://github.com/COR-OPT">Github</a> | <a href="https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en">Google Scholar</a> </p>
-<br>
-<h2 id="Students">Students</h2>
-<p><b>Current PhD Students</b></p>
-<p><a href="https://www.orie.cornell.edu/research/grad-students/liwei-jiang">Liwei Jiang</a>  </p>
-<p><a href="https://www.orie.cornell.edu/research/grad-students/tao-jiang">Tao Jiang</a>  </p>
-<br>
-<p><b>Graduated PhD Students</b></p>
-<p><a href="https://people.orie.cornell.edu/vc333/">Vasilis Charisopoulos</a> </p>
-<p>(Next position: University of Chicago postdoc)</p>
-<p><a href="https://mateodd25.github.io/">Mateo Díaz</a> </p>
-<p>(Next position: Caltech CMS postdoc, then Asst Prof at JHU)</p>
-<p><a href="https://www.ams.jhu.edu/~grimmer/">Ben Grimmer</a> </p>
-<p>(Next position: Asst Prof at JHU)</p>
-<br>
-<h2 id="Teaching">Teaching</h2>
-<p><b>Lecture notes</b></p>
-<p><a href="https://damek.github.io/teaching/orie6300/ORIE6300Fall2019notes.pdf">Optimization: Structure, Duality, Calculus, and Algorithms</a> </p>
-<p>Draft of F’19 notes for my course  <a href="https://damek.github.io/orie6300.html">ORIE 6300</a> </p>
-<p>(Last Update: 1/2020)</p>
-<br>
-<h2 id="Honors and awards">Honors and awards</h2>
-<p><a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a> (2023)</p>
-<p><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>  (2021)</p>
-<p><a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a> (2020)</p>
-<p><a href="https://www.informs.org/Recognizing-Excellence/Award-Recipients/Damek-Davis">INFORMS Optimization Society Young Researchers Prize</a> (2019)</p>
-<p>Finalist for the Best Paper Prize for Young Researchers in Continuous Optimization (2019)</p>
-<p><a href="http://www.mathopt.org/?nav=tucker">Finalist for A. W. Tucker Prize for outstanding doctoral thesis</a>  (2018)</p>
-<p>NSF Math Postdoctoral Fellowship (2015)</p>
-<p>Pacific Journal of Mathematics Dissertation Prize (2015)</p>
-<p>INFORMS Optimization Society Student Paper Prize (2014)</p>
-<p>NSF Graduate Research Fellowship (2010)</p>
-<p>Elected to Phi Beta Kappa (2009)</p>
-<br>
-<h1 id="Research overview">Research overview</h1>
-<p>(My complete publication list can be viewed <a href="#Publications"">below</a>, on my <a href="cv.pdf">CV</a>, or on <a href="https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en">Google Scholar</a>.)</p>
-<br>
-<p>Learning algorithms work extremely well in practice, but we do not yet have a coherent mathematical foundation that explains when they provably work and how to improve their performance.  The challenge is that most learning algorithms rely on fitting highly nonlinear models via simple nonconvex optimization heuristics, and except for a few special cases, there is no guarantee they will find global optima. Despite this and NP-hardness, simple heuristics often do succeed, and over the last few years, I have studied why and when they do.</p>
-<br>
-<p>I spend a lot of time thinking about neural networks, and I am particularly curious whether we can provide provable convergence guarantees to standard training algorithms and whether these methods can be substantially improved. Deep networks fall outside the scope of classical optimization theory since they lead to problems that lack any conventionally useful notions of convexity or smoothness. To understand these methods, I think it is crucial to take the inherent <i>nonsmooth</i> structure of neural networks seriously. I study this structure and the associated algorithms by using and developing tools from several disciplines, including <a href="https://link.springer.com/book/10.1007/978-3-642-02431-3">nonsmooth/variational analysis</a>, <a href="https://epubs.siam.org/doi/10.1137/080722059">tame geometry</a>,  and <a href="https://www.cambridge.org/core/books/highdimensional-statistics/8A91ECEEC38F46DAB53E9FF8757C7A4E">high-dimensional statistics</a>. </p>
-<br>
-<h2 id="Algorithms for nonsmooth optimization in machine learning">Algorithms for nonsmooth optimization in machine learning</h2>
-<p>While neural networks are nonsmooth, they are not pathological — they are built from just a few simple components, like polynomials, exponentials, logs, max’s, min’s, and absolute values. The best model of such non-pathological functions available in optimization is the so-called <i>tame class,</i> a class which appears in several of my papers and precludes <a href="https://en.wikipedia.org/wiki/Cantor_function">cantor function</a>-esque behavior. I have spent a lot of time trying to uncover notions of beneficial "partial" smoothness in tame optimization problems to exploit this structure in algorithms. </p>
-<br>
-<p>While tame problems comprise virtually all tasks of interest, they appear to lack enough structure to endow simple iterative methods with global efficiency guarantees. A class with more structure, which can be viewed as a stepping stone between convex functions and general neural networks, is the so-called <i>weakly convex</i> class. These are functions that differ from convex functions by a simple quadratic. This class is deceptively simple, yet surprisingly broad, and includes, for example, all C^2 smooth functions (on compact sets) and all compositions of Lipschitz convex functions with smooth mappings: h(c(x)). These losses appear throughout data science, and particularly prominently in low-rank matrix recovery problems (e.g., matrix completion and sensing). </p>
-<br>
-<p>My group has been working towards understanding the convergence of simple iterative methods, such as the stochastic subgradient method (SGD), on the tame and weakly convex problem classes. We have also been working towards designing methods that outperform SGD. </p>
-<br>
-<p>I will now briefly summarize some of the contributions of my group. For those interested, a brief technical introduction to some of my papers can be found in the expository note: </p>
-<br>
-<p><a href="https://damek.github.io/ViewsAndNews-28-1.pdf">Subgradient methods under weak convexity and tame geometry</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>SIAG/OPT Views and News (2020)</p>
-<br>
-<h3 id="An exponential speedup for “generic” tame problems">An exponential speedup for “generic” tame problems</h3>
-<p>We developed the first first-order method that (locally) converges nearly linearly (i.e., exponentially fast) on “generic” tame problems. This is an exponential improvement on all prior first-order methods for this problem class.</p>
-<br>
-<p><a href="https://arxiv.org/abs/2205.00064">A nearly linearly convergent first-order method for nonsmooth functions with quadratic growth</a> </p>
-<p>Damek Davis, Liwei Jiang</p>
-<p>Manuscript (2022) | <a href="https://github.com/COR-OPT/ntd.py">code</a></p>
-<br>
-<h3 id="A superlinearly convergent method for “generic” tame equations">A superlinearly convergent method for “generic” tame equations</h3>
-<p>We developed the first algorithm that (locally) converges nearly superlinearly (i.e., double exponentially fast) on “generic” tame equations. </p>
-<br>
-<p><a href="https://arxiv.org/abs/2201.04611">A superlinearly convergent subgradient method for sharp semismooth problems</a> </p>
-<p>Vasileios Charisopoulos, Damek Davis</p>
-<p>Mathematics of Operations Research (2023) | <a href="https://github.com/COR-OPT/SuperPolyak.py">code</a> | <a href="https://twitter.com/damekdavis/status/1596616542396944384">Twitter Thread</a></p>
-<br>
-<h3 id="Training guarantees for SGD on tame and weakly convex functions">Training guarantees for SGD on tame and weakly convex functions</h3>
-<p>We showed that the stochastic subgradient method (e.g., backpropagation) converges to first order critical points on virtually any neural network.</p>
-<br>
-<p><a href="https://arxiv.org/abs/1804.07795">Stochastic subgradient method converges on tame functions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Sham Kakade, Jason D. Lee</p>
-<p>Foundations of Computational Mathematics (2018) | <a href="https://damek.github.io/ICCOPT2019.pdf">Talk</a> </p>
-<br>
-<p>We proved the first sample/computational efficiency guarantees for the stochastic subgradient method on the weakly convex class. </p>
-<br>
-<p><a href="https://arxiv.org/abs/1803.06523">Stochastic model-based minimization of weakly convex functions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>SIAM Journal on Optimization (2018) | <a href="http://ads-institute.uw.edu//blog/2018/04/02/sgd-weaklyconvex/">blog</a> </p>
-<br>
-<p><a href="https://arxiv.org/abs/1707.03505">Proximally Guided Stochastic Subgradient Method for Nonsmooth, Nonconvex Problems.</a> </p>
-<p>Damek Davis, Benjamin Grimmer</p>
-<p>SIAM Journal on Optimization (2018) [ <a href="https://github.com/COR-OPT/PGSG/blob/master/Interactive-PGSG.ipynb">code</a> ]</p>
-<br>
-<h3 id="Avoidable saddle points in nonsmooth optimization">Avoidable saddle points in nonsmooth optimization</h3>
-<p>We developed the concept of an avoidable nonsmooth saddle point — nonoptimal points that algorithms may be drawn to. The proper formulation of this concept is well-known in C^2 smooth optimization but was missing even for C^1 functions. We showed that both first-order and proximal methods do not converge to these points on “generic” tame problems:</p>
-<br>
-<p><a href="https://damek.github.io/OWOSNov2021.pdf">Talk: avoiding saddle points in nonsmooth optimization</a> </p>
-<p>Updated (11/2021) | <a href="https://www.youtube.com/watch?v=6BOFWQhxYZE">video</a></p>
-<br>
-<p><a href="https://arxiv.org/abs/1912.07146">Proximal methods avoid active strict saddles of weakly convex functions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>Foundations of Computational Mathematics (2021)</p>
-<br>
-<p><a href="https://arxiv.org/abs/2106.09815">Escaping strict saddle points of the Moreau envelope in nonsmooth optimization</a> </p>
-<p>Damek Davis, Mateo Díaz, Dmitriy Drusvyatskiy</p>
-<p>SIAM Journal on Optimization (2022)</p>
-<br>
-<p><a href="https://arxiv.org/abs/2108.11832">Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang</p>
-<p>Manuscript (2022)</p>
-<br>
-<h3 id="Asymptotic normality of SGD in nonsmooth optimization">Asymptotic normality of SGD in nonsmooth optimization</h3>
-<p>We characterized the asymptotic distribution of the error sequence in stochastic subgradient methods, proving it is asymptotically normal with “optimal covariance” on “generic” tame problems.</p>
-<br>
-<p><a href="https://arxiv.org/abs/2301.06632">Asymptotic normality and optimality in nonsmooth stochastic approximation</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang</p>
-<p>Manuscript (2023)</p>
-<br>
-<h3 id="Low-rank matrix recovery: a stepping stone to neural networks">Low-rank matrix recovery: a stepping stone to neural networks</h3>
-<p>We achieved the first sample complexity optimal and computationally optimal methods for several low-rank matrix recovery based on <i>nonsmooth</i> weakly convex formulations. Nonsmoothness was crucial to establishing these rates since prior smooth formulations were known to suffer from “poor conditioning.”</p>
-<br>
-<p> </p>
-<p><a href="https://academic.oup.com/imaiai/advance-article-abstract/doi/10.1093/imaiai/iaaa027/5936039">Composite optimization for robust rank one bilinear sensing</a> </p>
-<p>Vasileios Charisopoulos, Damek Davis, Mateo Diaz, Dmitriy Drusvyatskiy</p>
-<p>IMA Journal on Information and Inference (2020) [ <a href="https://github.com/COR-OPT/RobustBlindDeconv">code</a> ]</p>
-<br>
-<p><a href="https://academic.oup.com/imajna/article-abstract/40/4/2652/5684995">The nonsmooth landscape of phase retrieval</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Courtney Paquette</p>
-<p>IMA Journal on Numerical Analysis (2017) | <a href="https://damek.github.io/NonsmoothStatisticalAssumptions.pdf">Talk</a> </p>
-<br>
-<p>  </p>
-<p><a href="https://arxiv.org/abs/1904.10020">Low-rank matrix recovery with composite optimization: good conditioning and rapid convergence</a> </p>
-<p>Vasileios Charisopoulos, Yudong Chen, Damek Davis, Mateo Díaz, Lijun Ding, Dmitriy Drusvyatskiy</p>
-<p>Foundations of Computational Mathematics (2019) | <a href="https://github.com/COR-OPT/CompOpt-LowRankMatrixRecovery">code</a> </p>
-<br>
-<h2 id="Other selected work">Other selected work </h2>
-<p>Besides my work on nonconvex learning algorithms, I also have worked on clustering and convex optimization algorithms. </p>
-<br>
-<h3 id="Provable clustering methods and a potential statistical-to-computational gap">Provable clustering methods and a potential statistical-to-computational gap</h3>
-<p>Clustering is a fundamental statistical problem of dividing a dataset into two or more groups.  Our work on this talk topic focuses on the classical setting wherein both clusters follow a Gaussian distribution with identical covariance, but distinct means. When the covariance matrix is known or “nearly spherical,” there are efficient algorithms to perform the clustering and achieve the “Bayes-optimal error rate.” When the covariance is unknown or poorly conditioned, there are no known algorithms that achieve the Bayes-optimal rate. </p>
-<br>
-<p>Our contribution to this topic is a surprising dichotomy for clustering with an unknown covariance matrix: on the one hand, the maximum likelihood estimator uncovers the correct clustering and achieves the Bayes-optimal error; on the other, we give evidence that no known algorithm can compute the maximum likelihood estimator unless one increases the number of samples by an order of magnitude. Thus, we conjecture that there is a <a href="https://arxiv.org/abs/1803.11132">statistical-to-computational gap</a> for this classical statistical problem.</p>
-<br>
-<p><a href="https://arxiv.org/abs/2110.01602">Clustering a Mixture of Gaussians with Unknown Covariance</a> </p>
-<p>Damek Davis, Mateo Diaz, Kaizheng Wang</p>
-<p>Manuscript (2021)</p>
-<br>
-<h3 id="Three-Operator Splitting and the complexity of splitting methods">Three-Operator Splitting and the complexity of splitting methods</h3>
-<p>For my PhD thesis, I focused on a class of convex optimization algorithms, called operator-splitting methods. An operator splitting method is a technique for writing the solution of a “structured” convex optimization problem as the fixed-point of a well-behaved nonlinear operator. Algorithmically, one then finds the fixed-point of the operator through, e.g., the classical <a href="https://en.wikipedia.org/wiki/Fixed-point_iteration">fixed-point iteration</a>. My best-known contributions to the topic include the (1) “Three-Operator-Splitting” method, which has been widely used throughout computational imaging, and (2) my work that established the convergence rates of several classical splitting methods, such as the Douglas-Rachford splitting method and Alternating Direction Method of Multipliers (ADMM).</p>
-<br>
-<p><a href="https://link.springer.com/article/10.1007/s11228-017-0421-z">A Three-Operator Splitting Scheme and its Optimization Applications</a> </p>
-<p>Damek Davis, Wotao Yin</p>
-<p>Set-Valued and Variational Analysis (2017)</p>
-<br>
-<p><a href="http://arxiv.org/abs/1406.4834">Convergence rate analysis of several splitting schemes</a> </p>
-<p>Damek Davis, Wotao Yin</p>
-<p>Splitting Methods in Communication and Imaging, Science and Engineering (2017)</p>
-<br>
-<h1 id="Publications">Publications</h1>
-<p><a href="#Preprints"">Preprints</a> | <a href="#Conference papers"">Conference papers </a> | <a href="#Journal papers"">Journal papers </a> | <a href="#Book chapters"">Book chapters</a> | <a href="#Expository"">Expository </a> | <a href="#Technical reports"">Reports </a></p>
-<br>
-<h2 id="Preprints">Preprints</h2>
-<p><a href="https://arxiv.org/abs/2205.00064">A nearly linearly convergent first-order method for nonsmooth functions with quadratic growth</a> </p>
-<p>Damek Davis, Liwei Jiang</p>
-<p>Manuscript (2022) | <a href="https://github.com/COR-OPT/ntd.py">code</a></p>
-<br>
-<p><a href="https://arxiv.org/abs/2108.11832">Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang</p>
-<p>Manuscript (2022)</p>
-<br>
-<p><a href="https://arxiv.org/abs/2301.06632">Asymptotic normality and optimality in nonsmooth stochastic approximation</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang</p>
-<p>Manuscript (2023)</p>
-<br>
-<p><a href="https://arxiv.org/abs/2110.01602">Clustering a Mixture of Gaussians with Unknown Covariance</a> </p>
-<p>Damek Davis, Mateo Diaz, Kaizheng Wang</p>
-<p>Manuscript (2021)</p>
-<br>
-<p><a href="https://arxiv.org/abs/2002.06309">Stochastic optimization over proximally smooth sets</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Zhan Shi</p>
-<p>Manuscript (2020)</p>
-<br>
-<h2 id="Conference papers"> Conference papers </h2>
-<p><a href="https://arxiv.org/abs/2112.06969">A gradient sampling method with complexity guarantees for Lipschitz functions in high and low dimensions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Yin Tat Lee, Swati Padmanabhan, Guanghao Ye</p>
-<p>NeurIPS (2022) </p>
-<p><i>Oral Presentation (top ~1%)</i></p>
-<br>
-<p><a href="http://proceedings.mlr.press/v125/davis20a.html">High probability guarantees for stochastic convex optimization</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>In Conference on Learning Theory (2020)</p>
-<br>
-<p><a href="http://proceedings.mlr.press/v99/kwon19a.html">Global Convergence of EM Algorithm for Mixtures of Two Component Linear Regression</a> </p>
-<p>Jeongyeol Kwon, Wei Qian, Constantine Caramanis, Yudong Chen, and Damek Davis</p>
-<p>Conference on Learning Theory (2019)</p>
-<br>
-<p><a href="https://papers.nips.cc/paper/6428-the-sound-of-apalm-clapping-faster-nonsmooth-nonconvex-optimization-with-stochastic-asynchronous-palm">The Sound of APALM Clapping: Faster Nonsmooth Nonconvex Optimization with Stochastic Asynchronous PALM</a> </p>
-<p>Damek Davis, Brent Edmunds, Madeleine Udell</p>
-<p>Neural Information Processing Systems (2016) | <a href="https://arxiv.org/abs/1604.00526">report</a> </p>
-<br>
-<p><a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Dong_Multi-View_Feature_Engineering_2015_CVPR_paper.pdf">Multiview Feature Engineering and Learning</a> </p>
-<p>Jingming Dong, Nikos Karianakis, Damek Davis, Joshua Hernandez, Jonathan Balzer and Stefano Soatto</p>
-<p>In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2015)</p>
-<br>
-<p><a href="http://www.vision.cs.ucla.edu/papers/davisBS14.pdf">Asymmetric sparse kernel approximations for large-scale visual search.</a> </p>
-<p>Damek Davis, Jonathan Balzer, Stefano Soatto</p>
-<p>In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2014)</p>
-<br>
-<h2 id="Journal papers">Journal papers </h2>
-<p><a href="https://arxiv.org/abs/1907.09547">Stochastic algorithms with geometric step decay converge linearly on sharp functions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Vasileios Charisopoulos</p>
-<p>Mathematical Programming (to appear) | <a href="https://github.com/COR-OPT/GeomStepDecay">code</a> </p>
-<br>
-<p><a href="https://arxiv.org/abs/2201.04611">A superlinearly convergent subgradient method for sharp semismooth problems</a> </p>
-<p>Vasileios Charisopoulos, Damek Davis</p>
-<p>Mathematics of Operations Research (2023) | <a href="https://github.com/COR-OPT/SuperPolyak.py">code</a> | <a href="https://twitter.com/damekdavis/status/1596616542396944384">Twitter Thread</a></p>
-<br>
-<p><a href="https://arxiv.org/abs/2106.09815">Escaping strict saddle points of the Moreau envelope in nonsmooth optimization</a> </p>
-<p>Damek Davis, Mateo Díaz, Dmitriy Drusvyatskiy</p>
-<p>SIAM Journal on Optimization (2022)</p>
-<br>
-<p><a href="https://link.springer.com/article/10.1007/s10107-021-01758-4">Variance reduction for root-finding problems</a> </p>
-<p>Damek Davis</p>
-<p>Mathematical Programming (to appear)</p>
-<br>
-<p><a href="https://arxiv.org/abs/2102.08484">Conservative and semismooth derivatives are equivalent for semialgebraic maps</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>Set-Valued and Variational Analysis (to appear)</p>
-<br>
-<p><a href="https://arxiv.org/abs/1907.13307">From low probability to high confidence in stochastic convex optimization</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Lin Xiao, Junyu Zhang</p>
-<p>Journal of Machine Learning Research (to appear)</p>
-<br>
-<p><a href="https://arxiv.org/abs/1912.07146">Proximal methods avoid active strict saddles of weakly convex functions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>Foundations of Computational Mathematics (2021)</p>
-<br>
-<p><a href="https://arxiv.org/abs/1904.10020">Low-rank matrix recovery with composite optimization: good conditioning and rapid convergence</a> </p>
-<p>Vasileios Charisopoulos, Yudong Chen, Damek Davis, Mateo Díaz, Lijun Ding, Dmitriy Drusvyatskiy</p>
-<p>Foundations of Computational Mathematics (to appear) | <a href="https://github.com/COR-OPT/CompOpt-LowRankMatrixRecovery">code</a></p>
-<br>
-<p><a href="https://academic.oup.com/imaiai/advance-article-abstract/doi/10.1093/imaiai/iaaa027/5936039">Composite optimization for robust rank one bilinear sensing</a> </p>
-<p>Vasileios Charisopoulos, Damek Davis, Mateo Diaz, Dmitriy Drusvyatskiy</p>
-<p>IMA Journal on Information and Inference (2020) | <a href="https://github.com/COR-OPT/RobustBlindDeconv">code</a></p>
-<br>
-<p><a href="https://arxiv.org/abs/1810.07590">Graphical Convergence of Subgradients in Nonconvex Optimization and Learning</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>Mathematics of Operations Research (to appear)</p>
-<br>
-<p><a href="https://arxiv.org/abs/1707.03505">Proximally Guided Stochastic Subgradient Method for Nonsmooth, Nonconvex Problems.</a> </p>
-<p>Damek Davis, Benjamin Grimmer</p>
-<p>SIAM Journal on Optimization (to appear) | <a href="https://github.com/COR-OPT/PGSG/blob/master/Interactive-PGSG.ipynb">code</a></p>
-<br>
-<p><a href="https://doi.org/10.1287/moor.2019.0992">Trimmed Statistical Estimation via Variance Reduction</a> </p>
-<p>Aleksandr Aravkin, Damek Davis</p>
-<p>Mathematics of Operations Research (2019) | <a href="https://www.youtube.com/watch?v=_HNQtTGDRNg">video</a></p>
-<br>
-<p><a href="https://arxiv.org/abs/1804.07795">Stochastic subgradient method converges on tame functions.</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Sham Kakade, Jason D. Lee</p>
-<p>Foundations of Computational Mathematics (to appear)</p>
-<p><i>Finalist for the Best Paper Prize for Young Researchers in Continuous Optimization (2019)</i></p>
-<br>
-<p><a href="https://academic.oup.com/imajna/article-abstract/40/4/2652/5684995">The nonsmooth landscape of phase retrieval</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Courtney Paquette</p>
-<p>IMA Journal on Numerical Analysis (2018)</p>
-<br>
-<p><a href="https://arxiv.org/abs/1803.06523">Stochastic model-based minimization of weakly convex functions.</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>SIAM Journal on Optimization (2019) | <a href="http://ads-institute.uw.edu//blog/2018/04/02/sgd-weaklyconvex/">blog</a></p>
-<p>This is the combination of the two arXiv preprints  <a href="https://arxiv.org/abs/1802.02988">arXiv:1802.02988</a>  and  <a href="https://arxiv.org/abs/1803.06523">arXiv:1803.06523</a> </p>
-<p>Supplementary technical note:  <a href="https://arxiv.org/abs/1802.08556">Complexity of finding near-stationary points of convex functions stochastically</a> </p>
-<p>Related report on nonsmooth nonconvex mirror descent  <a href="http://www.optimization-online.org/DB_HTML/2018/07/6690.html">Stochastic model-based minimization under high-order growth</a>  (2018)</p>
-<p><i>INFORMS Optimization Society Young Researchers Prize (2019)</i></p>
-<br>
-<p><a href="https://link.springer.com/article/10.1007/s10957-018-1372-8">Subgradient methods for sharp weakly convex functions</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Kellie J. MacPhee, Courtney Paquette</p>
-<p>Journal of Optimization Theory and Applications (2018)</p>
-<br>
-<p><a href="https://doi.org/10.1137/17M1120099">Forward-Backward-Half Forward Algorithm for Solving Monotone Inclusions</a> </p>
-<p>Luis M. Briceño-Arias, Damek Davis</p>
-<p>SIAM Journal on Optimization (2018)</p>
-<br>
-<p><a href="https://doi.org/10.1137/140992291">Convergence rate analysis of the forward-Douglas-Rachford splitting scheme.</a> </p>
-<p>Damek Davis</p>
-<p>SIAM Journal on Optimization (2015)</p>
-<br>
-<p><a href="https://arxiv.org/abs/1408.4419">Convergence rate analysis of primal-dual splitting schemes</a> </p>
-<p>Damek Davis</p>
-<p>SIAM Journal on Optimization (2015)</p>
-<br>
-<p><a href="http://pubsonline.informs.org/doi/full/10.1287/moor.2016.0827">Faster convergence rates of relaxed Peaceman-Rachford and ADMM under regularity assumptions</a> </p>
-<p>Damek Davis, Wotao Yin</p>
-<p>Mathematics of Operations Research (2016)</p>
-<br>
-<p><a href="https://link.springer.com/article/10.1007/s11228-017-0421-z">A Three-Operator Splitting Scheme and its Optimization Applications.</a> </p>
-<p>Damek Davis, Wotao Yin</p>
-<p>Set-Valued and Variational Analysis (2017) | <a href="https://damek.github.io/ThreeOperators.html">code</a> | <a href="https://damek.github.io/ThreeOperators3-online.pdf">slides</a> </p>
-<br>
-<p><a href="http://ieeexplore.ieee.org/document/7906537">Beating level-set methods for 5D seismic data interpolation: a primal-dual alternating approach</a> </p>
-<p>Rajiv Kumar, Oscar López, Damek Davis, Aleksandr Y. Aravkin, Felix J. Herrmann</p>
-<p>IEEE Transactions on Computational Imaging (2017)</p>
-<br>
-<p><a href="http://arc.aiaa.org/doi/full/10.2514/1.I010119">Tactical Scheduling for Precision Air Traffic Operations: Past Research and Current Problems</a> </p>
-<p>Douglas R. Isaacson, Alexander V. Sadovsky, Damek Davis</p>
-<p>Journal of Aerospace Information Systems, April, Vol. 11, No. 4 : pp. 234-257</p>
-<br>
-<p><a href="http://dynamicsystems.asmedigitalcollection.asme.org/article.aspx?articleid=1838670">Efficient computation of separation-compliant speed advisories for air traffic arriving in terminal airspace.</a> </p>
-<p>Alexander V. Sadovsky, Damek Davis, Douglas R. Isaacson.</p>
-<p>Journal of Dynamic Systems Measurement and Control 136(4), 041027 (2014)</p>
-<br>
-<p><a href="http://www.aviationsystemsdivision.arc.nasa.gov/publications/2013/Transportation_Research_Part_C_2013_Sadovsky.pdf">Separation-compliant, optimal routing and control of scheduled arrivals in a terminal airspace.</a> </p>
-<p>Alexander V. Sadovsky, Damek Davis, and Douglas R. Isaacson.</p>
-<p>Transportation Research Part C: Emerging Technologies 37 (2013): 157-176</p>
-<br>
-<p><a href="http://www.ams.org/journals/proc/2011-139-03/S0002-9939-2010-10620-2/">Factorial and Noetherian Subrings of Power Series Rings.</a> </p>
-<p>Damek Davis, Daqing Wan</p>
-<p>Proceedings of the American Mathematical Society 139 (2011), no. 3, 823-834</p>
-<br>
-<h2 id="Book chapters">Book chapters</h2>
-<p><a href="https://link.springer.com/chapter/10.1007/978-3-319-41589-5_4">Convergence rate analysis of several splitting schemes</a> </p>
-<p>Damek Davis, Wotao Yin</p>
-<p>Splitting Methods in Communication and Imaging, Science and Engineering (2017) </p>
-<p><a href="https://www.youtube.com/watch?v=XDI9UbUkUz4">video</a> | <a href="https://damek.github.io/INFORMS_Presentation_Final.pdf">slides</a> | <a href="https://damek.github.io/OStoday0515.pdf">summary</a></p>
-<p><i>Winner of the</i> <a href="https://www.informs.org/Community/Optimization-Society/Optimization-Society-Prizes/Student-Paper-Prize/2014">2014 INFORMS optimization society best student paper prize.</a></p>
-<br>
-<h2 id="Expository">Expository </h2>
-<p><a href="http://wiki.siam.org/siag-op/images/siag-op/5/51/ViewsAndNews-28-1.pdf">Subgradient methods under weak convexity and tame geometry</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy</p>
-<p>SIAG/OPT News and Views (2020)</p>
-<br>
-<p><a href="https://damek.github.io/OStoday0515.pdf">Convergence Rate Analysis of Several Splitting Schemes</a> </p>
-<p>Damek Davis</p>
-<p>INFORMS OS Today (2015)</p>
-<br>
-<h2 id="Technical reports">Technical reports </h2>
-<p><a href="https://arxiv.org/abs/2212.13278">A linearly convergent Gauss-Newton subgradient method for ill-conditioned problems</a></p>
-<p>Damek Davis, Tao Jiang</p>
-<p>Technical report (2023) | <a href="https://github.com/COR-OPT/GaussNewtonPolyak.py">code</a></p>
-<br>
-<p><a href="http://www.optimization-online.org/DB_HTML/2018/07/6690.html">Stochastic model-based minimization under high-order growth.</a> </p>
-<p>Damek Davis, Dmitriy Drusvyatskiy, Kellie J. MacPhee</p>
-<p>Technical Report (2018)</p>
-<br>
-<p><a href="http://www.optimization-online.org/DB_FILE/2015/03/4851.pdf">An \(O(n\log(n))\) algorithm for projecting onto the ordered weighted \(\ell_1\) norm ball</a> </p>
-<p>Damek Davis</p>
-<p>UCLA CAM report 15-32 (2015) | <a href="https://damek.github.io/OWLBall.html">code</a> </p>
-<br>
-<p><a href="https://arxiv.org/abs/1601.00698">SMART: The Stochastic Monotone Aggregated Root-Finding Algorithm.</a> </p>
-<p>Damek Davis</p>
-<p>Manuscript (2015) [ <a href="https://damek.github.io/Talks/SMART.pdf">slides</a> ] [ <a href="https://vimeo.com/156600995">video</a> ]</p>
-
-        </div>
-        <script type="text/javascript">
-            (function() {
-
-    var doc_ols = document.getElementsByTagName("ol");
-
-    for ( i=0; i<doc_ols.length; i++) {
-
-        var ol_start = doc_ols[i].getAttribute("start") - 1;
-        doc_ols[i].setAttribute("style", "counter-reset:ol_counter " + ol_start + ";");
-
-    }
-
-})();
-
-        </script>
         <style>
-            html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}html{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}a img{border:none}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{font-size:87.5%;line-height:1.57143em}html{font-size:14px;line-height:1.6em;-webkit-text-size-adjust:100%}body{background:#fcfcfc;color:#545454;text-rendering:optimizeLegibility;font-family:"AvenirNext-Regular"}a{color:#de4c4f;text-decoration:none}h1{font-family:"AvenirNext-Medium";color:#333;font-size:1.6em;line-height:1.3em;margin-bottom:.78571em}h2{font-family:"AvenirNext-Medium";color:#333;font-size:1.3em;line-height:1em;margin-bottom:.62857em}h3{font-family:"AvenirNext-Medium";color:#333;font-size:1.15em;line-height:1em;margin-bottom:.47143em}p{margin-bottom:1.57143em;hyphens:auto}hr{height:1px;border:0;background-color:#dedede;margin:-1px auto 1.57143em auto}ul,ol{margin-bottom:.31429em}ul ul,ul ol,ol ul,ol ol{margin-bottom:0px}ol{counter-reset:ol_counter}ol li:before{content:counter(ol_counter) ".";counter-increment:ol_counter;color:#e06e73;text-align:right;display:inline-block;min-width:1em;margin-right:0.5em}b,strong{font-family:"AvenirNext-Bold"}i,em{font-family:"AvenirNext-Italic"}code{font-family:"Menlo-Regular"}.text-overflow-ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sf_code_string,.sf_code_selector,.sf_code_attr-name,.sf_code_char,.sf_code_builtin,.sf_code_inserted{color:#D33905}.sf_code_comment,.sf_code_prolog,.sf_code_doctype,.sf_code_cdata{color:#838383}.sf_code_number,.sf_code_boolean{color:#0E73A2}.sf_code_keyword,.sf_code_atrule,.sf_code_rule,.sf_code_attr-value,.sf_code_function,.sf_code_class-name,.sf_code_class,.sf_code_regex,.sf_code_important,.sf_code_variable,.sf_code_interpolation{color:#0E73A2}.sf_code_property,.sf_code_tag,.sf_code_constant,.sf_code_symbol,.sf_code_deleted{color:#1B00CE}.sf_code_macro,.sf_code_entity,.sf_code_operator,.sf_code_url{color:#920448}.note-wrapper{max-width:46em;margin:0px auto;padding:1.57143em 3.14286em}.note-wrapper.spotlight-preview{overflow-x:hidden}u{text-decoration:none;background-image:linear-gradient(to bottom, rgba(0,0,0,0) 50%,#e06e73 50%);background-repeat:repeat-x;background-size:2px 2px;background-position:0 1.05em}s{color:#878787}p{margin-bottom:0.1em}hr{margin-bottom:0.7em;margin-top:0.7em}ul li{text-indent:-0.35em}ul li:before{content:"•";color:#e06e73;display:inline-block;margin-right:0.3em}ul ul{margin-left:1.25714em}ol li{text-indent:-1.45em}ol ol{margin-left:1.25714em}blockquote{display:block;margin-left:-1em;padding-left:0.8em;border-left:0.2em solid #e06e73}.todo-list ul{margin-left:1.88571em}.todo-list li{text-indent:-1.75em}.todo-list li:before{content:"";display:static;margin-right:0px}.todo-checkbox{text-indent:-1.7em}.todo-checkbox svg{margin-right:0.3em;position:relative;top:0.2em}.todo-checkbox svg #check{display:none}.todo-checkbox.todo-checked #check{display:inline}.todo-checkbox.todo-checked+.todo-text{text-decoration:line-through;color:#878787}.code-inline{display:inline;background:white;border:solid 1px #dedede;padding:0.2em 0.5em;font-size:0.9em}.code-multiline{display:block;background:white;border:solid 1px #dedede;padding:0.7em 1em;font-size:0.9em;overflow-x:auto}.hashtag{display:inline-block;color:white;background:#b8bfc2;padding:0.0em 0.5em;border-radius:1em;text-indent:0}.hashtag a{color:#fff}.address a{color:#545454;background-image:linear-gradient(to bottom, rgba(0,0,0,0) 50%,#0da35e 50%);background-repeat:repeat-x;background-size:2px 2px;background-position:0 1.05em}.address svg{position:relative;top:0.2em;display:inline-block;margin-right:0.2em}.color-preview{display:inline-block;width:1em;height:1em;border:solid 1px rgba(0,0,0,0.3);border-radius:50%;margin-right:0.1em;position:relative;top:0.2em;white-space:nowrap}.color-code{margin-right:0.2em;font-family:"Menlo-Regular";font-size:0.9em}.color-hash{opacity:0.4}.ordered-list-number{color:#e06e73;text-align:right;display:inline-block;min-width:1em}.arrow svg{position:relative;top:0.08em;display:inline-block;margin-right:0.15em;margin-left:0.15em}.arrow svg #rod{stroke:#545454}.arrow svg #point{fill:#545454}mark{color:inherit;display:inline;padding:0.2em 0.5em;background-color:#fcffc0}img{max-width:100%;height:auto}
+             body {
+   --base-background-color: #ffffff;
+   --document-background-color: var(--base-background-color);
+ }
+
+.document-wrapper {
+  /* Constants used to transform theme values to CSS */
+  --transform-line-height-factor: 1.17;
+
+  /* From template */
+  --base-text-color: #444444;
+  --base-text-secondary-color: #888888;
+  --base-text-tertiary-color: #d9d9d9;
+  --base-background-color: #ffffff;
+  --base-background-secondary-color: #F3F5F7;
+  --base-background-tertiary-color: #E4E5E6;
+  --base-stroke-color: #d9d9d9;
+  --base-stroke-secondary-color: #d9d9d9;
+  --base-accent-color: #DD4C4F;
+  --base-highlight-color: #D3FFA4;
+
+  --document-background-color: var(--base-background-color);
+  --document-text-color: var(--base-text-color);
+  --document-text-secondary-color: var(--base-text-secondary-color);
+  --document-text-light-color: var(--base-text-secondary-color);
+  --document-accent-color: var(--base-accent-color);
+  --document-cursor-color: var(--base-accent-color);
+  --document-link-color: var(--base-accent-color);
+  --document-list-marker-color: var(--base-accent-color);
+  --document-marker-color: var(--base-text-tertiary-color);
+  --document-selection-color: var(--base-selection-color);
+  --document-selection-inactive-color: var(--base-background-tertiary-color);
+  --document-text-font: "AvenirNext-Regular";
+  --document-text-size: 15px;
+  --document-line-height-multiplier: calc(
+    1.5 * var(--transform-line-height-factor)
+  );
+
+  --document-headers-text-color: var(--base-text-color);
+  --document-headers-font: "AvenirNext-Medium";
+  --document-headers-modular-scale: 1.125;
+  --document-headers-line-height-multiplier: calc(
+    1.3 * var(--transform-line-height-factor)
+  );
+  --document-headers-add-top-bottom-padding: 1;
+  --document-headers-padding-top-multiplier: 0.5;
+  --document-headers-padding-bottom-multiplier: 0.3;
+
+  --document-code-text-color: var(--base-text-color);
+  --document-code-border-color: var(--base-text-tertiary-color);
+  --document-code-background-color: var(--base-background-secondary-color);
+  --document-code-font: "Menlo-Regular";
+  --document-code-text-size-multiplier: 0.91;
+
+  --document-code-syntax-highlight-comment: #65798c;
+  --document-code-syntax-highlight-constant: #0095c9;
+  --document-code-syntax-highlight-number: #0095c9;
+  --document-code-syntax-highlight-string: #d12f1b;
+  --document-code-syntax-highlight-entity: #4a838b;
+  --document-code-syntax-highlight-keyword: #ad3da4;
+  --document-code-syntax-highlight-function: #4a838b;
+  --document-code-syntax-highlight-variable: #4a838b;
+
+  --document-task-background-color: var(--base-background-color);
+  --document-task-border-color: var(--base-text-secondary-color);
+  --document-task-check-color: var(--base-text-color);
+
+  --document-tag-background-color: var(--base-background-tertiary-color);
+  --document-tag-text-color: var(--base-text-color);
+  --document-tag-marker-color: var(--base-text-secondary-color);
+
+  --document-highlighter-background-color: var(--base-highlight-color);
+  --document-highlighter-text-color: var(--base-text-color);
+
+  --document-file-fold-color: var(--base-background-tertiary-color);
+  --document-file-background-color: var(--base-background-secondary-color);
+
+  --document-separator-border-color: var(--base-stroke-secondary-color);
+
+  --document-table-border-color: var(--base-stroke-secondary-color);
+  --document-table-cell-background-color: var(--base-background-color);
+  --document-table-cell-alternate-background-color: var(
+    --base-background-secondary-color
+  );
+}
+
+.document-wrapper,body{background-color:var(--document-background-color)}.document-wrapper h1.setext,.document-wrapper h2.setext{border-bottom:calc(2 * var(--document-hairline-width)) solid var(--document-separator-border-color);padding-bottom:.6em}.document-wrapper blockquote blockquote blockquote blockquote blockquote::before,.document-wrapper blockquote blockquote blockquote::before,.document-wrapper blockquote::before{background-color:var(--document-list-marker-color)}.document-wrapper a:hover,.document-wrapper mark{text-decoration:inherit}.document-wrapper td[data-alignment="1"],.document-wrapper th{text-align:left}.document-wrapper :after,.document-wrapper :before,.document-wrapper a,.document-wrapper abbr,.document-wrapper acronym,.document-wrapper address,.document-wrapper applet,.document-wrapper article,.document-wrapper aside,.document-wrapper audio,.document-wrapper b,.document-wrapper big,.document-wrapper blockquote,.document-wrapper canvas,.document-wrapper caption,.document-wrapper center,.document-wrapper cite,.document-wrapper code,.document-wrapper dd,.document-wrapper del,.document-wrapper details,.document-wrapper dfn,.document-wrapper div,.document-wrapper dl,.document-wrapper dt,.document-wrapper em,.document-wrapper embed,.document-wrapper fieldset,.document-wrapper figcaption,.document-wrapper figure,.document-wrapper footer,.document-wrapper form,.document-wrapper h1,.document-wrapper h2,.document-wrapper h3,.document-wrapper h4,.document-wrapper h5,.document-wrapper h6,.document-wrapper header,.document-wrapper hgroup,.document-wrapper i,.document-wrapper iframe,.document-wrapper ins,.document-wrapper kbd,.document-wrapper label,.document-wrapper legend,.document-wrapper li,.document-wrapper mark,.document-wrapper menu,.document-wrapper nav,.document-wrapper object,.document-wrapper ol,.document-wrapper output,.document-wrapper p,.document-wrapper pre,.document-wrapper q,.document-wrapper ruby,.document-wrapper s,.document-wrapper samp,.document-wrapper section,.document-wrapper small,.document-wrapper span,.document-wrapper strike,.document-wrapper strong,.document-wrapper summary,.document-wrapper table,.document-wrapper tbody,.document-wrapper td,.document-wrapper tfoot,.document-wrapper th,.document-wrapper thead,.document-wrapper time,.document-wrapper tr,.document-wrapper tt,.document-wrapper u,.document-wrapper ul,.document-wrapper var,.document-wrapper video{all:unset}.document-wrapper{--document-inline-padding-top-bottom:0.25em;--document-inline-padding-left-right:0.25em;--header-1-font-size:2em;--header-2-font-size:1.6em;--header-3-font-size:1.27em;--document-hairline-width:calc(var(--document-text-size) / 15);box-sizing:border-box;color:var(--document-text-color);font-family:var(--document-text-font);font-size:var(--document-text-size);line-height:var(--document-line-height-multiplier);min-height:100%;max-width:48em;width:100%;tab-size:4;margin:0 auto;padding:0 2em}body{text-rendering:optimizeLegibility}.document-wrapper:focus-visible{outline:0}.document-wrapper .marker{color:var(--document-marker-color);display:none}.document-wrapper [data-direction="2"]{direction:rtl}.document-wrapper div.footnote,.document-wrapper div.link-definition,.document-wrapper p{display:block}.document-wrapper p.blank-line::before{content:" "}.document-wrapper h1,.document-wrapper h2,.document-wrapper h3,.document-wrapper h4,.document-wrapper h5,.document-wrapper h6{font-family:var(--document-headers-font);display:block;line-height:var(--document-headers-line-height-multiplier)}.document-wrapper h1{font-size:var(--header-1-font-size);padding-block-start:0.8em;padding-block-end:0.33em}.document-wrapper h2{font-size:var(--header-2-font-size);padding-block-start:0.66em;padding-block-end:0.27em}.document-wrapper h3{font-size:var(--header-3-font-size);padding-block-start:0.53em;padding-block-end:0.27em}.document-wrapper code,.document-wrapper pre{font-size:var(--document-code-text-size-multiplier);font-family:var(--document-code-font),monospace}.document-wrapper h4,.document-wrapper h5,.document-wrapper h6{padding-block-start:0.4em;padding-block-end:0.27em}.document-wrapper h1.setext{margin-bottom:.45em}.document-wrapper h2.setext{margin-bottom:.2em}.document-wrapper .fenced-code *,.document-wrapper .fenced-code-content .marker,.document-wrapper .fenced-code-content .space,.document-wrapper .hard-linebreak-marker,.document-wrapper .image .space,.document-wrapper .image-destination,.document-wrapper .image-label,.document-wrapper .image-title,.document-wrapper .indented-code .space,.document-wrapper .link .space,.document-wrapper .link-destination,.document-wrapper .link-label,.document-wrapper .link-title,.document-wrapper .replace .text,.document-wrapper .setext-heading-marker+.line-ending,.document-wrapper .yaml-marker+.line-ending,.document-wrapper li>p>.space:first-child,.document-wrapper tr.delimiter-row{display:none}.document-wrapper ol,.document-wrapper ul{display:block;padding-inline-start:2.13em}.document-wrapper li{display:list-item;color:var(--document-text-color)}.document-wrapper .color-marker,.document-wrapper .entity-marker,.document-wrapper .fenced-code-content,.document-wrapper .fenced-code-content *,.document-wrapper .footnote-separator,.document-wrapper .link-definition-separator,.document-wrapper code.code-inline,.document-wrapper li>p{display:inline}.document-wrapper ul{list-style-type:disc}.document-wrapper li li li li li li li ul,.document-wrapper li li li li li ul,.document-wrapper li li li ul,.document-wrapper li ul{list-style:circle}.document-wrapper li li li li li li ul,.document-wrapper li li li li ul,.document-wrapper li li ul{list-style:disc}.document-wrapper li::marker{color:var(--document-list-marker-color)}.document-wrapper ol{list-style-type:none;counter-reset:custom-list-item calc(var(--data-list-start,1) - 1)}.document-wrapper ol>li{counter-increment:custom-list-item;position:relative}.document-wrapper ol>li::before{content:counter(custom-list-item) ". ";color:var(--document-list-marker-color);position:absolute;transform:translate(calc(-100% - .33em),0)}.document-wrapper ol>li[data-big-number=true]{margin-inline-start:-2.05em}.document-wrapper ol>li[data-big-number=true]::before{position:static;padding-inline-end:0.25em}.document-wrapper ol>li[data-list-type="1"]:before{content:counter(custom-list-item) ") "}.document-wrapper [data-direction="2"] ol>li::before,.document-wrapper ol[data-direction="2"]>li::before{transform:translate(calc(100% + .33em),0)}.document-wrapper li[role=checkbox]{list-style:none;position:relative}.document-wrapper li[aria-checked=true]{color:var(--document-text-secondary-color)}.document-wrapper .todo-checkbox{display:inline-block;margin-left:-1.7em;margin-right:.5em}.document-wrapper .todo-checkbox svg{display:inline-block;margin-bottom:-.3em}.document-wrapper blockquote{display:block;padding-inline-start:2.13em;position:relative}.document-wrapper code,.document-wrapper mark{padding:var(--document-inline-padding-top-bottom) var(--document-inline-padding-left-right)}.document-wrapper blockquote::before{content:"";position:absolute;top:.2em;left:1em;width:.13em;height:calc(100% - .4em);border:var(--document-hairline-width) solid var(--document-list-marker-color);border-radius:.33em}.document-wrapper code,.document-wrapper pre.fenced-code,.document-wrapper pre.indented-code,.document-wrapper pre.yaml{color:var(--document-code-text-color);background-color:var(--document-code-background-color);border-radius:.25em}.document-wrapper [data-direction="2"] blockquote::before,.document-wrapper blockquote[data-direction="2"]::before{left:0;right:1em}.document-wrapper blockquote blockquote blockquote blockquote blockquote blockquote::before,.document-wrapper blockquote blockquote blockquote blockquote::before,.document-wrapper blockquote blockquote::before{background-color:transparent}.document-wrapper hr{display:block;margin-block-start:calc(var(--document-line-height-multiplier) * 0.5em);margin-block-end:calc(var(--document-line-height-multiplier) * -0.5em);border-top:var(--document-hairline-width) solid var(--document-separator-border-color)}.document-wrapper pre{display:block;white-space:pre-wrap}.document-wrapper pre.indented-code{padding-inline-start:2.13em}.document-wrapper pre.fenced-code,.document-wrapper pre.yaml{padding:0 .5em}.document-wrapper .fenced-code::before{content:"\200B"}.document-wrapper code{font-weight:400;font-style:normal;display:block}.document-wrapper mark,.document-wrapper mark code{color:var(--document-text-color);background-color:var(--document-highlighter-background-color)}.document-wrapper em,.document-wrapper i{font-family:AvenirNext-Italic}.document-wrapper b,.document-wrapper strong,.document-wrapper th{font-family:AvenirNext-Bold}.document-wrapper mark{unicode-bidi:embed;border-radius:.25em}.document-wrapper u{text-decoration:underline;text-decoration-color:var(--document-accent-color);unicode-bidi:embed}.document-wrapper s,.document-wrapper strike{text-decoration:line-through}.document-wrapper a{color:var(--document-link-color);unicode-bidi:embed;cursor:pointer}.document-wrapper .wiki-separator-marker{display:inline;color:inherit}.document-wrapper .link-definition-title{color:var(--document-text-light-color)}.document-wrapper .footnote-ref{font-size:.9em;vertical-align:super}.document-wrapper span.entity{direction:ltr;unicode-bidi:embed;color:var(--document-code-syntax-highlight-entity)}.document-wrapper span.escape{unicode-bidi:embed}.document-wrapper .color{font-family:var(--document-code-font),monospace;font-size:var(--document-code-text-size-multiplier);padding-inline-start:1.2em;position:relative;direction:ltr;unicode-bidi:embed}.document-wrapper .color::before{content:"";position:absolute;width:.9em;height:.9em;left:0;bottom:0;transform:translateY(-15%);border:var(--document-hairline-width) solid rgb(0,0,0,.3);border-radius:.9em;background-color:var(--data-color)}.document-wrapper .hashtag{color:var(--document-tag-text-color);background-color:var(--document-tag-background-color);border-radius:1em;padding:calc(var(--document-inline-padding-top-bottom) - 2 * var(--document-hairline-width)) calc(var(--document-inline-padding-left-right) + .3em);unicode-bidi:embed}.document-wrapper .hashtag>.marker{display:inline;color:var(--document-tag-marker-color);padding:0}.document-wrapper table{display:block;max-width:fit-content;overflow-x:auto;border-collapse:separate;border-spacing:0;border:var(--document-hairline-width) solid var(--document-table-border-color);border-radius:.33em;margin-bottom:calc(var(--document-line-height-multiplier) * 1em)}.document-wrapper table[data-direction="2"]{margin-left:auto;direction:ltr}.document-wrapper tr{display:table-row;background-color:var(--document-table-cell-background-color)}.document-wrapper tr.header-row,.document-wrapper tr:nth-child(odd){background-color:var(--document-table-cell-alternate-background-color)}.document-wrapper td,.document-wrapper th{box-sizing:border-box;display:table-cell;padding:.37em .75em;min-width:5em;border-right:var(--document-hairline-width) solid var(--document-table-border-color)}.document-wrapper td:last-of-type,.document-wrapper th:last-of-type{border:none}.document-wrapper table[data-direction="2"] td{margin-left:auto}.document-wrapper td[data-alignment="2"]{text-align:right}.document-wrapper td[data-alignment="3"]{text-align:center}.document-wrapper .code_comment{color:var(--document-code-syntax-highlight-comment)}.document-wrapper .code_constant{color:var(--document-code-syntax-highlight-constant)}.document-wrapper .code_number{color:var(--document-code-syntax-highlight-number)}.document-wrapper .code_string{color:var(--document-code-syntax-highlight-string)}.document-wrapper .code_entity{color:var(--document-code-syntax-highlight-entity)}.document-wrapper .code_keyword{color:var(--document-code-syntax-highlight-keyword)}.document-wrapper .code_function{color:var(--document-code-syntax-highlight-function)}.document-wrapper .code_variable{color:var(--document-code-syntax-highlight-variable)}.document-wrapper img{max-width:100%}.document-wrapper .pdf_preview{display:inline-block;width:100%;height:500px;background-color:#fff;overflow:hidden;padding:0;margin:0;position:relative;border-radius:4px}.document-wrapper .arrow svg #body,.document-wrapper .arrow svg #head{fill:var(--base-text-color)}.document-wrapper .todo-checkbox svg #body{stroke:var(--document-task-border-color)}.document-wrapper .todo-checkbox svg #check{fill:var(--document-task-check-color)}.document-wrapper .todo-checkbox.todo-checked svg #body{opacity:.35}.document-wrapper .todo-checkbox.todo-checked svg #check{opacity:.4}
 
         </style>
+    <body>
+        <div class="document-wrapper">
+            <h1 id='Damek Davis'>Damek Davis</h1><p>I am an associate professor of operations research at Cornell University. I received my Ph.D. in mathematics from the University of California, Los Angeles in 2015. My PhD advisors were <a href='https://wotaoyin.mathopt.com/'>Wotao Yin</a> and <a href='https://web.cs.ucla.edu/~soatto/'>Stefano Soatto</a>.</p><br>
+<p>I am broadly interested in the mathematics of data science, particularly the interplay of optimization, signal processing, statistics, and machine learning.  I enjoy designing and analyzing learning algorithms based on optimization.  You can read more about my research in my <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Research%20overview'>research overview</a> or <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Publications'>publications</a>. Also check out my two favorite recent projects on <a href='https://twitter.com/damekdavis/status/1596616542396944384'>accelerated root-finding</a> and  <a href='https://twitter.com/damekdavis/status/1682389849167233027?s=20'>accelerated optimization</a> on twitter.</p><br>
+<p>My research has received several awards, including a <a href='https://sloan.org/fellowships/'>Sloan Research Fellowship in Mathematics</a>, the <a href='https://www.informs.org/Recognizing-Excellence/Award-Recipients/Damek-Davis'>INFORMS Optimization Society Young Researchers Prize</a>, an <a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637'>NSF CAREER Award</a>, and the <a href='https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize'>SIAM Activity Group on Optimization Best Paper Prize</a>. I am currently an associate editor at <a href='https://www.springer.com/journal/10107'>Mathematical Programming</a> and <a href='https://www.springer.com/journal/10208'>Foundations of Computational Mathematics</a>.</p><br>
+<p><a href='cv.pdf'>CV</a> | <a href='mailto:dsd95@cornell.edu'>Email</a> | <a href='https://twitter.com/damekdavis'>Twitter</a> | <a href='https://github.com/COR-OPT'>Github</a> | <a href='https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en'>Google Scholar</a></p><br>
+<h2 id='Students'>Students</h2><p><b>Current PhD Students</b><br>
+<a href='https://www.orie.cornell.edu/research/grad-students/liwei-jiang'>Liwei Jiang</a><br>
+<a href='https://www.orie.cornell.edu/research/grad-students/tao-jiang'>Tao Jiang</a></p><br>
+<p><b>Graduated PhD Students</b><br>
+<a href='https://people.orie.cornell.edu/vc333/'>Vasilis Charisopoulos</a><br>
+(Next position: University of Chicago postdoc)<br>
+<a href='https://mateodd25.github.io/'>Mateo Díaz</a><br>
+(Next position: Caltech CMS postdoc, then Asst Prof at JHU)<br>
+<a href='https://www.ams.jhu.edu/~grimmer/'>Ben Grimmer</a><br>
+(Next position: Asst Prof at JHU)</p><br>
+<h2 id='Teaching'>Teaching</h2><p><b>Lecture notes</b><br>
+<a href='https://damek.github.io/teaching/orie6300/ORIE6300Fall2019notes.pdf'>Optimization: Structure, Duality, Calculus, and Algorithms</a><br>
+Draft of F’19 notes for my course  <a href='https://damek.github.io/orie6300.html'>ORIE 6300</a><br>
+(Last Update: 1/2020)</p><br>
+<h2 id='Honors and awards'>Honors and awards</h2><p><a href='https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize'>SIAM Activity Group on Optimization Best Paper Prize</a> (2023)<br>
+<a href='https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637'>NSF CAREER Award</a>  (2021)<br>
+<a href='https://sloan.org/fellowships/'>Sloan Research Fellowship in Mathematics</a> (2020)<br>
+<a href='https://www.informs.org/Recognizing-Excellence/Award-Recipients/Damek-Davis'>INFORMS Optimization Society Young Researchers Prize</a> (2019)<br>
+Finalist for the Best Paper Prize for Young Researchers in Continuous Optimization (2019)<br>
+<a href='http://www.mathopt.org/?nav=tucker'>Finalist for A. W. Tucker Prize for outstanding doctoral thesis</a>  (2018)<br>
+NSF Math Postdoctoral Fellowship (2015)<br>
+Pacific Journal of Mathematics Dissertation Prize (2015)<br>
+INFORMS Optimization Society Student Paper Prize (2014)<br>
+NSF Graduate Research Fellowship (2010)<br>
+Elected to Phi Beta Kappa (2009)</p><br>
+<h1 id='Research overview'>Research overview</h1><p>(My complete publication list can be viewed <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Publications'>below</a>, on my <a href='cv.pdf'>CV</a>, or on <a href='https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en'>Google Scholar</a>.)</p><br>
+<p>Learning algorithms work extremely well in practice, but we do not yet have a coherent mathematical foundation that explains when they provably work and how to improve their performance.  The challenge is that most learning algorithms rely on fitting highly nonlinear models via simple nonconvex optimization heuristics, and except for a few special cases, there is no guarantee they will find global optima. Despite this and NP-hardness, simple heuristics often do succeed, and over the last few years, I have studied why and when they do.</p><br>
+<p>I spend a lot of time thinking about neural networks, and I am particularly curious whether we can provide provable convergence guarantees to standard training algorithms and whether these methods can be substantially improved. Deep networks fall outside the scope of classical optimization theory since they lead to problems that lack any conventionally useful notions of convexity or smoothness. To understand these methods, I think it is crucial to take the inherent <i>nonsmooth</i> structure of neural networks seriously. I study this structure and the associated algorithms by using and developing tools from several disciplines, including <a href='https://link.springer.com/book/10.1007/978-3-642-02431-3'>nonsmooth/variational analysis</a>, <a href='https://epubs.siam.org/doi/10.1137/080722059'>tame geometry</a>,  and <a href='https://www.cambridge.org/core/books/highdimensional-statistics/8A91ECEEC38F46DAB53E9FF8757C7A4E'>high-dimensional statistics</a>.</p><br>
+<h2 id='Algorithms for nonsmooth optimization in machine learning'>Algorithms for nonsmooth optimization in machine learning</h2><p>While neural networks are nonsmooth, they are not pathological — they are built from just a few simple components, like polynomials, exponentials, logs, max’s, min’s, and absolute values. The best model of such non-pathological functions available in optimization is the so-called <i>tame class,</i> a class which appears in several of my papers and precludes <a href='https://en.wikipedia.org/wiki/Cantor_function'>cantor function</a>-esque behavior. I have spent a lot of time trying to uncover notions of beneficial "partial" smoothness in tame optimization problems to exploit this structure in algorithms.</p><br>
+<p>While tame problems comprise virtually all tasks of interest, they appear to lack enough structure to endow simple iterative methods with global efficiency guarantees. A class with more structure, which can be viewed as a stepping stone between convex functions and general neural networks, is the so-called <i>weakly convex</i> class. These are functions that differ from convex functions by a simple quadratic. This class is deceptively simple, yet surprisingly broad, and includes, for example, all C^2 smooth functions (on compact sets) and all compositions of Lipschitz convex functions with smooth mappings: h(c(x)). These losses appear throughout data science, and particularly prominently in low-rank matrix recovery problems (e.g., matrix completion and sensing).</p><br>
+<p>My group has been working towards understanding the convergence of simple iterative methods, such as the stochastic subgradient method (SGD), on the tame and weakly convex problem classes. We have also been working towards designing methods that outperform SGD.</p><br>
+<p>I will now briefly summarize some of the contributions of my group. For those interested, a brief technical introduction to some of my papers can be found in the expository note:</p><br>
+<p><a href='https://damek.github.io/ViewsAndNews-28-1.pdf'>Subgradient methods under weak convexity and tame geometry</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+SIAG/OPT Views and News (2020)</p><br>
+<h3 id='An exponential speedup for “generic” tame problems'>An exponential speedup for “generic” tame problems</h3><p>We developed the first first-order method that (locally) converges nearly linearly (i.e., exponentially fast) on “generic” tame problems. This is an exponential improvement on all prior first-order methods for this problem class.</p><br>
+<p><a href='https://arxiv.org/abs/2205.00064'>A nearly linearly convergent first-order method for nonsmooth functions with quadratic growth</a><br>
+Damek Davis, Liwei Jiang<br>
+Manuscript (2022) | <a href='https://github.com/COR-OPT/ntd.py'>code</a> | <a href='https://twitter.com/damekdavis/status/1682389849167233027?s=20'>Twitter thread</a></p><br>
+<h3 id='A superlinearly convergent method for “generic” tame equations'>A superlinearly convergent method for “generic” tame equations</h3><p>We developed the first algorithm that (locally) converges nearly superlinearly (i.e., double exponentially fast) on “generic” tame equations.</p><br>
+<p><a href='https://arxiv.org/abs/2201.04611'>A superlinearly convergent subgradient method for sharp semismooth problems</a><br>
+Vasileios Charisopoulos, Damek Davis<br>
+Mathematics of Operations Research (2023) | <a href='https://github.com/COR-OPT/SuperPolyak.py'>code</a> | <a href='https://twitter.com/damekdavis/status/1596616542396944384'>Twitter thread</a></p><br>
+<h3 id='Training guarantees for SGD on tame and weakly convex functions'>Training guarantees for SGD on tame and weakly convex functions</h3><p>We showed that the stochastic subgradient method (e.g., backpropagation) converges to first order critical points on virtually any neural network.</p><br>
+<p><a href='https://arxiv.org/abs/1804.07795'>Stochastic subgradient method converges on tame functions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Sham Kakade, Jason D. Lee<br>
+Foundations of Computational Mathematics (2018) | <a href='https://damek.github.io/ICCOPT2019.pdf'>Talk</a></p><br>
+<p>We proved the first sample/computational efficiency guarantees for the stochastic subgradient method on the weakly convex class.</p><br>
+<p><a href='https://arxiv.org/abs/1803.06523'>Stochastic model-based minimization of weakly convex functions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+SIAM Journal on Optimization (2018) | <a href='http://ads-institute.uw.edu//blog/2018/04/02/sgd-weaklyconvex/'>blog</a></p><br>
+<p><a href='https://arxiv.org/abs/1707.03505'>Proximally Guided Stochastic Subgradient Method for Nonsmooth, Nonconvex Problems.</a><br>
+Damek Davis, Benjamin Grimmer<br>
+SIAM Journal on Optimization (2018) [ <a href='https://github.com/COR-OPT/PGSG/blob/master/Interactive-PGSG.ipynb'>code</a> ]</p><br>
+<h3 id='Avoidable saddle points in nonsmooth optimization'>Avoidable saddle points in nonsmooth optimization</h3><p>We developed the concept of an avoidable nonsmooth saddle point — nonoptimal points that algorithms may be drawn to. The proper formulation of this concept is well-known in C^2 smooth optimization but was missing even for C^1 functions. We showed that both first-order and proximal methods do not converge to these points on “generic” tame problems:</p><br>
+<p><a href='https://damek.github.io/OWOSNov2021.pdf'>Talk: avoiding saddle points in nonsmooth optimization</a><br>
+Updated (11/2021) | <a href='https://www.youtube.com/watch?v=6BOFWQhxYZE'>video</a></p><br>
+<p><a href='https://arxiv.org/abs/1912.07146'>Proximal methods avoid active strict saddles of weakly convex functions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+Foundations of Computational Mathematics (2021)</p><br>
+<p><a href='https://arxiv.org/abs/2106.09815'>Escaping strict saddle points of the Moreau envelope in nonsmooth optimization</a><br>
+Damek Davis, Mateo Díaz, Dmitriy Drusvyatskiy<br>
+SIAM Journal on Optimization (2022)</p><br>
+<p><a href='https://arxiv.org/abs/2108.11832'>Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang<br>
+Manuscript (2022)</p><br>
+<h3 id='Asymptotic normality of SGD in nonsmooth optimization'>Asymptotic normality of SGD in nonsmooth optimization</h3><p>We characterized the asymptotic distribution of the error sequence in stochastic subgradient methods, proving it is asymptotically normal with “optimal covariance” on “generic” tame problems.</p><br>
+<p><a href='https://arxiv.org/abs/2301.06632'>Asymptotic normality and optimality in nonsmooth stochastic approximation</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang<br>
+Manuscript (2023)</p><br>
+<h3 id='Low-rank matrix recovery: a stepping stone to neural networks'>Low-rank matrix recovery: a stepping stone to neural networks</h3><p>We achieved the first sample complexity optimal and computationally optimal methods for several low-rank matrix recovery based on <i>nonsmooth</i> weakly convex formulations. Nonsmoothness was crucial to establishing these rates since prior smooth formulations were known to suffer from “poor conditioning.”</p><br>
+<br>
+<p><a href='https://academic.oup.com/imaiai/advance-article-abstract/doi/10.1093/imaiai/iaaa027/5936039'>Composite optimization for robust rank one bilinear sensing</a><br>
+Vasileios Charisopoulos, Damek Davis, Mateo Diaz, Dmitriy Drusvyatskiy<br>
+IMA Journal on Information and Inference (2020) [ <a href='https://github.com/COR-OPT/RobustBlindDeconv'>code</a> ]</p><br>
+<p><a href='https://academic.oup.com/imajna/article-abstract/40/4/2652/5684995'>The nonsmooth landscape of phase retrieval</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Courtney Paquette<br>
+IMA Journal on Numerical Analysis (2017) | <a href='https://damek.github.io/NonsmoothStatisticalAssumptions.pdf'>Talk</a></p><br>
+<br>
+<p><a href='https://arxiv.org/abs/1904.10020'>Low-rank matrix recovery with composite optimization: good conditioning and rapid convergence</a><br>
+Vasileios Charisopoulos, Yudong Chen, Damek Davis, Mateo Díaz, Lijun Ding, Dmitriy Drusvyatskiy<br>
+Foundations of Computational Mathematics (2019) | <a href='https://github.com/COR-OPT/CompOpt-LowRankMatrixRecovery'>code</a></p><br>
+<h2 id='Other selected work'>Other selected work</h2><p>Besides my work on nonconvex learning algorithms, I also have worked on clustering and convex optimization algorithms.</p><br>
+<h3 id='Provable clustering methods and a potential statistical-to-computational gap'>Provable clustering methods and a potential statistical-to-computational gap</h3><p>Clustering is a fundamental statistical problem of dividing a dataset into two or more groups.  Our work on this talk topic focuses on the classical setting wherein both clusters follow a Gaussian distribution with identical covariance, but distinct means. When the covariance matrix is known or “nearly spherical,” there are efficient algorithms to perform the clustering and achieve the “Bayes-optimal error rate.” When the covariance is unknown or poorly conditioned, there are no known algorithms that achieve the Bayes-optimal rate.</p><br>
+<p>Our contribution to this topic is a surprising dichotomy for clustering with an unknown covariance matrix: on the one hand, the maximum likelihood estimator uncovers the correct clustering and achieves the Bayes-optimal error; on the other, we give evidence that no known algorithm can compute the maximum likelihood estimator unless one increases the number of samples by an order of magnitude. Thus, we conjecture that there is a <a href='https://arxiv.org/abs/1803.11132'>statistical-to-computational gap</a> for this classical statistical problem.</p><br>
+<p><a href='https://arxiv.org/abs/2110.01602'>Clustering a Mixture of Gaussians with Unknown Covariance</a><br>
+Damek Davis, Mateo Diaz, Kaizheng Wang<br>
+Manuscript (2021)</p><br>
+<h3 id='Three-Operator Splitting and the complexity of splitting methods'>Three-Operator Splitting and the complexity of splitting methods</h3><p>For my PhD thesis, I focused on a class of convex optimization algorithms, called operator-splitting methods. An operator splitting method is a technique for writing the solution of a “structured” convex optimization problem as the fixed-point of a well-behaved nonlinear operator. Algorithmically, one then finds the fixed-point of the operator through, e.g., the classical <a href='https://en.wikipedia.org/wiki/Fixed-point_iteration'>fixed-point iteration</a>. My best-known contributions to the topic include the (1) “Three-Operator-Splitting” method, which has been widely used throughout computational imaging, and (2) my work that established the convergence rates of several classical splitting methods, such as the Douglas-Rachford splitting method and Alternating Direction Method of Multipliers (ADMM).</p><br>
+<p><a href='https://link.springer.com/article/10.1007/s11228-017-0421-z'>A Three-Operator Splitting Scheme and its Optimization Applications</a><br>
+Damek Davis, Wotao Yin<br>
+Set-Valued and Variational Analysis (2017)</p><br>
+<p><a href='http://arxiv.org/abs/1406.4834'>Convergence rate analysis of several splitting schemes</a><br>
+Damek Davis, Wotao Yin<br>
+Splitting Methods in Communication and Imaging, Science and Engineering (2017)</p><br>
+<h1 id='Publications'>Publications</h1><p><a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Preprints'>Preprints</a> | <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Conference%20papers'>Conference papers </a> | <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Journal%20papers'>Journal papers </a> | <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Book%20chapters'>Book chapters</a> | <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Expository'>Expository </a> | <a href='bear://x-callback-url/open-note?id=5DFBF7F9-6146-42F4-ADC0-D832804587EE-598-000008997525642E&header=Technical%20reports'>Reports </a></p><br>
+<h2 id='Preprints'>Preprints</h2><p><a href='https://arxiv.org/abs/2205.00064'>A nearly linearly convergent first-order method for nonsmooth functions with quadratic growth</a><br>
+Damek Davis, Liwei Jiang<br>
+Manuscript (2022) | <a href='https://github.com/COR-OPT/ntd.py'>code</a> | <a href='https://twitter.com/damekdavis/status/1682389849167233027?s=20'>Twitter thread</a></p><br>
+<p><a href='https://arxiv.org/abs/2108.11832'>Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang<br>
+Manuscript (2022)</p><br>
+<p><a href='https://arxiv.org/abs/2301.06632'>Asymptotic normality and optimality in nonsmooth stochastic approximation</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang<br>
+Manuscript (2023)</p><br>
+<p><a href='https://arxiv.org/abs/2110.01602'>Clustering a Mixture of Gaussians with Unknown Covariance</a><br>
+Damek Davis, Mateo Diaz, Kaizheng Wang<br>
+Manuscript (2021)</p><br>
+<p><a href='https://arxiv.org/abs/2002.06309'>Stochastic optimization over proximally smooth sets</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Zhan Shi<br>
+Manuscript (2020)</p><br>
+<h2 id='Conference papers'>Conference papers</h2><p><a href='https://arxiv.org/abs/2112.06969'>A gradient sampling method with complexity guarantees for Lipschitz functions in high and low dimensions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Yin Tat Lee, Swati Padmanabhan, Guanghao Ye<br>
+NeurIPS (2022)<br>
+<i>Oral Presentation (top ~1%)</i></p><br>
+<p><a href='http://proceedings.mlr.press/v125/davis20a.html'>High probability guarantees for stochastic convex optimization</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+In Conference on Learning Theory (2020)</p><br>
+<p><a href='http://proceedings.mlr.press/v99/kwon19a.html'>Global Convergence of EM Algorithm for Mixtures of Two Component Linear Regression</a><br>
+Jeongyeol Kwon, Wei Qian, Constantine Caramanis, Yudong Chen, and Damek Davis<br>
+Conference on Learning Theory (2019)</p><br>
+<p><a href='https://papers.nips.cc/paper/6428-the-sound-of-apalm-clapping-faster-nonsmooth-nonconvex-optimization-with-stochastic-asynchronous-palm'>The Sound of APALM Clapping: Faster Nonsmooth Nonconvex Optimization with Stochastic Asynchronous PALM</a><br>
+Damek Davis, Brent Edmunds, Madeleine Udell<br>
+Neural Information Processing Systems (2016) | <a href='https://arxiv.org/abs/1604.00526'>report</a></p><br>
+<p><a href='http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Dong_Multi-View_Feature_Engineering_2015_CVPR_paper.pdf'>Multiview Feature Engineering and Learning</a><br>
+Jingming Dong, Nikos Karianakis, Damek Davis, Joshua Hernandez, Jonathan Balzer and Stefano Soatto<br>
+In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2015)</p><br>
+<p><a href='http://www.vision.cs.ucla.edu/papers/davisBS14.pdf'>Asymmetric sparse kernel approximations for large-scale visual search.</a><br>
+Damek Davis, Jonathan Balzer, Stefano Soatto<br>
+In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2014)</p><br>
+<h2 id='Journal papers'>Journal papers</h2><p><a href='https://arxiv.org/abs/1907.09547'>Stochastic algorithms with geometric step decay converge linearly on sharp functions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Vasileios Charisopoulos<br>
+Mathematical Programming (to appear) | <a href='https://github.com/COR-OPT/GeomStepDecay'>code</a></p><br>
+<p><a href='https://arxiv.org/abs/2201.04611'>A superlinearly convergent subgradient method for sharp semismooth problems</a><br>
+Vasileios Charisopoulos, Damek Davis<br>
+Mathematics of Operations Research (2023) | <a href='https://github.com/COR-OPT/SuperPolyak.py'>code</a> | <a href='https://twitter.com/damekdavis/status/1596616542396944384'>Twitter Thread</a></p><br>
+<p><a href='https://arxiv.org/abs/2106.09815'>Escaping strict saddle points of the Moreau envelope in nonsmooth optimization</a><br>
+Damek Davis, Mateo Díaz, Dmitriy Drusvyatskiy<br>
+SIAM Journal on Optimization (2022)</p><br>
+<p><a href='https://link.springer.com/article/10.1007/s10107-021-01758-4'>Variance reduction for root-finding problems</a><br>
+Damek Davis<br>
+Mathematical Programming (to appear)</p><br>
+<p><a href='https://arxiv.org/abs/2102.08484'>Conservative and semismooth derivatives are equivalent for semialgebraic maps</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+Set-Valued and Variational Analysis (to appear)</p><br>
+<p><a href='https://arxiv.org/abs/1907.13307'>From low probability to high confidence in stochastic convex optimization</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Lin Xiao, Junyu Zhang<br>
+Journal of Machine Learning Research (to appear)</p><br>
+<p><a href='https://arxiv.org/abs/1912.07146'>Proximal methods avoid active strict saddles of weakly convex functions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+Foundations of Computational Mathematics (2021)</p><br>
+<p><a href='https://arxiv.org/abs/1904.10020'>Low-rank matrix recovery with composite optimization: good conditioning and rapid convergence</a><br>
+Vasileios Charisopoulos, Yudong Chen, Damek Davis, Mateo Díaz, Lijun Ding, Dmitriy Drusvyatskiy<br>
+Foundations of Computational Mathematics (to appear) | <a href='https://github.com/COR-OPT/CompOpt-LowRankMatrixRecovery'>code</a></p><br>
+<p><a href='https://academic.oup.com/imaiai/advance-article-abstract/doi/10.1093/imaiai/iaaa027/5936039'>Composite optimization for robust rank one bilinear sensing</a><br>
+Vasileios Charisopoulos, Damek Davis, Mateo Diaz, Dmitriy Drusvyatskiy<br>
+IMA Journal on Information and Inference (2020) | <a href='https://github.com/COR-OPT/RobustBlindDeconv'>code</a></p><br>
+<p><a href='https://arxiv.org/abs/1810.07590'>Graphical Convergence of Subgradients in Nonconvex Optimization and Learning</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+Mathematics of Operations Research (to appear)</p><br>
+<p><a href='https://arxiv.org/abs/1707.03505'>Proximally Guided Stochastic Subgradient Method for Nonsmooth, Nonconvex Problems.</a><br>
+Damek Davis, Benjamin Grimmer<br>
+SIAM Journal on Optimization (to appear) | <a href='https://github.com/COR-OPT/PGSG/blob/master/Interactive-PGSG.ipynb'>code</a></p><br>
+<p><a href='https://doi.org/10.1287/moor.2019.0992'>Trimmed Statistical Estimation via Variance Reduction</a><br>
+Aleksandr Aravkin, Damek Davis<br>
+Mathematics of Operations Research (2019) | <a href='https://www.youtube.com/watch?v=_HNQtTGDRNg'>video</a></p><br>
+<p><a href='https://arxiv.org/abs/1804.07795'>Stochastic subgradient method converges on tame functions.</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Sham Kakade, Jason D. Lee<br>
+Foundations of Computational Mathematics (to appear)<br>
+<i>Finalist for the Best Paper Prize for Young Researchers in Continuous Optimization (2019)</i></p><br>
+<p><a href='https://academic.oup.com/imajna/article-abstract/40/4/2652/5684995'>The nonsmooth landscape of phase retrieval</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Courtney Paquette<br>
+IMA Journal on Numerical Analysis (2018)</p><br>
+<p><a href='https://arxiv.org/abs/1803.06523'>Stochastic model-based minimization of weakly convex functions.</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+SIAM Journal on Optimization (2019) | <a href='http://ads-institute.uw.edu//blog/2018/04/02/sgd-weaklyconvex/'>blog</a><br>
+This is the combination of the two arXiv preprints  <a href='https://arxiv.org/abs/1802.02988'>arXiv:1802.02988</a>  and  <a href='https://arxiv.org/abs/1803.06523'>arXiv:1803.06523</a><br>
+Supplementary technical note:  <a href='https://arxiv.org/abs/1802.08556'>Complexity of finding near-stationary points of convex functions stochastically</a><br>
+Related report on nonsmooth nonconvex mirror descent  <a href='http://www.optimization-online.org/DB_HTML/2018/07/6690.html'>Stochastic model-based minimization under high-order growth</a>  (2018)<br>
+<i>INFORMS Optimization Society Young Researchers Prize (2019)</i></p><br>
+<p><a href='https://link.springer.com/article/10.1007/s10957-018-1372-8'>Subgradient methods for sharp weakly convex functions</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Kellie J. MacPhee, Courtney Paquette<br>
+Journal of Optimization Theory and Applications (2018)</p><br>
+<p><a href='https://doi.org/10.1137/17M1120099'>Forward-Backward-Half Forward Algorithm for Solving Monotone Inclusions</a><br>
+Luis M. Briceño-Arias, Damek Davis<br>
+SIAM Journal on Optimization (2018)</p><br>
+<p><a href='https://doi.org/10.1137/140992291'>Convergence rate analysis of the forward-Douglas-Rachford splitting scheme.</a><br>
+Damek Davis<br>
+SIAM Journal on Optimization (2015)</p><br>
+<p><a href='https://arxiv.org/abs/1408.4419'>Convergence rate analysis of primal-dual splitting schemes</a><br>
+Damek Davis<br>
+SIAM Journal on Optimization (2015)</p><br>
+<p><a href='http://pubsonline.informs.org/doi/full/10.1287/moor.2016.0827'>Faster convergence rates of relaxed Peaceman-Rachford and ADMM under regularity assumptions</a><br>
+Damek Davis, Wotao Yin<br>
+Mathematics of Operations Research (2016)</p><br>
+<p><a href='https://link.springer.com/article/10.1007/s11228-017-0421-z'>A Three-Operator Splitting Scheme and its Optimization Applications.</a><br>
+Damek Davis, Wotao Yin<br>
+Set-Valued and Variational Analysis (2017) | <a href='https://damek.github.io/ThreeOperators.html'>code</a> | <a href='https://damek.github.io/ThreeOperators3-online.pdf'>slides</a></p><br>
+<p><a href='http://ieeexplore.ieee.org/document/7906537'>Beating level-set methods for 5D seismic data interpolation: a primal-dual alternating approach</a><br>
+Rajiv Kumar, Oscar López, Damek Davis, Aleksandr Y. Aravkin, Felix J. Herrmann<br>
+IEEE Transactions on Computational Imaging (2017)</p><br>
+<p><a href='http://arc.aiaa.org/doi/full/10.2514/1.I010119'>Tactical Scheduling for Precision Air Traffic Operations: Past Research and Current Problems</a><br>
+Douglas R. Isaacson, Alexander V. Sadovsky, Damek Davis<br>
+Journal of Aerospace Information Systems, April, Vol. 11, No. 4 : pp. 234-257</p><br>
+<p><a href='http://dynamicsystems.asmedigitalcollection.asme.org/article.aspx?articleid=1838670'>Efficient computation of separation-compliant speed advisories for air traffic arriving in terminal airspace.</a><br>
+Alexander V. Sadovsky, Damek Davis, Douglas R. Isaacson.<br>
+Journal of Dynamic Systems Measurement and Control 136(4), 041027 (2014)</p><br>
+<p><a href='http://www.aviationsystemsdivision.arc.nasa.gov/publications/2013/Transportation_Research_Part_C_2013_Sadovsky.pdf'>Separation-compliant, optimal routing and control of scheduled arrivals in a terminal airspace.</a><br>
+Alexander V. Sadovsky, Damek Davis, and Douglas R. Isaacson.<br>
+Transportation Research Part C: Emerging Technologies 37 (2013): 157-176</p><br>
+<p><a href='http://www.ams.org/journals/proc/2011-139-03/S0002-9939-2010-10620-2/'>Factorial and Noetherian Subrings of Power Series Rings.</a><br>
+Damek Davis, Daqing Wan<br>
+Proceedings of the American Mathematical Society 139 (2011), no. 3, 823-834</p><br>
+<h2 id='Book chapters'>Book chapters</h2><p><a href='https://link.springer.com/chapter/10.1007/978-3-319-41589-5_4'>Convergence rate analysis of several splitting schemes</a><br>
+Damek Davis, Wotao Yin<br>
+Splitting Methods in Communication and Imaging, Science and Engineering (2017)<br>
+<a href='https://www.youtube.com/watch?v=XDI9UbUkUz4'>video</a> | <a href='https://damek.github.io/INFORMS_Presentation_Final.pdf'>slides</a> | <a href='https://damek.github.io/OStoday0515.pdf'>summary</a><br>
+<i>Winner of the</i> <a href='https://www.informs.org/Community/Optimization-Society/Optimization-Society-Prizes/Student-Paper-Prize/2014'>2014 INFORMS optimization society best student paper prize.</a></p><br>
+<h2 id='Expository'>Expository</h2><p><a href='http://wiki.siam.org/siag-op/images/siag-op/5/51/ViewsAndNews-28-1.pdf'>Subgradient methods under weak convexity and tame geometry</a><br>
+Damek Davis, Dmitriy Drusvyatskiy<br>
+SIAG/OPT News and Views (2020)</p><br>
+<p><a href='https://damek.github.io/OStoday0515.pdf'>Convergence Rate Analysis of Several Splitting Schemes</a><br>
+Damek Davis<br>
+INFORMS OS Today (2015)</p><br>
+<h2 id='Technical reports'>Technical reports</h2><p><a href='https://arxiv.org/abs/2212.13278'>A linearly convergent Gauss-Newton subgradient method for ill-conditioned problems</a><br>
+Damek Davis, Tao Jiang<br>
+Technical report (2023) | <a href='https://github.com/COR-OPT/GaussNewtonPolyak.py'>code</a></p><br>
+<p><a href='http://www.optimization-online.org/DB_HTML/2018/07/6690.html'>Stochastic model-based minimization under high-order growth.</a><br>
+Damek Davis, Dmitriy Drusvyatskiy, Kellie J. MacPhee<br>
+Technical Report (2018)</p><br>
+<p><a href='http://www.optimization-online.org/DB_FILE/2015/03/4851.pdf'>An (O(n\log(n))) algorithm for projecting onto the ordered weighted (\ell_1) norm ball</a><br>
+Damek Davis<br>
+UCLA CAM report 15-32 (2015) | <a href='https://damek.github.io/OWLBall.html'>code</a></p><br>
+<p><a href='https://arxiv.org/abs/1601.00698'>SMART: The Stochastic Monotone Aggregated Root-Finding Algorithm.</a><br>
+Damek Davis<br>
+Manuscript (2015) [ <a href='https://damek.github.io/Talks/SMART.pdf'>slides</a> ] [ <a href='https://vimeo.com/156600995'>video</a> ]</p>
+        </div>
     </body>
 </html>
