@@ -14,8 +14,10 @@ I am interested in the mathematics of data science, particularly the interplay o
 
 My research has received several awards, including a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, the <a href="https://www.informs.org/Recognizing-Excellence/Award-Recipients/Damek-Davis">INFORMS Optimization Society Young Researchers Prize</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
 
+Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
 
-[Publications](#publications) | [CV](cv.pdf) | [Email](mailto:damek@wharton.upenn.edu) | [Twitter](https://twitter.com/damekdavis) | [Github](https://github.com/damek) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
+[Publications](#publications) | [CV](cv.pdf) | [Twitter](https://twitter.com/damekdavis) | [Github (personal)](https://github.com/damek) | [Github (old lab)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
+
 
 ## Students
 
