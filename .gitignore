@@ -1,0 +1,24 @@
+
+.DS_Store
+teaching/.DS_Store
+.DS_Store
+.DS_Store
+teaching/.DS_Store
+# Jekyll folders and files
+_site/         # Exclude the compiled Jekyll site (output directory)
+.jekyll-cache/ # Exclude Jekyll cache for performance optimization
+
+# Dependency directories and files
+.bundle/       # Exclude Bundler configuration files
+vendor/        # Exclude vendor dependencies installed by Bundler
+Gemfile.lock   # Optional: Exclude if you don’t want to track exact gem versions
+
+# OS and editor-specific files
+.DS_Store      # macOS file for folder settings
+Thumbs.db      # Windows file for folder settings
+
+_sass/
+_includes/
+.docs/
+script
+
