@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\input{../../preamble}
+\usepackage{amsmath, latexsym,amssymb}
+
+\begin{document}
+
+
+\problemset{6}{October 6, 2014}{6}{October 13, 2016}
+
+\begin{enumerate}
+\item (Bertsimas and Tsitsiklis 3.6)  Let $x$ be a basic feasible solution with associated basis $B$.  Prove the following:
+\begin{enumerate}
+\item (4 points) If the reduced cost of every nonbasic variable is positive, then $x$ is the unique optimal solution.
+\item (4 points) If $x$ is the unique optimal solution and is nondegenerate, then the reduced cost of every nonbasic variable is positive.
+\end{enumerate}
+
+\item Consider the linear program $\min (c^T x : x \ge 0, Ax=b)$.
+Let $B$ denote an optimal basis. Assume that the problem is generic in
+that each vertex has a unique basis for which it is the corresponding basic
+solution. 
+
+Assume now that you want to solve
+a {\em parametric} problem, i.e., a set of problems of the form
+$\min ((c +\lambda d)^T x : x \ge 0, Ax=b)$, for each possible value
+of $\lambda \ge 0$. Assume that for any $\lambda \geq 0$ the problem has an optimal solution and that the basis $B$ is a solution for the problem when
+$\lambda=0$.
+\begin{enumerate}
+\item Prove that the set of values of $\lambda$ for which basis $B$ is
+optimal forms an interval $[0,a_1]$. Explain how to compute $a_1$.
+\item  Show that there is a finite set $a_0=0 \le a_1 \le \ldots \le a_k$ and
+corresponding bases $B_i$ for $i=0, \ldots, k$ such that $B_0=B$ and
+$B_i$ (for $i=0,\ldots,k$) is the optimal basis if and only if
+$\lambda \in [a_i,a_{i+1}]$, and $B_k$ is optimal if $\lambda \ge a_k$.
+\end{enumerate}
+
+\item Let $\gamma$ and $\tau$ be positive real numbers. Consider the nonlinear operator 
+\begin{align*}
+T : \RR^m \times \RR^n &\rightarrow \RR^m \times \RR^n\\
+T \begin{bmatrix} 
+y \\ 
+x
+\end{bmatrix} &:= 
+\begin{bmatrix} 
+y - \gamma  \left(Ax - b\right) \\
+\max\{ x + \tau \left(A^Ty - c\right), 0\}
+\end{bmatrix},
+\end{align*}
+where $\max\{x + \tau(A^Ty - c), 0\} \in \RR^n$. In addition, consider the primal-dual pair of linear programs:
+\begin{align*}
+\min\{ c^Tx \mid Ax = b, x \geq 0\} && \text{and} && \max\{b^T y \mid A^T y\leq  c\}.
+\end{align*}
+Prove that a pair $x \in \RR^n$, $y \in \RR^m$ is primal-dual optimal, if, and only if, 
+\begin{align*}
+T\begin{bmatrix} 
+y \\ 
+x
+\end{bmatrix} = \begin{bmatrix} 
+y \\ 
+x
+\end{bmatrix}.
+\end{align*}
+\end{enumerate}
+\end{document}

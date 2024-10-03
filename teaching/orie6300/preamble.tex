@@ -1,0 +1,104 @@
+\usepackage{mathtools}
+
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Input:}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newcommand{\epi}{\mathrm{epi}}
+\newcommand{\Rea}{{\Bbb R}}
+\newcommand{\Int}{{\Bbb Z}}
+\newcommand{\Rat}{{\Bbb Q}}
+\newcommand{\Cmp}{{\Bbb C}}
+\newcommand{\Nat}{{\Bbb N}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\oRR}{\overline{\RR}}
+\newcommand{\argmax}{\mathrm{argmax}}
+\newcommand{\argmin}{\mathrm{argmin}}
+\newcommand{\interior}{\mathrm{int}}
+\newcommand{\Fix}{\mathrm{Fix}}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\graph}{\mathrm{gph}}
+\DeclarePairedDelimiter{\dotp}{\langle}{\rangle}
+
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-.25in}
+\setlength{\textheight}{8.5in}
+%\setlength{\voffset}{0in}
+%\setlength{\headheight}{0in}
+%\setlength{\headsep}{0in}
+%\setlength{\topskip}{0in}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{observation}{Observation}
+\newtheorem{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{notation}{Notation}
+
+
+
+
+\newenvironment{proof}{\noindent{\bf Proof:} \hspace*{1em}}{
+    \hspace*{\fill} $\Box$ }
+\newenvironment{proof_of}[1]{\noindent {\bf Proof of #1:}
+    \hspace*{1em} }{\hspace*{\fill} $\Box$ }
+\newenvironment{proof_claim}{\begin{quotation} \noindent}{
+    \hspace*{\fill} $\diamond$ \end{quotation}}
+
+
+\newcommand{\handout}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.5in { {\bf ORIE 6300 Mathematical Programming I} \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.5in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.5in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{Lecturer:
+#3}{Scribe: #4}{Lecture #1}}
+\newcommand{\problemset}[4]{\handout{#1}{#2}{}{Due Date: #4}{Problem Set #3}}
+\newcommand{\problemsetsoln}[3]{\handout{#1}{#2}{}{}{Problem Set #3 Solutions}}
+\newcommand{\exam}[3]{\handout{#1}{#2}{}{Due Date: #3}{Take-Home Final Exam}}
+\newcommand{\examsoln}[2]{\handout{#1}{#2}{}{}{Take-Home Final Exam Solutions}}
+\newcommand{\recitation}[4]{\handout{#1}{#2}{Lecturer:
+#3}{Topic: #4}{Recitation #1}}
+
+
+\newcommand{\dpw}{David P.\ Williamson}
+
+\newenvironment{alglist}{\begin{list}{}{\setlength{\leftmargin}{1.5cm}
+\setlength{\rightmargin}{0cm}\setlength{\itemsep}{1ex}\setlength{\parsep}{1ex}}}{\end{list}}
+
+\newcommand{\problem}[3]
+{\fbox{\parbox{6in}{{\bf #1}\begin{itemize}\item{\bf Input:} {#2} \item{\bf Goal:} {#3}\end{itemize}}}}
+%\newcommand{\algorithm}[2]
+%{\fbox{\fbox{\begin{minipage}{6in}
+%{\bf #1}\vspace*{.1cm}\hrule
+%\begin{tabbing}
+%99\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\kill
+%#2
+%\end{tabbing}
+%\end{minipage}}}}

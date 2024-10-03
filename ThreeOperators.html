@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("UA-22302910-1");
+    pageTracker._trackPageview();
+} catch(err) {}</script>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">General</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="publications.html">Publications</a></div>
+<div class="menu-item"><a href="code.html">Code</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="orie6300.html">ORIE&nbsp;6300</a></div>
+<div class="menu-item"><a href="orie6340.html">ORIE&nbsp;6340</a></div>
+<div class="menu-category">Links</div>
+<div class="menu-item"><a href="https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en">Google&nbsp;Scholar</a></div>
+<div class="menu-item"><a href="https://github.com/COR-OPT">GitHub</a></div>
+</td>
+<td id="layout-content">
+<h1>A Three-Operator Splitting Scheme and its Optimization Applications</h1>
+<p>Damek Davis and Wotao Yin</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p>Operator splitting schemes have been successfully used in computational sciences to reduce complex problems into a series of simpler subproblems. Since 1950s, these schemes have been widely used to solve problems in PDE and control. Recently, large-scale optimization problems in machine learning, signal processing, and imaging have created a resurgence of interest in operator-splitting based algorithms because they often have simple descriptions, are easy to code, and have (nearly) state-of-the-art performance for large-scale optimization problems. Although operator splitting techniques were introduced over 60 years ago, their importance has significantly increased in the past decade.</p>
+<p>This paper introduces a new operator-splitting scheme for solving a variety of problems that are reduced to a monotone inclusion of three operators, one of which is cocoercive. Our scheme is very simple, and it does not reduce to any existing splitting schemes. Our scheme recovers the existing forward-backward, Douglas-Rachford, and forward-Douglas-Rachford splitting schemes as special cases.</p>
+<p>Our new splitting scheme leads to a set of new and simple algorithms for a variety of other problems, including the 3-set split feasibility problems, 3-objective minimization problems, and doubly and multiple regularization problems, as well as the simplest extension of the classic ADMM from 2 to 3 blocks of variables. In addition to the basic scheme, we introduce several modifications and enhancements that can improve the convergence rate in practice, including an acceleration that achieves the optimal rate of convergence for strongly monotone inclusions. Finally, we evaluate the algorithm on several applications. </p>
+<p><a href="http://www.optimization-online.org/DB_FILE/2015/03/4804.pdf" target=&ldquo;blank&rdquo;>Manuscript</a></p>
+<p><a href="ThreeOperators3-online.pdf" target=&ldquo;blank&rdquo;>Slides from ISMP 2015</a></p>
+<p><a href="ThreeOperatorCode.zip" target=&ldquo;blank&rdquo;>Source code (.zip 1.8 MB)</a> </p>
+<p><a href="ThreeOperatorCode.zip" target=&ldquo;blank&rdquo;>Source code (.tgz 1.8 MB)</a></p>
+<p>Code last updated April 2015</p>
+</div></div>
+<div class="codeblock">
+<div class="blocktitle">Bibtex</div>
+<div class="blockcontent"><pre>
+@techreport{DavisYinThreeOPs2015,
+author= {Davis, Damek and Yin, Wotao},
+title= {{A Three-Operator Splitting Scheme and its Optimization Applications}},
+number={CAM 15-13},
+year={2015},
+institution={University of California, Los Angeles}
+}
+</pre></div></div>
+</td>
+</tr>
+</table>
+</body>
+</html>
