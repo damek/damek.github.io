@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+
+\input{../../preamble}
+\usepackage{amsmath, latexsym,amssymb}
+
+\begin{document}
+
+
+\problemset{4}{September 15, 2016}{4}{September 22, 2016}
+
+\begin{enumerate}
+
+%\item In class we showed that given a polytope $Q = conv(v_1,\ldots,v_k)$, if 0 is in the interior of $Q$, then $Q$ is a bounded polyhedron.
+%Now suppose that we only know that there is some point $v$ in the interior of $Q$.  Show that $Q$ is bounded polyhedron.  (Hint:  Think about $Q-v = \{w-v: w \in Q\}$).
+\item Compute the projection operator $P_S$ for each of the following closed, convex sets $S$:
+\begin{enumerate}
+\item $S = \{x \in \RR^n \mid x \geq 0\}$.
+\item $S = [-1, 1]^n$.
+\item $S = \{x \mid Ax = b\}$ where $A \in \RR^{m \times n}$ and $b \in \RR^m$.
+\item $S = \{x \mid a^Tx \leq b\}$ where $a \in \RR^n $ and $b \in \RR$.
+\end{enumerate}
+
+%\item Let $A \in \RR^{m \times n}$ be a matrix, let $b \in \RR^m$ be a vector, and let $c \in \RR^n$ be a vector. Define the nonlinear operator 
+%\begin{align*}
+%T : &\; \RR^n \times \RR^m \rightarrow \RR^n \times \RR^m\\
+%T
+%\begin{bmatrix} 
+%x \\
+%y
+%\end{bmatrix}
+% &=\begin{bmatrix} 
+% P_{\{x \mid Ax \leq b\}}\left(x + c - A^Ty\right) \\ 
+% P_{\{y \mid A^Ty = c, y \geq 0\}}\max\{y + Ax - b, 0\}
+%\end{bmatrix},
+%\end{align*}
+%where $\max\{y + Ax - b, 0\} \in \RR^m$ denotes the component-wise max, and for any closed, convex set $S$, $P_S$ denotes the projection operator of $S$. Consider the primal and dual pair of linear programs:
+%\begin{align*}
+%\max\{ c^Tx \mid Ax \leq b\} && \text{and} && \min\{b^T y \mid A^T y= c, y \geq 0\}.
+%\end{align*}
+%\begin{enumerate}
+%\item Prove that $z := \begin{bmatrix} 
+%x &y
+%\end{bmatrix}^T$ is a fixed point of $T$ (i.e., $Tz = z$) if, and only if, $x$ is primal-optimal, $y$ is dual-optimal, and $c^Tx = b^Ty$.
+%\item Let $C$ be a nonempty, closed, convex set. Prove that the projection map $P_{C}$ is 1-Lipschitz continuous, i.e., 
+%$$
+%\left(\forall x \in \RR^n\right), \left(\forall y \in \RR^n\right) \quad \|P_Cx - P_Cy\| \leq \|x - y\|.
+%$$ (Hint: recall that $\left(\forall x \in \RR^n \right) \; x - P_C(x) \in N_C(P_C(x))$.)
+%\item Recall the Brouwer fixed-point theorem: 
+%\begin{theorem}
+%Let $K \subseteq R^k$ be a compact, convex set, and let $f :K \rightarrow K$ be continuous. Then there exists a point $z \in K$ such that $f(z) = z$.
+%\end{theorem}
+%Suppose that $\{x \mid A x \leq b\}$ and $ \{y \mid A^T y = c, y \geq 0\}$ are nonempty and bounded. Prove that $T$ has a fixed point.
+%\item Use the above results to prove von-Neumann's minimax theorem: let $B \in \RR^{m \times n}$, and for all $k \in \NN$ define $\Delta_k = \{z \in \RR^k \mid z \geq 0, \sum_{i=1}^k z_i = 1\}$. Then we have
+%\begin{align*}
+%\min_{x \in \Delta_n} \left(\max_{y \in \Delta_m} y^T B x\right) = \max_{y \in \Delta_m} \left(\min_{x \in \Delta_n} y^T B x\right).
+%\end{align*}
+%\end{enumerate}
+
+\item Consider the set $P=\{x: A x \ge 0\}$ and assume that we have $x \ge 0$
+for all $x \in P$, i.e., that $x \ge 0$ is implied by $ A x \ge 0$.
+\begin{enumerate}
+\item A set $K$ is a cone if $x,y\in K$ implies that $\lambda x + \mu y \in K$
+for all $\mu, \lambda \ge 0$. Prove that $P$ is a cone.
+\item An {\em extreme ray} of a cone $K$ is a nonzero vector $x \in K$ such
+that $x+y \in K$ and $x-y \in K$ implies that $y=\lambda x$ for some
+$\lambda$.
+
+Give another characterization of the extreme rays of the polyhedral cone $P$,
+using the rank of a submatrix of $A$. (Hint: think about the positive orthant
+as the canonical example of a cone, in order to get some intuition here.)
+
+\item Two extreme rays $x$ and $y$ of a cone $K$ are said to be the same if
+$x=\lambda y$ for some $\lambda >0$.  Prove that the number of different
+extreme rays of our polyhedral cone $P$ is finite. Give a finite bound on
+the maximum number of extreme rays possible assuming that $A$ is has $m$ rows
+and $n$ columns.
+\item Let $r^1$, \ldots, $r^k$ denote the finite set of extreme rays of
+$P$. Let
+$$Q= cone(r^1,\ldots,r^k)=
+\{x=\sum_i \lambda_i r^i: \lambda_i \ge 0 \mbox{ for all $i$}\}.
+$$
+Prove that $P=Q$. (Hint: consider $P'=\{x \in P: \sum x_i=1\}$. )
+
+It might help to visualize this as moving from the description of
+$P$ by the faces of the cone that bound it ($Ax \ge 0$) to a
+description of $P$ by the outside rays ($r^1, \ldots, r^k$) that
+bound it.
+\end{enumerate}
+
+
+\item (Strict Complementary Slackness)  Consider the standard form linear programs, with primal LP $(\min c^Tx: Ax = b, x \geq 0)$ and dual LP $(\max b^Ty: A^Ty \leq c)$.  Suppose the value of the two LPs is $\gamma$.
+\begin{enumerate}
+\item Show that the set of optimal solutions to the primal is a convex set; argue the same for the dual.
+\item Show that either there exists an optimal solution $x$ to the primal such that $x_j > 0$ or there exists an optimal solution $y$ to the dual such that the $j$th inequality is strict; that is,  $\sum_{i=1}^na_{ij}y_i < c_j.$  (Hint: Consider the linear program $(\min -e_j^Tx: Ax = b, -c^Tx \geq -\gamma, x \geq 0)$, where $e^j$ is a vector that has a 1 in the $j$th component, and 0 everywhere else).
+\item  Show that there exist a primal optimal solution $x^*$ and a dual optimal solution $y^*$ such that for all $j$, $x^*_j > 0$ if and only if the $j$th inequality of the dual is met with equality.
+\end{enumerate}
+
+    
+
+\end{enumerate}
+\end{document}

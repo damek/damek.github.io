@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+\input{../../preamble}
+\usepackage{amsmath, latexsym}
+
+\begin{document}
+
+
+\problemset{5}{September 29, 2014}{5}{October 6, 2014}
+
+\begin{enumerate}
+
+\item Fun with polars.
+\begin{enumerate}
+\item Given a convex cone $K \subseteq \Re^n$, prove that the polar of
+$K$ is the set $\{z \in \Re^n: x^Tz \leq 0 \mbox{ for all } x \in
+K\}$.
+\item Give the polar of the non-negative orthant $\{x \in \Re^n: x
+\geq 0\}$.
+\item Show that if $A \subseteq B$, then $B^\circ \subseteq A^\circ$.
+\item Given a nonempty, closed, convex set $C$, define the \textit{polar cone of $C$} to be the set
+$$
+C^\ominus = \{z \in \Re^n: x^Tz \leq 0 \mbox{ for all } x \in
+C\}.
+$$
+Find an expression for $N_C(x)$ in terms of the polar cone of $C$.
+\end{enumerate}
+
+
+\item Prove that if an index leaves the basis during an iteration of the simplex method, then that index cannot reenter the basis during the very next iteration.
+
+\item  The indication for unboundedness in the simplex method shows the existence of feasible solutions to the primal problem with objective function values unbounded below.  This implies via weak or strong duality that the dual problem is infeasible.  Show how to obtain a short certification of the infeasibility of the dual from the quantities already computed.
+
+\item Consider the linear program $\max\{c^Tx \mid Ax \leq b\}$ and the maximal value function 
+$$
+v(u) = \max\{c^Tx \mid Ax \leq b + u\}.
+$$
+Suppose that $v(0)$ is finite and let $x^\ast \in Q(A, b)$ satisfy $c^T x^\ast = v(0)$. Show that if $(Ax^\ast)_j < b_j$, then 
+$$
+v(\gamma e_j) = v(0)
+$$
+for all $ \gamma \geq 0$. If $\gamma \geq 0$ and $y^\ast(\gamma e_j) \in \argmin\{ (b+\gamma e_j)^T y \mid A^Ty = c, y \geq 0\}$, what is $(y^\ast(\gamma e_j))_j$?
+
+\end{enumerate}
+\end{document}

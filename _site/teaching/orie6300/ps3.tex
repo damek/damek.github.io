@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+
+\input{../../preamble.tex}
+\usepackage{amsmath, latexsym, epsf}
+\newcommand{\RR}{\mathbf{R}}
+\newcommand{\epi}{\textbf{epi}}
+\begin{document}
+
+\problemset{3}{September 8, 2016}{3}{September 15, 2016}
+
+\begin{enumerate}
+\item \textbf{Alternatives.} The Theorem of Alternatives (proved in lecture 6) states that for a given matrix $A \in \RR^{m\times n}$ and a given vector $b \in \RR^m$, exactly one of the following two statements holds:
+\begin{enumerate}
+\item $\exists x \in \RR^n$ such that $ Ax \leq b$.
+\item $\exists y \in \RR^m$ such that $y \geq 0$, $A^T y = 0$, and $b^T y < 0$.
+\end{enumerate}
+Use the Theorem of Alternatives to prove
+\begin{itemize}
+\item \textbf{Farkas' Lemma:} Given a matrix $A \in \RR^{ m\times n}$ and $b \in \RR^m$, exactly one of the following hold:
+\begin{itemize}
+\item $\exists x \in \RR^n$ such that $Ax = b$ and $x \geq 0$.
+\item $\exists y \in \RR^m$ such that $A^T y \geq 0$ and $b^T y < 0$.
+\end{itemize}
+\item \textbf{Mixed Theorem of Alternatives.} Given $A \in \RR^{ m_1 \times n}$, $C \in \RR^{m_2 \times n}$, and $b \in \RR^{m_1}, d \in \RR^{m_2}$, exactly one of the following hold:
+\begin{itemize}
+\item $\exists x\in \RR^n$ such that $Ax \leq b$ and $Cx = d$.
+\item $\exists z \in\RR^{m_1}, y \in \RR^{m_2}$ such that $z \geq 0$, $A^Tz + C^Ty = 0$, and $b^T z + d^Ty < 0$.
+\end{itemize}
+\end{itemize}
+\item \textbf{Normal Cones and Strong Duality.} Given $A, \overline{A}, \hat{A}, \widetilde{A}, b, \overline{b}, c, \overline{c}$:
+\begin{enumerate}
+\item for all $z = \begin{bmatrix} x & \overline{x}\end{bmatrix}^T$, compute $N_{P}(z)$, where 
+$$
+P = \left\{\begin{bmatrix} x \\ \overline{x}\end{bmatrix} \mid Ax + \overline{A}\overline{x} \leq b, \hat{A}x + \widetilde{A}\overline{x} = \overline{b}, x \geq 0\right\}. 
+$$
+ \item for all $w = \begin{bmatrix} y & \overline{y}\end{bmatrix}^T$, compute $N_{D}(w)$, where 
+$$
+D = \left\{\begin{bmatrix} y \\ \overline{y}\end{bmatrix} \mid A^Ty + \hat{A}^T\overline{y} \geq  c, \overline{A}^Ty + \widetilde{A}^T\overline{y} = \overline{c}, y \geq 0\right\}. 
+$$
+\item Using the descriptions of the above normal cones, and \textbf{without using the strong duality theorem we proved in class}, prove the following variant of the strong duality theorem: suppose that both of the linear programs 
+\begin{align*}
+\max_{\begin{bmatrix} x \\ \overline{x}\end{bmatrix} \in P}c^Tx + \overline{c}^T \overline{x} && && \max_{\begin{bmatrix} y \\ \overline{y}\end{bmatrix} \in D}b^Ty + \overline{b}^T \overline{y}
+\end{align*}
+have finite optimal values, which we denote by $p^\ast$ and $d^\ast$, respectively. Then $p^\ast = d^\ast.$ 
+\end{enumerate}
+\item \textbf{Subgradients.} Let $f : \RR^n \rightarrow \RR$ be a continuous, convex function, i.e., $f$ satisfies
+\begin{align*}
+\left(\forall \lambda \in [0, 1]\right)\left(\forall x, y \in \RR^n\right)\quad f(\lambda x + (1-\lambda)y ) \leq \lambda f(x) + (1-\lambda) f(y).
+\end{align*}
+Define the \textit{epigraph} of $f$: 
+$$
+\epi(f) := \{ (x, t) \in \RR^{n+1} \mid f(x) \leq t\}.
+$$
+\begin{itemize}
+\item Prove that $\epi(f)$ is closed and convex. 
+\item Prove that $\begin{bmatrix} v & -1 \end{bmatrix}^T \in N_{\epi(f)}(x, f(x))$ if, and only if, 
+\begin{align*}
+\left(\forall z \in \RR^n \right) \quad f(z) \geq f(x) + (z - x)^Tv.
+\end{align*}
+Such vectors $v \in \RR^n$ are called \textit{subgradients $f$ at $x$}, and the set of all such $v$ is denoted by $\partial f(x)$.
+\item Prove Fermat's rule: $x$ minimizes $f$ if, and only if, $ 0 \in \partial f(x)$.
+\item Let $f : \RR \rightarrow \RR$ be the absolute value function $f(x) = |x|$. Draw the following normal cones: $N_{\epi(f)}(-1, 1), N_{\epi(f)}(0, 0), $ and $N_{\epi(f)}(1, 1)$.
+\end{itemize}
+\item \textbf{Vertices of Dual Problems.} 
+\begin{itemize} 
+\item Prove the following lemma: consider the polyhedron $Q:= \{x \mid x \geq 0, Cx = d\}$. Then
+\begin{itemize}
+\item $\overline{x}\in Q$ is an extreme point if 
+\begin{align*}
+\text{rank}\left(\begin{bmatrix} c_{i_1} & c_{i_2}& \ldots & c_{i_k} \end{bmatrix}\right) = k
+\end{align*}
+where $c_j$ is column $j$ of $C$ and $\{i_1,i_2, \ldots, i_k\} = \{i \mid \overline{x}_i > 0\}.$
+\item any extreme point of $Q$ has at most $\text{rank}(C)$ nonzero elements.
+\end{itemize}
+\item Suppose that the following linear program has a solution:
+\begin{align*}
+\text{minimize} &\;  b^T y  \\
+\text{subject to:}&\; A^Ty = c\\
+&\; y \geq 0
+\end{align*}
+Using Problem 4 from homework 2, conclude that at least one solution to this  problem is a vertex. Use the first part of this exercise to show that there exists a solution $y^\ast$ with at most $\text{rank}(A^T)$ nonzero elements. 
+\item Using part 2, prove \textbf{Carath{\'e}odory's Theorem}: if $x \in \RR^n$ is the convex combination of $k$ vectors, $v_1, \ldots, v_k$, then $x$ is also the convex combination of at most $n+1$ of the vectors $v_1, \ldots, v_k$.
+\end{itemize}
+\end{enumerate}
+\end{document}
