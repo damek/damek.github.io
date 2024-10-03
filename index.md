@@ -4,7 +4,7 @@ layout: default
 # Damek Davis
 
 <div style="display: flex; align-items: flex-start;">
-  <img src="assets/img/damek.jpg" alt="Damek Davis" style="width: 110px; height: auto; border-radius: 0%; margin-right: 20px;">
+  <img src="damek.jpg" alt="Damek Davis" style="width: 110px; height: auto; border-radius: 0%; margin-right: 20px;">
   <div>
     I joined <a href="https://statistics.wharton.upenn.edu/">Wharton's Department of Statistics and Data Science</a> on July 1, 2024. I was previously an Associate Professor of Operations Research and Information Engineering at Cornell University. Before that, I completed an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1502405&HistoricalAwards=false">NSF Postdoctoral Fellowship in 2016</a> and received my Ph.D. in mathematics both from the University of California, Los Angeles. My PhD advisors were <a href="https://wotaoyin.mathopt.com/">Wotao Yin</a> and <a href="https://web.cs.ucla.edu/~soatto/">Stefano Soatto</a>. 
   </div>
