@@ -75,7 +75,44 @@
         margin: 1em 0;
         font-weight: 300; /* Make blockquotes lighter */
       }
+    
+      /* Responsive adjustments for mobile devices */
+      @media (max-width: 768px) {
+        .wrapper {
+          max-width: 90%; /* Allow the content to fill more of the screen */
+          padding: 1em 5%; /* Reduce side padding for more space */
+        }
+    
+        body {
+          font-size: 14px; /* Slightly reduce the base font size for smaller screens */
+        }
+    
+        h1, h2, h3, h4, h5, h6 {
+          margin-top: 0.75em; /* Reduce top margins for headings */
+          margin-bottom: 0.5em;
+        }
+    
+        p, li, blockquote {
+          margin: 0.75em 0; /* Reduce vertical spacing between elements */
+        }
+      }
+    
+      @media (max-width: 480px) {
+        .wrapper {
+          max-width: 100%; /* Allow the content to use the full screen width */
+          padding: 1em; /* Minimal padding on the sides */
+        }
+    
+        body {
+          font-size: 13px; /* Further reduce font size for very small screens */
+        }
+    
+        p, li, blockquote {
+          margin: 0.5em 0; /* Further reduce spacing for compactness */
+        }
+      }
     </style>
+    
     
     
     
