@@ -26,6 +26,13 @@
         margin: 0;
         padding: 0;
         font-weight: 300;
+        -webkit-font-smoothing: antialiased; /* Smooth out font appearance */
+        -moz-osx-font-smoothing: grayscale;
+      }
+    
+      html, body {
+        overflow-y: scroll; /* Ensure vertical scrolling is enabled */
+        height: 100%; /* Make sure body takes full height */
       }
     
       /* Style for the wrapper to center the content */
@@ -57,6 +64,19 @@
         color: var(--accent-color); /* Keep link color the same on hover */
         text-decoration: none; /* No underline on hover */
         font-weight: 300; /* Explicitly set the font weight to prevent bolding */
+      }
+    
+      /* Maintain style for focused and visited links */
+      a:focus, a:visited {
+        color: var(--accent-color); /* Keep link color the same on visited/focus */
+        font-weight: 300; /* Prevent font-weight changes */
+        text-decoration: none;
+      }
+    
+      /* Style italic elements */
+      em, i {
+        color: var(--base-text-color); /* Ensure consistent color for italics */
+        font-style: italic; /* Maintain the italic style */
       }
     
       /* Additional styling for headings */
@@ -112,6 +132,7 @@
         }
       }
     </style>
+    
     
     
     
