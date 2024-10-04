@@ -29,12 +29,12 @@
         -webkit-font-smoothing: antialiased; /* Smooth out font appearance */
         -moz-osx-font-smoothing: grayscale;
       }
-    
+  
       html, body {
         overflow-y: scroll; /* Ensure vertical scrolling is enabled */
         height: 100%; /* Make sure body takes full height */
       }
-    
+  
       /* Style for the wrapper to center the content */
       .wrapper {
         max-width: 650px; /* Reduced content width */
@@ -44,89 +44,85 @@
         text-align: left;
         font-weight: 300;
       }
-    
+  
       /* Ensure text respects new lines and spaces */
       p, li, a, blockquote {
         white-space: pre-wrap; /* Preserves whitespace and respects new lines */
         margin: 1em 0;
         color: var(--base-text-color);
       }
-    
+  
       /* Style links to prevent changes on hover */
       a {
         color: var(--accent-color);
         text-decoration: none;
         font-weight: 300; /* Ensure consistent font weight */
       }
-    
+  
       /* Disable font weight change on hover */
       a:hover {
         color: var(--accent-color); /* Keep link color the same on hover */
         text-decoration: none; /* No underline on hover */
         font-weight: 300; /* Explicitly set the font weight to prevent bolding */
       }
-    
+  
       /* Maintain style for focused and visited links */
       a:focus, a:visited {
         color: var(--accent-color); /* Keep link color the same on visited/focus */
         font-weight: 300; /* Prevent font-weight changes */
         text-decoration: none;
       }
-    
+  
       /* Style italic elements */
       em, i {
         color: var(--base-text-color); /* Ensure consistent color for italics */
         font-style: italic; /* Maintain the italic style */
+        font-weight: 400; /* Use a normal weight for better readability */
+        -webkit-font-smoothing: antialiased; /* Smooth out fonts */
+        -moz-osx-font-smoothing: grayscale;
       }
-    
-      /* Additional styling for headings */
-      h1, h2, h3, h4, h5, h6 {
-        font-family: "AvenirNext-Medium", sans-serif;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        font-weight: 400;
-      }
-    
-      /* Style for blockquotes */
-      blockquote {
-        color: var(--base-text-secondary-color);
-        border-left: 4px solid var(--accent-color);
-        padding-left: 1em;
-        margin: 1em 0;
-        font-weight: 300; /* Make blockquotes lighter */
-      }
-    
-      /* Responsive adjustments for mobile devices */
+  
+      /* Responsive styling for mobile devices */
       @media (max-width: 768px) {
         .wrapper {
           max-width: 90%; /* Allow the content to fill more of the screen */
           padding: 1em 5%; /* Reduce side padding for more space */
         }
-    
+  
         body {
           font-size: 14px; /* Slightly reduce the base font size for smaller screens */
         }
-    
+  
+        em, i {
+          font-weight: 500; /* Increase weight on mobile for better visibility */
+          -webkit-font-smoothing: auto; /* Default smoothing for better clarity */
+          -moz-osx-font-smoothing: auto;
+        }
+  
         h1, h2, h3, h4, h5, h6 {
           margin-top: 0.75em; /* Reduce top margins for headings */
           margin-bottom: 0.5em;
         }
-    
+  
         p, li, blockquote {
           margin: 0.75em 0; /* Reduce vertical spacing between elements */
         }
       }
-    
+  
       @media (max-width: 480px) {
         .wrapper {
           max-width: 100%; /* Allow the content to use the full screen width */
           padding: 1em; /* Minimal padding on the sides */
         }
-    
+  
         body {
           font-size: 13px; /* Further reduce font size for very small screens */
         }
-    
+  
+        em, i {
+          font-weight: 500; /* Increase weight further on very small screens */
+        }
+  
         p, li, blockquote {
           margin: 0.5em 0; /* Further reduce spacing for compactness */
         }
