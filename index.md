@@ -4,7 +4,7 @@ layout: default
 # Damek Davis
 
   <div class="image-text-wrapper">
-    <img src="damek.jpg" alt="Damek Davis">
+    <img src="damek.jpg" alt="Damek Davis" style="width: 110px; height: auto; border-radius: 0%; margin-right: 20px;">
   <div>
     I joined <a href="https://statistics.wharton.upenn.edu/">Wharton's Department of Statistics and Data Science</a> on July 1, 2024. I was previously an Associate Professor of Operations Research and Information Engineering at Cornell University. Before that, I completed an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1502405&HistoricalAwards=false">NSF Postdoctoral Fellowship in 2016</a> and received my Ph.D. in mathematics both from the University of California, Los Angeles. My PhD advisors were <a href="https://wotaoyin.mathopt.com/">Wotao Yin</a> and <a href="https://web.cs.ucla.edu/~soatto/">Stefano Soatto</a>. 
   </div>
@@ -16,14 +16,7 @@ My research has received several awards, including a <a href="https://sloan.org/
 
 Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
 
-<div class="link-container">
-  <a href="#publications">Publications</a> | 
-  <a href="cv.pdf">CV</a> | 
-  <a href="https://twitter.com/damekdavis">Twitter</a> | 
-  <a href="https://github.com/damek">Github (personal)</a> | 
-  <a href="https://github.com/COR-OPT">Github (old lab)</a> | 
-  <a href="https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en">Google Scholar</a>
-</div>
+[Publications](#publications) | [CV](cv.pdf) | [Twitter](https://twitter.com/damekdavis) | [Github (personal)](https://github.com/damek) | [Github (old lab)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
 
 
 ## Students
@@ -177,14 +170,7 @@ Splitting Methods in Communication and Imaging, Science and Engineering (2017)
 
 # Publications
 
-<div class="link-container">
-  <a href="#preprints">Preprints</a> | 
-  <a href="#conference-papers">Conference papers</a> | 
-  <a href="#journal-papers">Journal papers</a> | 
-  <a href="#book-chapters">Book chapters</a> | 
-  <a href="#expository">Expository</a> | 
-  <a href="#technical-reports">Reports</a>
-</div>
+[Preprints](#preprints) | [Conference papers](#conference-papers) | [Journal papers](#journal-papers) | [Book chapters](#book-chapters) | [Expository](#expository) | [Reports](#technical-reports)
 
 ## Preprints
 
