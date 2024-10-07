@@ -121,6 +121,20 @@
     p, li, blockquote {
       margin: 0.75em 0;
     }
+    .image-text-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-text-wrapper img {
+    float: none;
+    margin: 0 auto 20px;
+    width: 100px; /* Adjust image size for medium screens */
+  }
+
+  .image-text-wrapper div {
+    text-align: center;
+  }
   }
 
   @media screen and (max-width: 480px) {
@@ -173,6 +187,17 @@
     body {
       -webkit-font-smoothing: subpixel-antialiased;
     }
+
+  @media (max-width: 320px) { /* For extra small screens (e.g., older iPhones) */
+  .image-text-wrapper img {
+    width: 70px; /* Further reduce image size */
+    margin: 0 auto 10px; /* Adjust margins for smaller screens */
+  }
+
+  .image-text-wrapper div {
+    text-align: left; /* Change to left align for readability */
+    font-size: 13px; /* Slightly reduce font size */
+  }
   }
 </style>
   </head>
