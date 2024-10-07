@@ -16,7 +16,14 @@ My research has received several awards, including a <a href="https://sloan.org/
 
 Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
 
-[Publications](#publications) | [CV](cv.pdf) | [Twitter](https://twitter.com/damekdavis) | [Github (personal)](https://github.com/damek) | [Github (old lab)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
+<div class="link-container">
+  <a href="#publications">Publications</a> | 
+  <a href="cv.pdf">CV</a> | 
+  <a href="https://twitter.com/damekdavis">Twitter</a> | 
+  <a href="https://github.com/damek">Github (personal)</a> | 
+  <a href="https://github.com/COR-OPT">Github (old lab)</a> | 
+  <a href="https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en">Google Scholar</a>
+</div>
 
 
 ## Students
@@ -169,7 +176,15 @@ Damek Davis, Wotao Yin
 Splitting Methods in Communication and Imaging, Science and Engineering (2017)
 
 # Publications
-[Preprints](#preprints) | [Conference papers](#conference-papers) | [Journal papers](#journal-papers) | [Book chapters](#book-chapters) | [Expository](#expository) | [Reports](#technical-reports)
+
+<div class="link-container">
+  <a href="#preprints">Preprints</a> | 
+  <a href="#conference-papers">Conference papers</a> | 
+  <a href="#journal-papers">Journal papers</a> | 
+  <a href="#book-chapters">Book chapters</a> | 
+  <a href="#expository">Expository</a> | 
+  <a href="#technical-reports">Reports</a>
+</div>
 
 ## Preprints
 
