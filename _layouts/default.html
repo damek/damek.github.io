@@ -32,33 +32,25 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  .link-container {
-  display: inline-block; /* Keep links in a single line */
-  white-space: nowrap; /* Prevent automatic line breaks */
-  overflow: hidden; /* Prevent overflow issues */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
-  word-wrap: normal; /* Normal word wrapping */
-  word-break: keep-all; /* Prevent breaking words unnecessarily */
-}
 
     /* Image and text wrapper */
-    .image-text-wrapper {
-  display: flex; /* Use flexbox layout */
-  align-items: flex-start;
-  margin-bottom: 1.5em;
-}
+  .image-text-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+  }
 
-.image-text-wrapper img {
-  width: 110px;
-  height: auto;
-  border-radius: 0%;
-  margin-right: 20px; /* Create space between image and text */
-  float: none; /* Remove floating */
-}
+  .image-text-wrapper img {
+    float: left; /* Float the image to the left */
+    width: 110px;
+    height: auto;
+    border-radius: 0%;
+    margin-right: 20px; /* Create space between image and text */
+  }
 
-.image-text-wrapper div {
-  text-align: justify;
-}
+  .image-text-wrapper div {
+    text-align: justify;
+  }
 
   /* Style for the wrapper to center the content */
   .wrapper {
@@ -112,16 +104,7 @@
   }
 
   /* Responsive adjustments for all devices */
-  @media (min-width: 481px) and (max-width: 768px) {
-    .link-container {
-    font-size: 15px; /* Increase font size */
-    padding: 0.5em 1em; /* Adjust padding for large screens */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-  }
-
-  .link-container a {
-    margin-right: 10px; /* Increase space between links */
-  }
+  @media screen and (max-width: 768px) {
     body {
       font-size: 14px;
     }
@@ -138,32 +121,9 @@
     p, li, blockquote {
       margin: 0.75em 0;
     }
-    .image-text-wrapper {
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center align the content */
   }
 
-  .image-text-wrapper img {
-    margin: 0 auto 20px; /* Center image and add bottom margin */
-    width: 80px; /* Reduce image size */
-  }
-
-  .image-text-wrapper div {
-    text-align: left; /* Align text to left for better readability */
-  }
-  }
-
-  @media (min-width: 321px) and (max-width: 480px) {
-    
-    .link-container {
-    font-size: 14px; /* Slightly increase font size */
-    padding: 0.5em; /* Adjust padding for medium screens */
-    overflow-x: auto; /* Allow horizontal scrolling */
-  }
-
-  .link-container a {
-    margin-right: 8px; /* Adjust spacing between links */
-  }
+  @media screen and (max-width: 480px) {
     body {
       font-size: 13px;
     }
@@ -179,20 +139,6 @@
     p, li, blockquote {
       margin: 0.5em 0;
     }
-    .image-text-wrapper {
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center align the content */
-  }
-
-  .image-text-wrapper img {
-    float: none; /* Remove float to stack image and text */
-    margin: 0 auto 20px; /* Center image and add bottom margin */
-    width: 80px; /* Reduce image size */
-  }
-
-  .image-text-wrapper div {
-    text-align: left; /* Align text to left for better readability */
-  }
   }
 
   /* Ensure content is always visible and scrollable */
@@ -208,33 +154,11 @@
     min-width: 44px;
   }
 
-
-
   /* Improve readability on high-DPI screens */
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     body {
       -webkit-font-smoothing: subpixel-antialiased;
     }
-
-  @media (max-width: 320px) { /* For extra small screens (e.g., older iPhones) */
-  .image-text-wrapper img {
-    width: 70px; /* Further reduce image size */
-    margin: 0 auto 10px; /* Adjust margins for smaller screens */
-  }
-
-  .image-text-wrapper div {
-    text-align: left; /* Change to left align for readability */
-    font-size: 13px; /* Slightly reduce font size */
-  }
-  .link-container {
-    font-size: 12px; /* Reduce font size */
-    padding: 0.3em; /* Adjust padding for smaller screens */
-    overflow-x: auto; /* Allow horizontal scrolling */
-  }
-
-  .link-container a {
-    margin-right: 5px; /* Reduce space between links */
-  }
   }
 </style>
   </head>
