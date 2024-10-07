@@ -3,14 +3,14 @@ layout: default
 ---
 # Damek Davis
 
-<div style="display: flex; align-items: flex-start;">
-  <img src="damek.jpg" alt="Damek Davis" style="width: 110px; height: auto; border-radius: 0%; margin-right: 20px;">
+  <div class="image-text-wrapper">
+    <img src="damek.jpg" alt="Damek Davis" style="width: 110px; height: auto; border-radius: 0%; margin-right: 20px;">
   <div>
     I joined <a href="https://statistics.wharton.upenn.edu/">Wharton's Department of Statistics and Data Science</a> on July 1, 2024. I was previously an Associate Professor of Operations Research and Information Engineering at Cornell University. Before that, I completed an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1502405&HistoricalAwards=false">NSF Postdoctoral Fellowship in 2016</a> and received my Ph.D. in mathematics both from the University of California, Los Angeles. My PhD advisors were <a href="https://wotaoyin.mathopt.com/">Wotao Yin</a> and <a href="https://web.cs.ucla.edu/~soatto/">Stefano Soatto</a>. 
   </div>
 </div>
 
-I am interested in the mathematics of data science, particularly the interplay of optimization, signal processing, statistics, and machine learning. I enjoy designing and analyzing learning algorithms based on optimization. You can read more about my research in my <a href="#research-overview">research overview</a> or <a href="#publications">publications</a>. Also check out my three favorite recent projects on exponential accelerations of <a href="https://x.com/damekdavis/status/1841596498204880924">Gradient Descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">Newton-type methods</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">Subgradient methods</a> on Twitter.
+I am interested in the mathematics of data science, particularly the interplay of optimization, signal processing, statistics, and machine learning. I enjoy designing and analyzing learning algorithms based on optimization. You can read more about my research in my <a href="#research-overview">research overview</a> or <a href="#publications">publications</a>. You can also check out my three favorite recent projects on exponential accelerations of <a href="https://x.com/damekdavis/status/1841596498204880924">Gradient Descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">Newton-type methods</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">Subgradient methods</a> on Twitter.
 
 My research has received several awards, including a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, the <a href="https://www.informs.org/Recognizing-Excellence/Award-Recipients/Damek-Davis">INFORMS Optimization Society Young Researchers Prize</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
 
@@ -27,13 +27,13 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 **Graduated PhD Students**
 [Liwei Jiang](https://liwei-jiang97.github.io/) 
-(Next position: Georgia Tech ISYE Postdoc, then Asst Prof at Purdue)
+Next position: Georgia Tech ISYE Postdoc, then Assistant Professor at Purdue
 [Vasilis Charisopoulos](https://people.orie.cornell.edu/vc333/) 
-(Next position: University of Chicago postdoc, then Asst Prof at University of Washington, Seattle)
+Next position: University of Chicago postdoc, then Assistant Professor at University of Washington, Seattle
 [Mateo Díaz](https://mateodd25.github.io/) 
-(Next position: Caltech CMS postdoc, then Asst Prof at Johns Hopkins University)
+Next position: Caltech CMS postdoc, then Assistant Professor at Johns Hopkins University
 [Ben Grimmer](https://www.ams.jhu.edu/~grimmer/) 
-(Next position: Asst Prof at Johns Hopkins University)
+Next position: Assistant Professor at Johns Hopkins University
 
 ## Teaching
 **Lecture notes**
@@ -173,8 +173,6 @@ Splitting Methods in Communication and Imaging, Science and Engineering (2017)
 
 ## Preprints
 
-<!-- add this in the same format Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth
-Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang -->
 
 [Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth](https://arxiv.org/abs/2409.19791)
 Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
@@ -184,9 +182,6 @@ Manuscript (2024)
 Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
 Manuscript (2022)
 
-[Stochastic optimization over proximally smooth sets](https://arxiv.org/abs/2002.06309) 
-Damek Davis, Dmitriy Drusvyatskiy, Zhan Shi
-Manuscript (2020)
 
 ##  Conference papers 
 
@@ -220,6 +215,10 @@ Damek Davis, Jonathan Balzer, Stefano Soatto
 In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2014)
 
 ## Journal papers 
+
+[Stochastic optimization over proximally smooth sets](https://arxiv.org/abs/2002.06309) 
+Damek Davis, Dmitriy Drusvyatskiy, Zhan Shi
+SIAM Journal on Optimization (to appear)
 
 [Computational Microscopy beyond Perfect Lenses](https://arxiv.org/abs/2306.11283)
 Xingyuan Lu, Minh Pham, Elisa Negrini, Damek Davis, Stanley J. Osher, Jianwei Miao

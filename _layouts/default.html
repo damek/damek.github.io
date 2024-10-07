@@ -33,6 +33,25 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+    /* Image and text wrapper */
+    .image-text-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+  }
+
+  .image-text-wrapper img {
+    float: left; /* Float the image to the left */
+    width: 110px;
+    height: auto;
+    border-radius: 0%;
+    margin-right: 20px; /* Create space between image and text */
+  }
+
+  .image-text-wrapper div {
+    text-align: justify;
+  }
+
   /* Style for the wrapper to center the content */
   .wrapper {
     max-width: 650px; /* Maintain content width */
@@ -46,8 +65,11 @@
   /* Ensure text respects new lines and spaces */
   p, li, a, blockquote {
     white-space: pre-wrap; /* Preserves whitespace and respects new lines */
+    word-break: break-word; /* Allow words to break at the end of a line */
     margin: 1em 0;
     color: var(--base-text-color);
+    text-align: justify; /* Ensure text spans the entire line */
+
   }
 
   /* Style links to prevent changes on hover */
@@ -117,6 +139,20 @@
     p, li, blockquote {
       margin: 0.5em 0;
     }
+    .image-text-wrapper {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center align the content */
+  }
+
+  .image-text-wrapper img {
+    float: none; /* Remove float to stack image and text */
+    margin: 0 auto 20px; /* Center image and add bottom margin */
+    width: 80px; /* Reduce image size */
+  }
+
+  .image-text-wrapper div {
+    text-align: left; /* Align text to left for better readability */
+  }
   }
 
   /* Ensure content is always visible and scrollable */
