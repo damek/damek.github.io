@@ -21,7 +21,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ## Students
 
-I am currently recruiting PhD students at Penn. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email. 
+I am currently recruiting PhD students at Penn. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting.
 
 If you're not currently a Penn student, please apply through the [Wharton Statistics and Data Science PhD program](https://statistics.wharton.upenn.edu/programs/phd). I receive many emails from applicants and cannot read/reply to all of them. Most of these emails are generic and are only personalized by including a title of one of my papers. To increase your chance of your email being read, write a concise email that only you could write. 
 
