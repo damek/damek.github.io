@@ -40,6 +40,10 @@ Next position: Caltech CMS postdoc, then Assistant Professor at Johns Hopkins Un
 Next position: Assistant Professor at Johns Hopkins University
 
 ## Teaching
+
+**Spring 2025**
+[STAT 4830: Numerical optimization for data science and machine learning](https://github.com/damek/STAT-4830)
+
 **Lecture notes**
 [Optimization: Structure, Duality, Calculus, and Algorithms](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf) 
 Draft of F’2023 notes for my course [ORIE 6300](https://damek.github.io/orie6300.html) 
