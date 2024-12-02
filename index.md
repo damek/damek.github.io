@@ -186,10 +186,6 @@ Splitting Methods in Communication and Imaging, Science and Engineering (2017)
 Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
 Manuscript (2024)
 
-[Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization](https://arxiv.org/abs/2108.11832) 
-Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
-Manuscript (2022)
-
 
 ##  Conference papers 
 
@@ -223,6 +219,10 @@ Damek Davis, Jonathan Balzer, Stefano Soatto
 In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2014)
 
 ## Journal papers 
+
+[Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization](https://arxiv.org/abs/2108.11832) 
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
+Foundations of Computational Mathematics (to appear)
 
 [Stochastic optimization over proximally smooth sets](https://arxiv.org/abs/2002.06309) 
 Damek Davis, Dmitriy Drusvyatskiy, Zhan Shi
