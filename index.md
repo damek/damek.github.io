@@ -26,8 +26,9 @@ I am currently recruiting PhD students at Penn. If you are a Penn student and wi
 If you're not currently a Penn student, please apply through the [Wharton Statistics and Data Science PhD program](https://statistics.wharton.upenn.edu/programs/phd). I receive many emails from applicants and cannot read/reply to all of them. Most of these emails are generic and are only personalized by including a title of one of my papers. To increase your chance of your email being read, write a concise email that only you could write. 
 
 **Current PhD Students**
-[Tao Jiang](https://www.orie.cornell.edu/research/grad-students/tao-jiang) (Cornell)
+[Tao Jiang](https://taotolojiang.github.io/) (Cornell)
 Status: A exam passed 
+Next position: Postdoc at Meta with Lin Xiao
 
 **Graduated PhD Students**
 [Liwei Jiang](https://liwei-jiang97.github.io/) 
