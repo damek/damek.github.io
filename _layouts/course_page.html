@@ -68,12 +68,10 @@
 
   /* Ensure text respects new lines and spaces */
   p, li, a, blockquote {
-    white-space: pre-wrap; /* Preserves whitespace and respects new lines */
-    word-break: break-word; /* Allow words to break at the end of a line */
-    margin: 1em 0;
-    color: var(--base-text-color);
-    text-align: justify; /* Ensure text spans the entire line */
-
+    white-space: normal;
+    word-break: normal;
+    margin: 0;
+    text-align: left;
   }
 
   /* Style links to prevent changes on hover */
@@ -195,19 +193,25 @@
   }
 
   .course-content p {
-    margin: 0.5em 0;
+    margin: 0.8em 0;
     line-height: 1.5;
   }
 
   .course-content ul,
   .course-content ol {
-    margin: 0.5em 0;
-    padding-left: 2em;
+    margin: 0;
+    padding-left: 1.5em;
+    list-style-position: outside;
   }
 
   .course-content li {
-    margin: 0.2em 0;
-    line-height: 1.5;
+    margin: 0;
+    line-height: 1.4;
+    padding-left: 0.2em;
+  }
+
+  .course-content li p {
+    margin: 0;
   }
 
   .course-content h1,
@@ -218,32 +222,38 @@
     margin-bottom: 0.5em;
   }
 
-  /* Remove extra whitespace from pre-wrap */
-  .course-content p,
-  .course-content li {
-    white-space: normal;
+  /* Handle indented lists */
+  .course-content ul ul,
+  .course-content ul ol,
+  .course-content ol ul,
+  .course-content ol ol {
+    margin: 0;
+    padding-left: 1.2em;
   }
 
-  /* Add spacing between sections but not within them */
-  .course-content h2 + p,
-  .course-content h3 + p,
-  .course-content h4 + p {
-    margin-top: 0.3em;
+  /* Ensure proper alignment of list markers */
+  .course-content ul {
+    list-style: disc outside none;
   }
 
-  /* Adjust blockquote spacing */
-  .course-content blockquote {
-    margin: 0.5em 0;
-    padding: 0.2em 1em;
+  .course-content ul ul {
+    list-style-type: circle;
   }
 
-  .course-content blockquote p {
-    margin: 0.3em 0;
+  /* Keep blockquote styles */
+  blockquote {
+    margin: 1em 0;
+    padding: 0 1em;
+    color: #656d76;
+    border-left: 0.25em solid #DD4C4F;
   }
 
-  .course-content img {
-    max-width: 100%;
-    height: auto;
+  blockquote > :first-child {
+    margin-top: 0;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0;
   }
 
   /* Update header styles for floating */
@@ -439,6 +449,41 @@
     border: none !important;
     background-color: #f3f3f3 !important;
   }
+
+  /* Ensure proper paragraph spacing outside lists */
+  .course-content p {
+    margin: 0.8em 0;
+  }
+
+  /* Tighter list spacing */
+  .course-content ul,
+  .course-content ol {
+    margin: 0;
+    padding-left: 2em;
+  }
+
+  .course-content li {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  .course-content li p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  /* Keep spacing between lists and other elements */
+  .course-content ul + p,
+  .course-content ol + p {
+    margin-top: 0.8em;
+  }
+
+  p + .course-content ul,
+  p + .course-content ol {
+    margin-top: 0.8em;
+  }
 </style>
 
     <!-- Add MathJax -->
@@ -464,9 +509,45 @@
       // Get the raw markdown content
       let content = contentDiv.innerHTML;
       
+      // First convert the content from base64 if needed
+      try {
+        content = decodeURIComponent(escape(content));
+      } catch (e) {
+        console.log('Content already decoded');
+      }
+      
+      // Use DOMParser to properly decode HTML entities
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, 'text/html');
+      content = doc.body.textContent;
+      
+      // Fix smart quotes and other special characters
+      content = content
+        // Smart quotes and apostrophes
+        .replace(/[\u2018\u2019\u201B]/g, "'")
+        .replace(/[\u201C\u201D\u201F]/g, '"')
+        // Dashes
+        .replace(/[\u2013\u2014]/g, '-')
+        // Ellipsis
+        .replace(/\u2026/g, '...')
+        // Additional apostrophe variants
+        .replace(/\u02BC/g, "'")
+        .replace(/\u02BB/g, "'")
+        // HTML entities
+        .replace(/&apos;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&rsquo;/g, "'")
+        .replace(/&lsquo;/g, "'")
+        .replace(/&rdquo;/g, '"')
+        .replace(/&ldquo;/g, '"')
+        .replace(/&mdash;/g, '-')
+        .replace(/&ndash;/g, '-')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&');
+      
       // If content starts with '>', it's likely already HTML-encoded
       if (content.includes('&gt;')) {
-        content = content.replace(/&gt;/g, '>');  // Convert HTML entities back to markdown
+        content = content.replace(/&gt;/g, '>');
       }
       
       // Configure marked.js
@@ -477,7 +558,7 @@
         mangle: false
       });
       
-      // Pre-process lecture links (keep existing link processing)
+      // Pre-process lecture links
       content = content.replace(
         /\[(.*?)\]\(Lecture(\d+)\.md(#[^)]+)?\)/g,
         (match, text, lectureNum, hash = '') => {
@@ -485,7 +566,7 @@
         }
       );
       
-      // Pre-process toc.md links (keep existing link processing)
+      // Pre-process toc.md links
       content = content.replace(
         /\[(.*?)\]\(toc\.md(#[^)]+)?\)/g,
         (match, text, hash = '') => {
@@ -496,7 +577,7 @@
       // Parse with marked
       contentDiv.innerHTML = marked.parse(content);
       
-      // Keep existing heading ID processing
+      // Process headings
       contentDiv.querySelectorAll('h1, h2, h3, h4').forEach(heading => {
         const id = heading.textContent
           .toLowerCase()
@@ -505,8 +586,17 @@
         heading.id = id;
       });
       
-      // Add copy buttons after content is processed
+      // Add copy buttons
       addCopyButtons();
+
+      // Process math after content is loaded
+      if (window.MathJax) {
+        try {
+          await MathJax.typesetPromise([contentDiv]);
+        } catch (error) {
+          console.error('MathJax error:', error);
+        }
+      }
     }
 
     // Add copy buttons to code blocks
