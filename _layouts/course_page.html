@@ -380,6 +380,40 @@
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
+
+    <script>
+    async function processGitHubContent(contentDiv) {
+      let content = contentDiv.innerHTML;
+      
+      // Pre-process lecture links
+      content = content.replace(
+        /\[(.*?)\]\(Lecture(\d+)\.md(#[^)]+)?\)/g,
+        (match, text, lectureNum, hash = '') => {
+          return `[${text}](/STAT-4830/lectures?n=${lectureNum}${hash})`;
+        }
+      );
+      
+      // Pre-process toc.md links
+      content = content.replace(
+        /\[(.*?)\]\(toc\.md(#[^)]+)?\)/g,
+        (match, text, hash = '') => {
+          return `[${text}](/STAT-4830/toc.html${hash})`;
+        }
+      );
+      
+      // Parse with marked
+      contentDiv.innerHTML = marked.parse(content);
+      
+      // Add IDs to headings
+      contentDiv.querySelectorAll('h1, h2, h3, h4').forEach(heading => {
+        const id = heading.textContent
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-');
+        heading.id = id;
+      });
+    }
+    </script>
   </head>
   <body>
     <div class="wrapper">
