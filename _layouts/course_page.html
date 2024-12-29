@@ -308,18 +308,13 @@
     display: none;
   }
 
-  /* Code block styles */
-  .code-wrapper {
-    position: relative;
-    margin: 0;
-    background-color: #f6f8fa;
-    border-radius: 6px;  /* Round the edges */
-  }
-
+  /* Code block styles - minimal padding */
   pre {
     margin: 1em 0;
-    padding: 16px;
-    background: none;
+    padding: 2px;
+    background-color: #f3f3f3;
+    border: none;
+    border-radius: 0;
     font-size: 85%;
     line-height: 1.45;
     overflow: auto;
@@ -336,75 +331,63 @@
     line-height: inherit;
     word-wrap: break-word;
     white-space: pre-wrap;
+    background-color: #f3f3f3;
   }
 
-  /* Smaller copy button with hover and click states */
+  /* Code block styles */
+  .code-wrapper {
+    position: relative;
+    margin: 0;
+  }
+
+  /* Copy button styles - centered icons and compact box */
   .copy-button {
     position: absolute;
-    top: 6px;
-    right: 6px;
-    padding: 4px;
-    background: transparent;
+    top: 2px;
+    right: 2px;
+    padding: 2px;  /* Reduced from 4px */
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
+    background: transparent;
+    transition: background-color 0.2s;
+    display: flex;  /* Enable flexbox for centering */
+    align-items: center;  /* Center vertically */
+    justify-content: center;  /* Center horizontally */
+    width: 24px;  /* Fixed width */
+    height: 24px;  /* Fixed height */
   }
 
   .copy-button:hover {
-    opacity: 1;
+    background-color: #e0e0e0;
   }
 
+  /* Copy icon styles - centered */
   .copy-button svg {
-    width: 14px;
+    width: 14px;  /* Slightly smaller icons */
     height: 14px;
-    fill: currentColor;
+    fill: #57606a;
   }
 
-  /* Update the copy button creation in JavaScript */
-  contentDiv.querySelectorAll('pre code').forEach((codeBlock, index) => {
-    const pre = codeBlock.parentNode;
-    
-    // Create wrapper
-    const wrapper = document.createElement('div');
-    wrapper.className = 'code-wrapper';
-    
-    // Replace pre with wrapper and move pre inside wrapper
-    pre.parentNode.replaceChild(wrapper, pre);
-    wrapper.appendChild(pre);
-    
-    // Add copy button with both icons
-    const button = document.createElement('button');
-    button.className = 'copy-button';
-    button.setAttribute('aria-label', 'Copy code');
-    button.innerHTML = `
-      <svg class="copy-icon" aria-hidden="true" viewBox="0 0 16 16">
-        <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
-        <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-      </svg>
-      <svg class="check-icon" aria-hidden="true" viewBox="0 0 16 16" style="display: none;">
-        <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
-      </svg>`;
-      
-    button.onclick = async () => {
-      try {
-        await navigator.clipboard.writeText(codeBlock.textContent);
-        const copyIcon = button.querySelector('.copy-icon');
-        const checkIcon = button.querySelector('.check-icon');
-        copyIcon.style.display = 'none';
-        checkIcon.style.display = 'block';
-        setTimeout(() => {
-          copyIcon.style.display = 'block';
-          checkIcon.style.display = 'none';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    };
-    wrapper.appendChild(button);
-  });
+  /* Keep the rest of your copy button styles the same */
+  .copy-button .copy-icon {
+    display: block;
+  }
 
-  /* Remove all other styles */
+  .copy-button .check-icon {
+    display: none;
+    fill: #1a7f37;
+  }
+
+  .copy-button.copied .copy-icon {
+    display: none;
+  }
+
+  .copy-button.copied .check-icon {
+    display: block;
+  }
+
+  /* Remove any other background colors */
   .highlight {
     background: none;
     padding: 0;
@@ -415,6 +398,46 @@
   /* Add scroll margin to headings to account for fixed header */
   h1, h2, h3, h4, h5, h6 {
     scroll-margin-top: 100px;  /* Enough space to clear the header */
+  }
+
+  /* Update blockquote styles to match GitHub with accent color */
+  blockquote {
+    margin: 1em 0;
+    padding: 0 1em;
+    color: #656d76;
+    border-left: 0.25em solid #DD4C4F;  /* Match your accent color */
+  }
+
+  blockquote > :first-child {
+    margin-top: 0;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Remove any conflicting blockquote styles */
+  .course-content blockquote,
+  blockquote p {
+    margin: 0;
+    padding: 0;
+    color: #656d76;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  /* Ensure proper spacing in blockquotes */
+  blockquote p {
+    margin: 0.5em 0;
+  }
+
+  /* Override any theme-specific borders */
+  .highlight pre, 
+  .highlight code,
+  pre, 
+  code {
+    border: none !important;
+    background-color: #f3f3f3 !important;
   }
 </style>
 
@@ -438,9 +461,23 @@
 
     <script>
     async function processGitHubContent(contentDiv) {
+      // Get the raw markdown content
       let content = contentDiv.innerHTML;
       
-      // Pre-process lecture links
+      // If content starts with '>', it's likely already HTML-encoded
+      if (content.includes('&gt;')) {
+        content = content.replace(/&gt;/g, '>');  // Convert HTML entities back to markdown
+      }
+      
+      // Configure marked.js
+      marked.setOptions({
+        gfm: true,
+        breaks: true,
+        headerIds: true,
+        mangle: false
+      });
+      
+      // Pre-process lecture links (keep existing link processing)
       content = content.replace(
         /\[(.*?)\]\(Lecture(\d+)\.md(#[^)]+)?\)/g,
         (match, text, lectureNum, hash = '') => {
@@ -448,7 +485,7 @@
         }
       );
       
-      // Pre-process toc.md links
+      // Pre-process toc.md links (keep existing link processing)
       content = content.replace(
         /\[(.*?)\]\(toc\.md(#[^)]+)?\)/g,
         (match, text, hash = '') => {
@@ -459,7 +496,7 @@
       // Parse with marked
       contentDiv.innerHTML = marked.parse(content);
       
-      // Add IDs to headings
+      // Keep existing heading ID processing
       contentDiv.querySelectorAll('h1, h2, h3, h4').forEach(heading => {
         const id = heading.textContent
           .toLowerCase()
@@ -467,42 +504,43 @@
           .replace(/\s+/g, '-');
         heading.id = id;
       });
+      
+      // Add copy buttons after content is processed
+      addCopyButtons();
+    }
 
-      // Add copy buttons to code blocks
-      contentDiv.querySelectorAll('pre code').forEach((codeBlock, index) => {
+    // Add copy buttons to code blocks
+    function addCopyButtons() {
+      document.querySelectorAll('pre code').forEach((codeBlock) => {
         const pre = codeBlock.parentNode;
         
-        // Create wrapper
-        const wrapper = document.createElement('div');
-        wrapper.className = 'code-wrapper';
+        // Create wrapper if not exists
+        let wrapper = pre.parentNode;
+        if (!wrapper.classList.contains('code-wrapper')) {
+          wrapper = document.createElement('div');
+          wrapper.className = 'code-wrapper';
+          pre.parentNode.insertBefore(wrapper, pre);
+          wrapper.appendChild(pre);
+        }
         
-        // Replace pre with wrapper and move pre inside wrapper
-        pre.parentNode.replaceChild(wrapper, pre);
-        wrapper.appendChild(pre);
-        
-        // Add copy button with both icons
+        // Add copy button
         const button = document.createElement('button');
         button.className = 'copy-button';
         button.setAttribute('aria-label', 'Copy code');
         button.innerHTML = `
           <svg class="copy-icon" aria-hidden="true" viewBox="0 0 16 16">
-            <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
-            <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+            <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25v-7.5zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25v-7.5zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-7.5z"></path>
           </svg>
-          <svg class="check-icon" aria-hidden="true" viewBox="0 0 16 16" style="display: none;">
-            <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+          <svg class="check-icon" aria-hidden="true" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"></path>
           </svg>`;
-          
+        
         button.onclick = async () => {
           try {
             await navigator.clipboard.writeText(codeBlock.textContent);
-            const copyIcon = button.querySelector('.copy-icon');
-            const checkIcon = button.querySelector('.check-icon');
-            copyIcon.style.display = 'none';
-            checkIcon.style.display = 'block';
+            button.classList.add('copied');
             setTimeout(() => {
-              copyIcon.style.display = 'block';
-              checkIcon.style.display = 'none';
+              button.classList.remove('copied');
             }, 2000);
           } catch (err) {
             console.error('Failed to copy:', err);
@@ -510,17 +548,6 @@
         };
         wrapper.appendChild(button);
       });
-
-      // Handle hash links after content is loaded
-      if (window.location.hash) {
-        const element = document.querySelector(window.location.hash);
-        if (element) {
-          // Add a small delay to ensure content is rendered
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 100);
-        }
-      }
     }
     </script>
   </head>
