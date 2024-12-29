@@ -3,39 +3,26 @@ layout: course_page
 title: "STAT 4830: Table of Contents"
 ---
 
-{% assign repo_owner = "damek" %}
-{% assign repo_name = "STAT-4830" %}
+{% include process_content.html %}
 
-{% assign toc_url = "https://api.github.com/repos/" | append: repo_owner | append: "/" | append: repo_name | append: "/contents/toc.md" %}
-
-<div class="toc-content">
-  <!-- Content will be dynamically loaded from GitHub -->
+<div id="toc-content">
+  Loading table of contents...
 </div>
 
 <script>
-async function fetchTocContent() {
+async function fetchTOC() {
   try {
-    const response = await fetch('https://api.github.com/repos/damek/STAT-4830/contents/toc.md');
-    const data = await response.json();
+    const response = await fetch('https://raw.githubusercontent.com/damek/STAT-4830/main/toc.md');
+    const content = await response.text();
     
-    if (data.content) {
-      const content = atob(data.content); // Decode base64 content
-      const tocContent = document.querySelector('.toc-content');
-      tocContent.innerHTML = marked.parse(content);
-    } else {
-      document.querySelector('.toc-content').innerHTML = `
-        <h2>Course Contents</h2>
-        <p><em>The table of contents will be available when the course materials are published.</em></p>
-      `;
-    }
+    document.getElementById('toc-content').innerHTML = content;
+    await processGitHubContent(document.getElementById('toc-content'));
   } catch (error) {
     console.error('Error fetching TOC:', error);
-    document.querySelector('.toc-content').innerHTML = `
-      <h2>Course Contents</h2>
-      <p><em>The table of contents will be available when the course materials are published.</em></p>
-    `;
+    document.getElementById('toc-content').innerHTML = 
+      '<p>Error loading table of contents. Please try again later.</p>';
   }
 }
 
-document.addEventListener('DOMContentLoaded', fetchTocContent);
+document.addEventListener('DOMContentLoaded', fetchTOC);
 </script> 

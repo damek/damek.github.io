@@ -1,17 +1,11 @@
 ---
 layout: course_page
-title: "STAT 4830: Numerical Optimization for Data Science and Machine Learning"
 ---
 
-{% assign repo_owner = "damek" %}
-{% assign repo_name = "STAT-4830" %}
+{% include process_content.html %}
 
-{% assign readme_url = "https://api.github.com/repos/" | append: repo_owner | append: "/" | append: repo_name | append: "/readme" %}
-
-{% assign readme_content = readme_url | jsonify %}
-
-<div class="course-content">
-  {{ readme_content | markdownify }}
+<div id="index-content">
+  Loading course content...
 </div>
 
 <script>
@@ -21,16 +15,14 @@ async function fetchReadme() {
     const data = await response.json();
     const content = atob(data.content); // Decode base64 content
     
-    const courseContent = document.querySelector('.course-content');
-    courseContent.innerHTML = marked.parse(content); // Parse markdown to HTML
+    document.getElementById('index-content').innerHTML = content;
+    await processGitHubContent(document.getElementById('index-content'));
   } catch (error) {
     console.error('Error fetching README:', error);
+    document.getElementById('index-content').innerHTML = 
+      '<p>Error loading course content. Please try again later.</p>';
   }
 }
 
-// Load marked.js for markdown parsing
-const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
-script.onload = fetchReadme;
-document.head.appendChild(script);
+document.addEventListener('DOMContentLoaded', fetchReadme);
 </script> 

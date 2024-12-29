@@ -1,6 +1,9 @@
 ---
 layout: course_page
 ---
+
+{% include process_content.html %}
+
 <style>
 /* Override list spacing for lecture content only */
 #lecture-content ul,
@@ -87,18 +90,8 @@ async function fetchLecture() {
           }
         );
         
-        // Parse the content
-        const parsedContent = marked.parse(content);
-        document.getElementById('lecture-content').innerHTML = parsedContent;
-        
-        // Add IDs to headings after content is rendered
-        document.querySelectorAll('#lecture-content h1, #lecture-content h2, #lecture-content h3, #lecture-content h4').forEach(heading => {
-          const id = heading.textContent
-            .toLowerCase()
-            .replace(/[^\w\s-]/g, '')
-            .replace(/\s+/g, '-');
-          heading.id = id;
-        });
+        document.getElementById('lecture-content').innerHTML = content;
+        await processGitHubContent(document.getElementById('lecture-content'));
         
         // Initialize syntax highlighting
         document.querySelectorAll('pre code').forEach((block) => {
