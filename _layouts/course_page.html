@@ -273,93 +273,108 @@
     display: none;
   }
 
-  /* Style code blocks */
-  pre[class*="language-"] {
-    border-radius: 4px;
-    margin: 1.5em 0;
-    padding: 1em;
-    overflow: auto;
-    white-space: pre-wrap !important;       /* Enable word wrap */
-    word-wrap: break-word !important;       /* Break long words */
-    max-width: 100%;                        /* Ensure container width */
-    background: #f5f7ff !important;         /* Light background */
-    border: 1px solid #e1e4e8;             /* Subtle border */
-  }
-
-  code[class*="language-"] {
-    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 0.9em;
-    color: #24292e !important;              /* Dark gray text */
-  }
-
-  /* Python-specific syntax highlighting */
-  .token.keyword { color: #d73a49 !important; }     /* Python keywords */
-  .token.function { color: #6f42c1 !important; }    /* Function names */
-  .token.string { color: #032f62 !important; }      /* Strings */
-  .token.number { color: #005cc5 !important; }      /* Numbers */
-  .token.comment { color: #6a737d !important; }     /* Comments */
-  .token.operator { color: #d73a49 !important; }    /* Operators */
-
-  /* Add some custom styles for code blocks */
+  /* Code block styles */
   .code-wrapper {
     position: relative;
-    background: #f5f7ff;
-    border-radius: 4px;
-    margin: 1.5em 0;
-  }
-
-  /* Style inline code */
-  :not(pre) > code {
-    background: #f5f7ff;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-size: 0.9em;
-    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    color: #24292e;
-  }
-
-  /* Code block base styles */
-  .highlight {
-    background: #f8f8f8;
-    border-radius: 4px;
-    padding: 1em;
-    margin: 1em 0;
-    overflow-x: auto;
-  }
-
-  .highlight pre {
     margin: 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    background-color: #f6f8fa;
+    border-radius: 6px;  /* Round the edges */
   }
 
-  /* Python syntax colors */
-  .highlight .k { color: #d73a49; font-weight: bold; } /* Keyword */
-  .highlight .kn { color: #d73a49; font-weight: bold; } /* Keyword.Namespace */
-  .highlight .kd { color: #d73a49; font-weight: bold; } /* Keyword.Declaration */
-  .highlight .s { color: #032f62; } /* String */
-  .highlight .s1 { color: #032f62; } /* String.Single */
-  .highlight .s2 { color: #032f62; } /* String.Double */
-  .highlight .mi { color: #005cc5; } /* Number.Integer */
-  .highlight .mf { color: #005cc5; } /* Number.Float */
-  .highlight .c { color: #6a737d; font-style: italic; } /* Comment */
-  .highlight .c1 { color: #6a737d; font-style: italic; } /* Comment.Single */
-  .highlight .nb { color: #005cc5; } /* Name.Builtin */
-  .highlight .nf { color: #6f42c1; } /* Name.Function */
-  .highlight .o { color: #d73a49; } /* Operator */
-
-  /* Code block styles */
-  pre code {
-    display: block;
-    padding: 1em;
-    background: #f6f8fa;
-    border-radius: 6px;
-    border: 1px solid #e1e4e8;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  pre {
+    margin: 1em 0;
+    padding: 16px;
+    background: none;
     font-size: 85%;
     line-height: 1.45;
+    overflow: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  pre code {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    font-size: inherit;
+    line-height: inherit;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  /* Smaller copy button with hover and click states */
+  .copy-button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .copy-button:hover {
+    opacity: 1;
+  }
+
+  .copy-button svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* Update the copy button creation in JavaScript */
+  contentDiv.querySelectorAll('pre code').forEach((codeBlock, index) => {
+    const pre = codeBlock.parentNode;
+    
+    // Create wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-wrapper';
+    
+    // Replace pre with wrapper and move pre inside wrapper
+    pre.parentNode.replaceChild(wrapper, pre);
+    wrapper.appendChild(pre);
+    
+    // Add copy button with both icons
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.setAttribute('aria-label', 'Copy code');
+    button.innerHTML = `
+      <svg class="copy-icon" aria-hidden="true" viewBox="0 0 16 16">
+        <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
+        <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+      </svg>
+      <svg class="check-icon" aria-hidden="true" viewBox="0 0 16 16" style="display: none;">
+        <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+      </svg>`;
+      
+    button.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(codeBlock.textContent);
+        const copyIcon = button.querySelector('.copy-icon');
+        const checkIcon = button.querySelector('.check-icon');
+        copyIcon.style.display = 'none';
+        checkIcon.style.display = 'block';
+        setTimeout(() => {
+          copyIcon.style.display = 'block';
+          checkIcon.style.display = 'none';
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    };
+    wrapper.appendChild(button);
+  });
+
+  /* Remove all other styles */
+  .highlight {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: none;
   }
 </style>
 
@@ -411,6 +426,49 @@
           .replace(/[^\w\s-]/g, '')
           .replace(/\s+/g, '-');
         heading.id = id;
+      });
+
+      // Add copy buttons to code blocks
+      contentDiv.querySelectorAll('pre code').forEach((codeBlock, index) => {
+        const pre = codeBlock.parentNode;
+        
+        // Create wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        
+        // Replace pre with wrapper and move pre inside wrapper
+        pre.parentNode.replaceChild(wrapper, pre);
+        wrapper.appendChild(pre);
+        
+        // Add copy button with both icons
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.setAttribute('aria-label', 'Copy code');
+        button.innerHTML = `
+          <svg class="copy-icon" aria-hidden="true" viewBox="0 0 16 16">
+            <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
+            <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+          </svg>
+          <svg class="check-icon" aria-hidden="true" viewBox="0 0 16 16" style="display: none;">
+            <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+          </svg>`;
+          
+        button.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(codeBlock.textContent);
+            const copyIcon = button.querySelector('.copy-icon');
+            const checkIcon = button.querySelector('.check-icon');
+            copyIcon.style.display = 'none';
+            checkIcon.style.display = 'block';
+            setTimeout(() => {
+              copyIcon.style.display = 'block';
+              checkIcon.style.display = 'none';
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        };
+        wrapper.appendChild(button);
       });
     }
     </script>
