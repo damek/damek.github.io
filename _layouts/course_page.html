@@ -249,22 +249,33 @@
   .page-header {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     width: 100%;
-    max-width: 650px;
-    padding: 1em 0;
-    margin: 0 auto;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     border-bottom: none;
   }
 
-  /* Add mobile-specific padding */
+  /* Add inner container for header content */
+  .header-content {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 1em 5%;  /* Match wrapper padding */
+  }
+
+  /* Wrapper styles */
+  .wrapper {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 2em 5%;
+  }
+
+  /* Mobile adjustments */
   @media screen and (max-width: 768px) {
-    .page-header {
-      padding: 1em 1.5em;
+    .header-content {
+      padding: 1em 5%;  /* Keep consistent padding */
     }
     
     .page-header .title {
@@ -278,10 +289,9 @@
     }
   }
 
-  /* Even smaller screens */
   @media screen and (max-width: 480px) {
-    .page-header {
-      padding: 1em 1em;
+    .header-content {
+      padding: 1em 5%;  /* Keep consistent padding */
     }
   }
 
@@ -500,11 +510,13 @@
   <body>
     <div class="wrapper">
       <header class="page-header">
-        <div class="title">STAT 4830: Numerical Optimization for Data Science and Machine Learning - <a href="https://damekdavis.com">Damek Davis</a></div>
-        <div class="links">
-          <a href="/STAT-4830/index.html">Course overview</a> | 
-          <a href="/STAT-4830/toc.html">Table of contents</a> | 
-          <a href="https://github.com/damek/STAT-4830">View on Github</a>
+        <div class="header-content">
+          <div class="title">STAT 4830: Numerical Optimization for Data Science and Machine Learning - <a href="https://damekdavis.com">Damek Davis</a></div>
+          <div class="links">
+            <a href="/STAT-4830/index.html">Course overview</a> | 
+            <a href="/STAT-4830/toc.html">Table of contents</a> | 
+            <a href="https://github.com/damek/STAT-4830">View on Github</a>
+          </div>
         </div>
       </header>
 
