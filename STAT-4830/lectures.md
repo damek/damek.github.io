@@ -2,8 +2,6 @@
 layout: course_page
 ---
 
-{% include process_content.html %}
-
 <style>
 /* Override list spacing for lecture content only */
 #lecture-content ul,

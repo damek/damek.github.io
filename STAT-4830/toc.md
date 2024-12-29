@@ -3,8 +3,6 @@ layout: course_page
 title: "STAT 4830: Table of Contents"
 ---
 
-{% include process_content.html %}
-
 <div id="toc-content">
   Loading table of contents...
 </div>
