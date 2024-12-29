@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% include head-custom.html %}
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+    <style>
+  /* Define base styles */
+  :root {
+    --base-background-color: #ffffff;
+    --base-text-color: #444444;
+    --accent-color: #DD4C4F;
+    --highlight-color: #D3FFA4;
+  }
+
+  body {
+    font-family: "AvenirNext-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    background-color: var(--base-background-color);
+    color: var(--base-text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+    /* Image and text wrapper */
+  .image-text-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+  }
+
+  .image-text-wrapper img {
+    float: left; /* Float the image to the left */
+    width: 110px;
+    height: auto;
+    border-radius: 0%;
+    margin-right: 20px; /* Create space between image and text */
+  }
+
+  .image-text-wrapper div {
+    text-align: justify;
+  }
+
+  /* Style for the wrapper to center the content */
+  .wrapper {
+    max-width: 650px; /* Maintain content width */
+    margin: 0 auto;
+    padding: 2em 5%;
+    background-color: var(--base-background-color);
+    text-align: left;
+    font-weight: 300;
+  }
+
+  /* Ensure text respects new lines and spaces */
+  p, li, a, blockquote {
+    white-space: pre-wrap; /* Preserves whitespace and respects new lines */
+    word-break: break-word; /* Allow words to break at the end of a line */
+    margin: 1em 0;
+    color: var(--base-text-color);
+    text-align: justify; /* Ensure text spans the entire line */
+
+  }
+
+  /* Style links to prevent changes on hover */
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 300; /* Ensure consistent font weight */
+  }
+
+  /* Disable font weight change on hover */
+  a:hover {
+    color: var(--accent-color); /* Keep link color the same on hover */
+    text-decoration: none; /* No underline on hover */
+    font-weight: 300; /* Explicitly set the font weight to prevent bolding */
+  }
+
+  /* Additional styling for headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "AvenirNext-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+  }
+
+  /* Style for blockquotes */
+  blockquote {
+    color: var(--base-text-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1em;
+    margin: 1em 0;
+    font-weight: 300; /* Make blockquotes lighter */
+  }
+
+  /* Responsive adjustments for all devices */
+  @media screen and (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+
+    .wrapper {
+      padding: 1em 5%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0.75em;
+      margin-bottom: 0.5em;
+    }
+
+    p, li, blockquote {
+      margin: 0.75em 0;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 13px;
+    }
+
+    .wrapper {
+      padding: 1em;
+    }
+
+    em, i {
+      font-weight: 500;
+    }
+
+    p, li, blockquote {
+      margin: 0.5em 0;
+    }
+  }
+
+  /* Ensure content is always visible and scrollable */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Improve touch and click targets on mobile */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve readability on high-DPI screens */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+  }
+
+  /* Add styles for dynamic content */
+  .course-content {
+    margin-top: 2em;
+    color: var(--base-text-color);
+  }
+
+  .course-content h1,
+  .course-content h2,
+  .course-content h3,
+  .course-content h4,
+  .course-content h5,
+  .course-content h6 {
+    color: var(--base-text-color);
+    font-family: "AvenirNext-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .course-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .course-content a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .course-content p {
+    margin: 0.5em 0;
+    line-height: 1.5;
+  }
+
+  .course-content ul,
+  .course-content ol {
+    margin: 0.5em 0;
+    padding-left: 2em;
+  }
+
+  .course-content li {
+    margin: 0.2em 0;
+    line-height: 1.5;
+  }
+
+  .course-content h1,
+  .course-content h2,
+  .course-content h3,
+  .course-content h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Remove extra whitespace from pre-wrap */
+  .course-content p,
+  .course-content li {
+    white-space: normal;
+  }
+
+  /* Add spacing between sections but not within them */
+  .course-content h2 + p,
+  .course-content h3 + p,
+  .course-content h4 + p {
+    margin-top: 0.3em;
+  }
+
+  /* Adjust blockquote spacing */
+  .course-content blockquote {
+    margin: 0.5em 0;
+    padding: 0.2em 1em;
+  }
+
+  .course-content blockquote p {
+    margin: 0.3em 0;
+  }
+
+  .course-content img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Update header styles for floating */
+  .page-header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 650px;
+    padding: 1em 0;
+    margin: 0 auto;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Adds slight blur to content underneath */
+    border-bottom: none; /* Remove border */
+  }
+
+  /* Remove sidebar-related margin */
+  .wrapper {
+    margin: 0 auto;
+    max-width: 650px;
+    padding: 2em 5%;
+  }
+
+  /* Remove all sidebar-nav related styles */
+  .sidebar-nav {
+    display: none;
+  }
+
+  /* Style code blocks */
+  pre[class*="language-"] {
+    border-radius: 4px;
+    margin: 1.5em 0;
+    padding: 1em;
+    overflow: auto;
+    white-space: pre-wrap !important;       /* Enable word wrap */
+    word-wrap: break-word !important;       /* Break long words */
+    max-width: 100%;                        /* Ensure container width */
+    background: #f5f7ff !important;         /* Light background */
+    border: 1px solid #e1e4e8;             /* Subtle border */
+  }
+
+  code[class*="language-"] {
+    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: #24292e !important;              /* Dark gray text */
+  }
+
+  /* Python-specific syntax highlighting */
+  .token.keyword { color: #d73a49 !important; }     /* Python keywords */
+  .token.function { color: #6f42c1 !important; }    /* Function names */
+  .token.string { color: #032f62 !important; }      /* Strings */
+  .token.number { color: #005cc5 !important; }      /* Numbers */
+  .token.comment { color: #6a737d !important; }     /* Comments */
+  .token.operator { color: #d73a49 !important; }    /* Operators */
+
+  /* Add some custom styles for code blocks */
+  .code-wrapper {
+    position: relative;
+    background: #f5f7ff;
+    border-radius: 4px;
+    margin: 1.5em 0;
+  }
+
+  /* Style inline code */
+  :not(pre) > code {
+    background: #f5f7ff;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    color: #24292e;
+  }
+
+  /* Code block base styles */
+  .highlight {
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+
+  .highlight pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Python syntax colors */
+  .highlight .k { color: #d73a49; font-weight: bold; } /* Keyword */
+  .highlight .kn { color: #d73a49; font-weight: bold; } /* Keyword.Namespace */
+  .highlight .kd { color: #d73a49; font-weight: bold; } /* Keyword.Declaration */
+  .highlight .s { color: #032f62; } /* String */
+  .highlight .s1 { color: #032f62; } /* String.Single */
+  .highlight .s2 { color: #032f62; } /* String.Double */
+  .highlight .mi { color: #005cc5; } /* Number.Integer */
+  .highlight .mf { color: #005cc5; } /* Number.Float */
+  .highlight .c { color: #6a737d; font-style: italic; } /* Comment */
+  .highlight .c1 { color: #6a737d; font-style: italic; } /* Comment.Single */
+  .highlight .nb { color: #005cc5; } /* Name.Builtin */
+  .highlight .nf { color: #6f42c1; } /* Name.Function */
+  .highlight .o { color: #d73a49; } /* Operator */
+
+  /* Code block styles */
+  pre code {
+    display: block;
+    padding: 1em;
+    background: #f6f8fa;
+    border-radius: 6px;
+    border: 1px solid #e1e4e8;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+</style>
+
+    <!-- Add MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="page-header">
+        <div class="title">STAT 4830: Numerical Optimization for Data Science and Machine Learning - <a href="https://damekdavis.com">Damek Davis</a></div>
+        <div class="links">
+          <a href="/STAT-4830/index.html">Course overview</a> | 
+          <a href="/STAT-4830/toc.html">Table of contents</a> | 
+          <a href="https://github.com/damek/STAT-4830">View on Github</a>
+        </div>
+      </header>
+
+      <div class="toc-wrapper" style="margin-top: 2em;">
+        <div id="toc"></div>
+      </div>
+
+      <div class="content-wrapper" style="margin-top: 8em;">
+        {{ content }}
+      </div>
+
+      <script>
+        // Configure MathJax rendering for all pages
+        document.addEventListener('DOMContentLoaded', function() {
+          if (window.MathJax) {
+            MathJax.typesetPromise();
+          }
+        });
+
+        // Only fetch from GitHub if we're on the table of contents page
+        {% if page.url contains 'toc.html' %}
+        async function fetchContent() {
+          try {
+            const response = await fetch('https://api.github.com/repos/damek/STAT-4830/contents/toc.md');
+            const data = await response.json();
+            
+            if (data.content) {
+              const content = atob(data.content);
+              document.querySelector('.content-wrapper').innerHTML = marked.parse(content);
+              
+              // Initialize syntax highlighting
+              document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+              });
+
+              // Process math after content is loaded
+              if (window.MathJax) {
+                MathJax.typesetPromise();
+              }
+            }
+          } catch (error) {
+            console.error('Error fetching content:', error);
+            document.querySelector('.content-wrapper').innerHTML = `
+              <h2>Course Contents</h2>
+              <p><em>Error loading content. Please try again later.</em></p>
+            `;
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchContent);
+        {% endif %}
+      </script>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html>

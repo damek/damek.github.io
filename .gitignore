@@ -7,6 +7,7 @@ teaching/.DS_Store
 # Jekyll folders and files
 _site/         # Exclude the compiled Jekyll site (output directory)
 .jekyll-cache/ # Exclude Jekyll cache for performance optimization
+.jekyll-metadata
 
 # Dependency directories and files
 .bundle/       # Exclude Bundler configuration files
@@ -21,6 +22,7 @@ _sass/
 _includes/
 .docs/
 script
+_site/
 
 _site/code.html
 _site/cv.pdf

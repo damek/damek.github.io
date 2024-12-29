@@ -1,3 +1,23 @@
 title: Damek Davis' Website
 show_downloads: true
 theme: jekyll-theme-minimal
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Add GitHub settings
+github:
+  owner: damek
+  repository: STAT-4830
+
+# Configure collections
+collections:
+  lectures:
+    output: true
+    permalink: /STAT-4830/lectures/:path/
+
+# Plugin settings
+plugins:
+  - jekyll-github-api
