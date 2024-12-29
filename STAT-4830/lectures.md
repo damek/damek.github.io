@@ -65,6 +65,7 @@ layout: course_page
 async function fetchLecture() {
   const urlParams = new URLSearchParams(window.location.search);
   const lectureNum = urlParams.get('n');
+  const hash = window.location.hash; // Get the hash from URL
   
   if (lectureNum !== null) {
     try {
@@ -98,7 +99,18 @@ async function fetchLecture() {
 
         // Process math
         if (window.MathJax) {
-          MathJax.typesetPromise();
+          await MathJax.typesetPromise();
+        }
+
+        // After everything is loaded and processed, scroll to hash if present
+        if (hash) {
+          const element = document.querySelector(hash);
+          if (element) {
+            // Add a small delay to ensure everything is rendered
+            setTimeout(() => {
+              element.scrollIntoView();
+            }, 100);
+          }
         }
       } else {
         console.error('Response not OK:', await response.text());
