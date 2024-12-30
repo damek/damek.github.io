@@ -506,7 +506,6 @@
 
     <script>
     async function processGitHubContent(contentDiv) {
-      // Get the raw markdown content
       let content = contentDiv.innerHTML;
       
       // First convert the content from base64 if needed
@@ -558,19 +557,26 @@
         mangle: false
       });
       
-      // Pre-process lecture links
+      // Process GitHub relative URLs
       content = content.replace(
-        /\[(.*?)\]\(Lecture(\d+)\.md(#[^)]+)?\)/g,
-        (match, text, lectureNum, hash = '') => {
-          return `[${text}](/STAT-4830/lectures?n=${lectureNum}${hash})`;
-        }
-      );
-      
-      // Pre-process toc.md links
-      content = content.replace(
-        /\[(.*?)\]\(toc\.md(#[^)]+)?\)/g,
-        (match, text, hash = '') => {
-          return `[${text}](/STAT-4830/toc.html${hash})`;
+        /\[(.*?)\]\((?!http|#|\/)(.*?)\)/g,  // Match markdown links that don't start with http, #, or /
+        (match, text, url) => {
+          // Base raw GitHub URL for your repository
+          const baseUrl = 'https://raw.githubusercontent.com/damek/STAT-4830/main/';
+          
+          // Special cases for lecture links and toc
+          if (url.match(/^Lecture\d+\.md/)) {
+            const lectureNum = url.match(/Lecture(\d+)\.md/)[1];
+            const hash = url.includes('#') ? '#' + url.split('#')[1] : '';
+            return `[${text}](/STAT-4830/lectures?n=${lectureNum}${hash})`;
+          }
+          
+          if (url === 'toc.md') {
+            return `[${text}](/STAT-4830/toc.html)`;
+          }
+          
+          // For all other relative links, prepend the raw GitHub URL
+          return `[${text}](${baseUrl}${url})`;
         }
       );
       
