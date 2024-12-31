@@ -559,11 +559,8 @@
       
       // Process GitHub relative URLs
       content = content.replace(
-        /\[(.*?)\]\((?!http|#|\/)(.*?)\)/g,  // Match markdown links that don't start with http, #, or /
+        /\[(.*?)\]\((?!http|#|\/)(.*?)\)/g,
         (match, text, url) => {
-          // Base raw GitHub URL for your repository
-          const baseUrl = 'https://raw.githubusercontent.com/damek/STAT-4830/main/';
-          
           // Special cases for lecture links and toc
           if (url.match(/^Lecture\d+\.md/)) {
             const lectureNum = url.match(/Lecture(\d+)\.md/)[1];
@@ -575,7 +572,14 @@
             return `[${text}](/STAT-4830/toc.html)`;
           }
           
-          // For all other relative links, prepend the raw GitHub URL
+          // Handle PDFs using PDF.js viewer
+          if (url.toLowerCase().endsWith('.pdf')) {
+            const rawUrl = `https://raw.githubusercontent.com/damek/STAT-4830/main/${url}`;
+            return `[${text}](https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(rawUrl)})`;
+          }
+          
+          // For all other relative links, use raw GitHub URL
+          const baseUrl = 'https://raw.githubusercontent.com/damek/STAT-4830/main/';
           return `[${text}](${baseUrl}${url})`;
         }
       );
