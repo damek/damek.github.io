@@ -557,30 +557,35 @@
         mangle: false
       });
       
-      // Process GitHub relative URLs
+      // Process GitHub relative URLs and external links
       content = content.replace(
-        /\[(.*?)\]\((?!http|#|\/)(.*?)\)/g,
+        /\[(.*?)\]\((.*?)\)/g,  // Match all markdown links
         (match, text, url) => {
-          // Special cases for lecture links and toc
+          // Handle PDFs using PDF.js viewer
+          if (url.toLowerCase().endsWith('.pdf')) {
+            const rawUrl = `https://raw.githubusercontent.com/damek/STAT-4830/main/${url}`;
+            return `<a href="https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(rawUrl)}" target="_blank" rel="noopener">${text}</a>`;
+          }
+          
+          // Handle lecture links
           if (url.match(/^Lecture\d+\.md/)) {
             const lectureNum = url.match(/Lecture(\d+)\.md/)[1];
             const hash = url.includes('#') ? '#' + url.split('#')[1] : '';
             return `[${text}](/STAT-4830/lectures?n=${lectureNum}${hash})`;
           }
           
+          // Handle toc.md
           if (url === 'toc.md') {
             return `[${text}](/STAT-4830/toc.html)`;
           }
           
-          // Handle PDFs using PDF.js viewer
-          if (url.toLowerCase().endsWith('.pdf')) {
-            const rawUrl = `https://raw.githubusercontent.com/damek/STAT-4830/main/${url}`;
-            return `[${text}](https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(rawUrl)})`;
+          // External links (not starting with / or #)
+          if (!url.startsWith('/') && !url.startsWith('#')) {
+            return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
           }
           
-          // For all other relative links, use raw GitHub URL
-          const baseUrl = 'https://raw.githubusercontent.com/damek/STAT-4830/main/';
-          return `[${text}](${baseUrl}${url})`;
+          // Internal links
+          return `[${text}](${url})`;
         }
       );
       
