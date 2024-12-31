@@ -557,10 +557,24 @@
         mangle: false
       });
       
-      // Process GitHub relative URLs and external links
+      // Process GitHub relative URLs, external links, and images
       content = content.replace(
-        /\[(.*?)\]\((.*?)\)/g,  // Match all markdown links
-        (match, text, url) => {
+        /!\[(.*?)\]\((.*?)\)|(?<!!)\[(.*?)\]\((.*?)\)/g,  // Match both images and regular links
+        (match, imgAlt, imgUrl, linkText, linkUrl) => {
+          // Handle images
+          if (match.startsWith('!')) {
+            // If it's a relative image URL, prepend the raw GitHub URL
+            if (!imgUrl.startsWith('http')) {
+              const baseUrl = 'https://raw.githubusercontent.com/damek/STAT-4830/main/';
+              return `![${imgAlt}](${baseUrl}${imgUrl})`;
+            }
+            return match;  // Keep external image URLs as is
+          }
+          
+          // Handle regular links (using linkText and linkUrl)
+          const text = linkText;
+          const url = linkUrl;
+          
           // Handle PDFs using PDF.js viewer
           if (url.toLowerCase().endsWith('.pdf')) {
             const rawUrl = `https://raw.githubusercontent.com/damek/STAT-4830/main/${url}`;
