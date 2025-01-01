@@ -69,21 +69,53 @@ async function fetchLecture() {
   
   if (lectureNum !== null) {
     try {
-      const url = `https://raw.githubusercontent.com/damek/STAT-4830/main/Lecture${lectureNum}.md`;
-      console.log('Fetching from:', url);
+      // Handle both old and new formats
+      let url;
+      if (lectureNum.includes('.')) {
+        // New format with sections (e.g., 1.1)
+        url = `https://raw.githubusercontent.com/damek/STAT-4830/main/section/${lectureNum}/notes.md`;
+      } else {
+        // Try new format first (e.g., section/0/notes.md)
+        url = `https://raw.githubusercontent.com/damek/STAT-4830/main/section/${lectureNum}/notes.md`;
+      }
       
-      const response = await fetch(url);
+      console.log('Fetching from:', url);
+      let response = await fetch(url);
+      
+      // If new format fails and it's a number without decimal, try old format
+      if (!response.ok && !lectureNum.includes('.')) {
+        url = `https://raw.githubusercontent.com/damek/STAT-4830/main/Lecture${lectureNum}.md`;
+        console.log('Trying old format:', url);
+        response = await fetch(url);
+      }
+      
       console.log('Response status:', response.status);
       
       if (response.ok) {
         let content = await response.text();
         
-        // Pre-process image URLs
+        // Pre-process image URLs - now handles section-based figures
         content = content.replace(
           /!\[(.*?)\]\((.*?)\)/g,
           (match, alt, src) => {
             if (src && !src.startsWith('http')) {
-              return `![${alt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${src})`;
+              const sectionPath = lectureNum.includes('.') ? 
+                `section/${lectureNum}/` : 
+                `section/${lectureNum}/`;
+              
+              // If it's a relative path starting with ./ or ../, resolve it relative to the current section
+              if (src.startsWith('./') || src.startsWith('../')) {
+                const resolvedPath = new URL(src, `https://raw.githubusercontent.com/damek/STAT-4830/main/${sectionPath}`).pathname.slice(1);
+                return `![${alt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${resolvedPath})`;
+              }
+              
+              // For other paths, try section directory first, then fall back to repo root
+              if (!src.startsWith('/')) {
+                return `![${alt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${sectionPath}${src})`;
+              }
+              
+              // For absolute paths (starting with /), use from repo root
+              return `![${alt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${src.slice(1)})`;
             }
             return match;
           }
@@ -115,16 +147,16 @@ async function fetchLecture() {
       } else {
         console.error('Response not OK:', await response.text());
         document.getElementById('lecture-content').innerHTML = 
-          `<p>Lecture ${lectureNum} not found. Please check that the lecture file exists in the repository.</p>`;
+          `<p>Notes for section ${lectureNum} not found. Please check that the file exists in the repository.</p>`;
       }
     } catch (error) {
       console.error('Detailed error:', error);
       document.getElementById('lecture-content').innerHTML = 
-        `<p>Error loading lecture content: ${error.message}</p>`;
+        `<p>Error loading notes content: ${error.message}</p>`;
     }
   } else {
     document.getElementById('lecture-content').innerHTML = 
-      '<p>No lecture number specified. Please use ?n=X in the URL.</p>';
+      '<p>No section number specified. Please use ?n=X in the URL.</p>';
   }
 }
 
