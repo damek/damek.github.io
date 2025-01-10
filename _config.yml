@@ -20,4 +20,5 @@ collections:
 
 # Plugin settings
 plugins:
-  - jekyll-github-api
+  - jekyll-feed
+  - jekyll-seo-tag
