@@ -4,7 +4,7 @@ require 'json'
 require 'base64'
 
 module Jekyll
-  class GitHubLectureGenerator < Generator
+  class GitHubSectionGenerator < Generator
     safe true
     priority :high
 
@@ -48,7 +48,7 @@ module Jekyll
                 # Add the page to the site
                 site.pages << page
               rescue => e
-                Jekyll.logger.warn "GitHubLectureGenerator:", "Failed to fetch notes for section #{section['name']}: #{e.message}"
+                Jekyll.logger.warn "GitHubSectionGenerator:", "Failed to fetch notes for section #{section['name']}: #{e.message}"
               end
             end
           end
@@ -65,16 +65,16 @@ module Jekyll
             page = PageWithoutAFile.new(site, site.source, "STAT-4830", file['name'])
             page.content = content_response
             page.data['layout'] = 'course_page'
-            page.data['title'] = "Lecture #{file['name'].match(/\d+/)[0]}"
+            page.data['title'] = "Section #{file['name'].match(/\d+/)[0]}"
             
             # Add the page to the site
             site.pages << page
           rescue => e
-            Jekyll.logger.warn "GitHubLectureGenerator:", "Failed to fetch #{file['name']}: #{e.message}"
+            Jekyll.logger.warn "GitHubSectionGenerator:", "Failed to fetch #{file['name']}: #{e.message}"
           end
         end
       rescue => e
-        Jekyll.logger.warn "GitHubLectureGenerator:", "Failed to fetch repository contents: #{e.message}"
+        Jekyll.logger.warn "GitHubSectionGenerator:", "Failed to fetch repository contents: #{e.message}"
       end
     end
   end

@@ -606,14 +606,14 @@
             const sectionMatch = url.match(/^section\/(\d+(?:\.\d+)?)\/notes\.md/);
             const sectionNum = sectionMatch[1];
             const hash = url.includes('#') ? '#' + url.split('#')[1] : '';
-            return `[${text}](/STAT-4830/lectures?n=${sectionNum}${hash})`;
+            return `[${text}](/STAT-4830/section?n=${sectionNum}${hash})`;
           }
           
           // Handle old lecture format for backward compatibility
           if (url.match(/^Lecture\d+\.md/)) {
             const lectureNum = url.match(/Lecture(\d+)\.md/)[1];
             const hash = url.includes('#') ? '#' + url.split('#')[1] : '';
-            return `[${text}](/STAT-4830/lectures?n=${lectureNum}${hash})`;
+            return `[${text}](/STAT-4830/section?n=${lectureNum}${hash})`;
           }
           
           // Handle toc.md
