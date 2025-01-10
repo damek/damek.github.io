@@ -557,21 +557,63 @@
         mangle: false
       });
       
-      // Process GitHub relative URLs and external links
+      // Process GitHub relative URLs, external links, and images
       content = content.replace(
-        /\[(.*?)\]\((.*?)\)/g,  // Match all markdown links
-        (match, text, url) => {
-          // Handle PDFs using PDF.js viewer
+        /!\[(.*?)\]\((.*?)\)|(?<!!)\[(.*?)\]\((.*?)\)/g,  // Match both images and regular links
+        (match, imgAlt, imgUrl, linkText, linkUrl) => {
+          // Handle images
+          if (match.startsWith('!')) {
+            // If it's a relative image URL, prepend the raw GitHub URL
+            if (!imgUrl.startsWith('http')) {
+              // Get the current section number from the URL if available
+              const urlParams = new URLSearchParams(window.location.search);
+              const sectionNum = urlParams.get('n');
+              
+              if (sectionNum) {
+                const sectionPath = `section/${sectionNum}/`;
+                
+                // If it's a relative path starting with ./ or ../, resolve it relative to the current section
+                if (imgUrl.startsWith('./') || imgUrl.startsWith('../')) {
+                  const resolvedPath = new URL(imgUrl, `https://raw.githubusercontent.com/damek/STAT-4830/main/${sectionPath}`).pathname.slice(1);
+                  return `![${imgAlt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${resolvedPath})`;
+                }
+                
+                // For other paths, try section directory first, then fall back to repo root
+                if (!imgUrl.startsWith('/')) {
+                  return `![${imgAlt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${sectionPath}${imgUrl})`;
+                }
+              }
+              
+              // For absolute paths or when not in a section, use from repo root
+              const cleanPath = imgUrl.startsWith('/') ? imgUrl.slice(1) : imgUrl;
+              return `![${imgAlt}](https://raw.githubusercontent.com/damek/STAT-4830/main/${cleanPath})`;
+            }
+            return match;  // Keep external image URLs as is
+          }
+          
+          // Handle regular links (using linkText and linkUrl)
+          const text = linkText;
+          const url = linkUrl;
+          
+          // Handle PDFs using PDF.js viewer - now works with any directory
           if (url.toLowerCase().endsWith('.pdf')) {
-            const rawUrl = `https://raw.githubusercontent.com/damek/STAT-4830/main/${url}`;
+            const rawUrl = url.startsWith('http') ? url : `https://raw.githubusercontent.com/damek/STAT-4830/main/${url}`;
             return `<a href="https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(rawUrl)}" target="_blank" rel="noopener">${text}</a>`;
           }
           
-          // Handle lecture links
+          // Handle notes links - new format
+          if (url.match(/^section\/\d+(?:\.\d+)?\/notes\.md/)) {
+            const sectionMatch = url.match(/^section\/(\d+(?:\.\d+)?)\/notes\.md/);
+            const sectionNum = sectionMatch[1];
+            const hash = url.includes('#') ? '#' + url.split('#')[1] : '';
+            return `[${text}](/STAT-4830/section?n=${sectionNum}${hash})`;
+          }
+          
+          // Handle old lecture format for backward compatibility
           if (url.match(/^Lecture\d+\.md/)) {
             const lectureNum = url.match(/Lecture(\d+)\.md/)[1];
             const hash = url.includes('#') ? '#' + url.split('#')[1] : '';
-            return `[${text}](/STAT-4830/lectures?n=${lectureNum}${hash})`;
+            return `[${text}](/STAT-4830/section?n=${lectureNum}${hash})`;
           }
           
           // Handle toc.md
@@ -662,8 +704,8 @@
         <div class="header-content">
           <div class="title">STAT 4830: Numerical Optimization for Data Science and Machine Learning - <a href="https://damekdavis.com">Damek Davis</a></div>
           <div class="links">
-            <a href="/STAT-4830/index.html">Course overview</a> | 
             <a href="/STAT-4830/toc.html">Table of contents</a> | 
+            <a href="/STAT-4830/index.html">Course overview</a> | 
             <a href="https://github.com/damek/STAT-4830">View on Github</a>
           </div>
         </div>

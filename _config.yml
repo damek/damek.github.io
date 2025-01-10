@@ -14,9 +14,9 @@ github:
 
 # Configure collections
 collections:
-  lectures:
+  sections:
     output: true
-    permalink: /STAT-4830/lectures/:path/
+    permalink: /STAT-4830/section/:path/
 
 # Plugin settings
 plugins:
