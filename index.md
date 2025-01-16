@@ -1,5 +1,6 @@
 ---
-layout: home
+layout: default
+title: Damek Davis
 ---
 # Damek Davis
 
