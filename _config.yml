@@ -10,15 +10,32 @@ kramdown:
 # Add GitHub settings
 github:
   owner: damek
-  repository: STAT-4830
-
-# Configure collections
-collections:
-  sections:
-    output: true
-    permalink: /STAT-4830/section/:path/
 
 # Plugin settings
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+# Exclude directories and patterns
+exclude:
+  - STAT-4830
+  - STAT-4830/**
+  - STAT-4830/section_0.md
+  - "**/STAT-4830/**"
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Link checking settings
+relative_links:
+  enabled: true
+  collections: false
+
+# Tell Jekyll which links to skip checking
+skip_check_links:
+  - STAT-4830
+  - STAT-4830/*

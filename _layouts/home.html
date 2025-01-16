@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% include head-custom.html %}
+    <style>
+      /* Define base styles */
+      :root {
+        --base-background-color: #ffffff;
+        --base-text-color: #444444;
+        --accent-color: #DD4C4F;
+        --highlight-color: #D3FFA4;
+      }
+
+      body {
+        font-family: "AvenirNext-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        background-color: var(--base-background-color);
+        color: var(--base-text-color);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Image and text wrapper */
+      .image-text-wrapper {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5em;
+      }
+
+      .image-text-wrapper img {
+        float: left; /* Float the image to the left */
+        width: 110px;
+        height: auto;
+        border-radius: 0%;
+        margin-right: 20px; /* Create space between image and text */
+      }
+
+      .image-text-wrapper div {
+        text-align: justify;
+      }
+
+      /* Style for the wrapper to center the content */
+      .wrapper {
+        max-width: 650px; /* Maintain content width */
+        margin: 0 auto;
+        padding: 2em 5%;
+        background-color: var(--base-background-color);
+        text-align: left;
+        font-weight: 300;
+      }
+
+      /* Ensure text respects new lines and spaces */
+      p, li, a, blockquote {
+        white-space: pre-wrap; /* Preserves whitespace and respects new lines */
+        word-break: break-word; /* Allow words to break at the end of a line */
+        margin: 1em 0;
+        color: var(--base-text-color);
+        text-align: justify; /* Ensure text spans the entire line */
+      }
+
+      /* Style links to prevent changes on hover */
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 300; /* Ensure consistent font weight */
+      }
+
+      /* Disable font weight change on hover */
+      a:hover {
+        color: var(--accent-color); /* Keep link color the same on hover */
+        text-decoration: none; /* No underline on hover */
+        font-weight: 300; /* Explicitly set the font weight to prevent bolding */
+      }
+
+      /* Additional styling for headings */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "AvenirNext-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-weight: 400;
+      }
+
+      /* Style for blockquotes */
+      blockquote {
+        color: var(--base-text-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 1em;
+        margin: 1em 0;
+        font-weight: 300; /* Make blockquotes lighter */
+      }
+
+      /* Responsive adjustments for all devices */
+      @media screen and (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+
+        .wrapper {
+          padding: 1em 5%;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          margin-top: 0.75em;
+          margin-bottom: 0.5em;
+        }
+
+        p, li, blockquote {
+          margin: 0.75em 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        body {
+          font-size: 13px;
+        }
+
+        .wrapper {
+          padding: 1em;
+        }
+
+        em, i {
+          font-weight: 500;
+        }
+
+        p, li, blockquote {
+          margin: 0.5em 0;
+        }
+      }
+
+      /* Ensure content is always visible and scrollable */
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Improve touch and click targets on mobile */
+      a, button {
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      /* Improve readability on high-DPI screens */
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        body {
+          -webkit-font-smoothing: subpixel-antialiased;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      {{ content }}
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html> 
