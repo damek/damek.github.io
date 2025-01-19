@@ -12,16 +12,12 @@
     <![endif]-->
     {% include head-custom.html %}
  <style>
-  /* Define base styles */
+  /* Base styles */
   :root {
     --base-background-color: #ffffff;
     --base-text-color: #444444;
     --accent-color: #DD4C4F;
     --highlight-color: #D3FFA4;
-    --list-spacing-base: 0.4em;
-    --list-spacing-nested: 0.1em;
-    --list-indent: 3.2em;
-    --list-nested-indent: 2.6em;
   }
 
   body {
@@ -37,40 +33,34 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Reset all lists */
-  ul, ol {
-    margin: 0;
-    padding: 0;
-    list-style-position: inside;
-    margin-left: 1em;
-  }
-
-  /* Top-level lists only */
-  .wrapper > ul,
-  .wrapper > ol {
-    margin: 0.4em 0;
-    margin-left: 1em;
-  }
-
-  /* All list items */
-  li {
-    margin: 0.4em 0;
-    padding: 0;
-    line-height: 1.4;
-  }
-
-  /* Nested lists */
-  li > ul,
-  li > ol {
-    margin: 0.1em 0 0.1em 1em;
-  }
-
   /* Content styles */
-  p, li, a, blockquote {
+  p, a, blockquote {
     white-space: pre-wrap;
     word-break: normal;
     color: var(--base-text-color);
     text-align: justify;
+  }
+
+  /* Clean list styles */
+  ul, ol {
+    margin: 0;
+    padding: 0;
+    margin-left: 1.2em;
+  }
+
+  li {
+    margin: 0.5em 0;
+    padding: 0;
+  }
+
+  li li {
+    margin: 0;
+  }
+
+  /* Increase indent for nested lists */
+  li > ul,
+  li > ol {
+    margin-left: 1.8em;
   }
 
   /* Publication entries */

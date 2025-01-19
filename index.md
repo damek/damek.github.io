@@ -7,21 +7,21 @@ title: Damek Davis
 [Publications](#publications) | [Research](research.html) | [CV](cv.pdf) | [X](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
 
 
-I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI).
+I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program).
 
-**Interests.** Optimization and machine learning.
+**Research Interests.** Optimization and machine learning.
 
 **Selected Works.** I recently developed exponential accelerations of <a href="https://x.com/damekdavis/status/1841596498204880924">gradient descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">semismooth Newton</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">the subgradient method</a>. Read more about my research [here](research.html).
 
 
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
 
-**Students.** I've advised 5 PhD students. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting.
+**Students.** I've advised 5 PhD students. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting. I am an active advisor--students who work best with me tend to have energy levels that match or exceed mine.
 
 
 *Current*: [Tao Jiang](https://taotolojiang.github.io/) (Cornell) → Meta (Postdoc) 
 
-*Graduated PhD Students at Cornell*: 
+*Graduated PhD Students from Cornell*: 
 - [Liwei Jiang](https://liwei-jiang97.github.io/) →  Purdue (Assistant Professor)
 - [Vasilis Charisopoulos](https://vchariso.gitlab.io/) → UW, Seattle (Assistant Professor)
 - [Mateo Díaz](https://mateodd25.github.io/) → Johns Hopkins University (Assistant Professor)
@@ -32,6 +32,47 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 
 
 **Service.** I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
+
+**You may not know that...** 
+- I started [programming](https://x.com/damekdavis/status/1627803139830317056) in html in '98. I made a Pokémon website.
+- I took up guitar In '99, played in bands, wrote and recorded music regularly into college. 
+    - I played banjo from 2010-2012, mainly in clawhammer style.
+    - I mostly play piano, now. I like to sing and sight read chord charts off of ultimate guitar.
+- I went to grad school at UCLA for pure math in 2010. I loved algebra.
+    - I learned ML was a thing in 2012 and took [learning from data](https://work.caltech.edu/telecourse) with set-theorist Bill Chen. 
+    - I got excited about AI and joined [UCLA’s vision lab](http://vision.ucla.edu/people.html) in 2012.
+    - A year in, I saw optimization was everywhere. I just understood nothing about it.
+    - I read [Nesterov's book](https://www.amazon.com/Introductory-Lectures-Convex-Optimization-Applied/dp/1402075537) in 2013. I tried to prove each theorem before reading the proof.
+    - I took Wotao's course in F' 2013, and [solved an open problem](https://link.springer.com/chapter/10.1007/978-3-319-41589-5_4) he mentioned in class.
+    - Without Wotao's encouragement, I would not have applied to faculty jobs in 2014.
+- I became interested in writing in 2016.
+    - Two books influenced me: [Clear and Simple as the Truth](https://www.amazon.com/Clear-Simple-Truth-Writing-Princeton/dp/0691602999) and [Style](https://www.amazon.com/Style-Lessons-Clarity-Grace-12th/dp/0134080416/).
+        - The first helped me appreciate writing.
+        - The second taught me how to structure text so a busy reader could appreciate it.
+    - I think writing improves when you become more comfortable with rejection.
+- I've regularly read research on LLMs since mid 2022.
+    - I speak to them more than anyone else I know.
+    - If LLMs help me do math, I'll be happy. I think they will, but key ideas are likely missing.
+    - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in Lean. 
+        - As of Jan 2025, no LLM can complete the proof.
+
+**Some Unsolicited Advice.**
+- Make contact with reality as often as possible. 
+    - Release work, ask for help, talk to people, fail often.
+- Nothing is scary because everything is improvised.
+    - The more you resist improvisation in an act, the harder it becomes.
+    - Planning is a struggle against reality, an attempt to bend it to your will. In most circumstances, you can't do this.
+    - This is not an invitation to not prepare. You should prepare as best as possible and then stay open and willing to be surprised.
+- You are always exactly where you are supposed to be in the current moment.
+	- There is no complaining. There is no whining. You are supposed to be here.
+	- This does not mean you stay in a bad situation. You can aim for better. You can adjust your life. But you are where you are and have to accept it in each moment.
+- You should sometimes be in a state of personal crisis. 
+    - You should sometimes feel lost and aimless. 
+    - You should question whether you like what you're doing, find it meaningful, and whether you might do something different.
+- Write down your thought process as you work through complex thoughts and emotion: you can't hold a decision tree of depth three in your mind.
+- Every interaction with the world summons thoughts. They are just conjectures! You don't have to believe them!
+- It's a great gift to be asked for your opinion on a topic you care about. Especially if it will be taken seriously.
+- Humor and comedy are the best; cherish funny people.
 
 Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
 
