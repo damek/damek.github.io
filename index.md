@@ -4,7 +4,7 @@ title: Damek Davis
 ---
 # Damek Davis
 
-[Publications](#publications) | [Research](research.html) | [CV](cv.pdf) | [Twitter](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en)
+[Publications](#publications) <span>|</span> [Research](research.html) <span>|</span> [CV](cv.pdf) <span>|</span> [Twitter](https://twitter.com/damekdavis) <span>|</span> [Github (current)](https://github.com/damek) <span>|</span> [Github (old)](https://github.com/COR-OPT) <span>|</span> [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en)
 
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI).

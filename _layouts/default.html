@@ -73,20 +73,24 @@
     text-align: justify;
   }
 
-  /* Navigation bars only */
-  p:first-of-type:has(a[href="#publications"]),
-  p:has(a[href="#preprints"]) {
+  /* Top navigation */
+  p:first-of-type {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5em;
-    justify-content: flex-start;
-    white-space: normal;
+    gap: 0.3em 0.7em;
+    margin: 1em 0;
+    line-height: 1.8;
+  }
+
+  /* Remove margin after vertical bars in navigation */
+  p:first-of-type a + span {
+    margin-left: -0.5em;
   }
 
   @media screen and (max-width: 768px) {
-    p:first-of-type:has(a[href="#publications"]),
-    p:has(a[href="#preprints"]) {
-      gap: 0.3em;
+    p:first-of-type {
+      gap: 0.2em 0.5em;
+      font-size: 0.95em;
     }
   }
 
