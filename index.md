@@ -6,12 +6,6 @@ title: Damek Davis
 
 [Publications](#publications) | [CV](cv.pdf) | [Twitter](https://twitter.com/damekdavis) | [Github (personal)](https://github.com/damek) | [Github (old lab)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
 
-<!-- <div class="image-text-wrapper">
-    <img src="assets/images/damek.jpg" alt="Damek Davis" style="width: 110px; height: auto; border-radius: 0%; margin-right: 20px;">
-  <div>
-    I am an Associate Professor of Statistics and Data Science at Wharton.  I was an Associate Professor of Operations Research and Information Engineering at Cornell (2016-2024). Previously, I held an NSF Postdoctoral Fellowship (2016) and completed my Mathematics Ph.D. at UCLA under advisors Wotao Yin and Stefano Soatto. 
-  </div>
-</div> -->
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI).
 
