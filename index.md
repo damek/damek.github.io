@@ -9,9 +9,9 @@ title: Damek Davis
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI).
 
-**Interests.** I study optimization and machine learning.
+**Interests.** Optimization and machine learning.
 
-**Selected Works.** I recently developed (local) exponential of accelerations <a href="https://x.com/damekdavis/status/1841596498204880924">Gradient Descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">Semismooth Newton methods</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">Subgradient methods</a>. I've written more [about my research](research.html).
+**Selected Works.** I recently developed exponential of accelerations <a href="https://x.com/damekdavis/status/1841596498204880924">Gradient Descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">Semismooth Newton methods</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">Subgradient methods</a>. Read more about my research [here](research.html).
 
 
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
