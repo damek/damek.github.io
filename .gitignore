@@ -1,3 +1,29 @@
+# Specific files to ignore
+/cv.tex
+/index_old.md
+
+# TeX files in root directory only
+/*.aux
+/*.bbl
+/*.bcf
+/*.blg
+/*.fdb_latexmk
+/*.fls
+/*.log
+/*.out
+/*.run.xml
+/*.synctex.gz
+/*.toc
+/*.nav
+/*.snm
+/*.vrb
+/*.dvi
+/*.pdf
+/*.ps
+
+# Exclude specific PDFs we want to keep
+!cv.pdf
+
 # Jekyll
 _site/
 .jekyll-cache/

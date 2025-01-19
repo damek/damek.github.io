@@ -18,6 +18,10 @@
     --base-text-color: #444444;
     --accent-color: #DD4C4F;
     --highlight-color: #D3FFA4;
+    --list-spacing-base: 0.4em;
+    --list-spacing-nested: 0.1em;
+    --list-indent: 3.2em;
+    --list-nested-indent: 2.6em;
   }
 
   body {
@@ -33,7 +37,56 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-    /* Image and text wrapper */
+  /* Reset all lists */
+  ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+    margin-left: 1em;
+  }
+
+  /* Top-level lists only */
+  .wrapper > ul,
+  .wrapper > ol {
+    margin: 0.4em 0;
+    margin-left: 1em;
+  }
+
+  /* All list items */
+  li {
+    margin: 0.4em 0;
+    padding: 0;
+    line-height: 1.4;
+  }
+
+  /* Nested lists */
+  li > ul,
+  li > ol {
+    margin: 0.1em 0 0.1em 1em;
+  }
+
+  /* Content styles */
+  p, li, a, blockquote {
+    white-space: pre-wrap;
+    word-break: normal;
+    color: var(--base-text-color);
+    text-align: justify;
+  }
+
+  /* Publication entries */
+  #publications p,
+  #preprints p,
+  #conference-papers p,
+  #journal-papers p,
+  #book-chapters p,
+  #expository p,
+  #technical-reports p {
+    white-space: pre-wrap;
+    margin: 1em 0;
+    max-width: 100%;
+  }
+
+  /* Image and text wrapper */
   .image-text-wrapper {
     display: flex;
     align-items: flex-start;
@@ -41,11 +94,11 @@
   }
 
   .image-text-wrapper img {
-    float: left; /* Float the image to the left */
+    float: left;
     width: 110px;
     height: auto;
     border-radius: 0%;
-    margin-right: 20px; /* Create space between image and text */
+    margin-right: 20px;
   }
 
   .image-text-wrapper div {
@@ -54,7 +107,7 @@
 
   /* Style for the wrapper to center the content */
   .wrapper {
-    max-width: 650px; /* Maintain content width */
+    max-width: 650px;
     margin: 0 auto;
     padding: 2em 5%;
     background-color: var(--base-background-color);
@@ -62,36 +115,39 @@
     font-weight: 300;
   }
 
-  /* Ensure text respects new lines and spaces */
-  p, li, a, blockquote {
-    white-space: pre-wrap; /* Preserves whitespace and respects new lines */
-    word-break: break-word; /* Allow words to break at the end of a line */
-    margin: 1em 0;
-    color: var(--base-text-color);
-    text-align: justify; /* Ensure text spans the entire line */
-
-  }
-
   /* Style links to prevent changes on hover */
   a {
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 300; /* Ensure consistent font weight */
+    font-weight: 300;
   }
 
   /* Disable font weight change on hover */
   a:hover {
-    color: var(--accent-color); /* Keep link color the same on hover */
-    text-decoration: none; /* No underline on hover */
-    font-weight: 300; /* Explicitly set the font weight to prevent bolding */
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 300;
   }
 
   /* Additional styling for headings */
   h1, h2, h3, h4, h5, h6 {
     font-family: "AvenirNext-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin-top: 1em;
+    margin-top: 2em;
     margin-bottom: 0.5em;
     font-weight: 400;
+  }
+
+  /* Add extra spacing when headings follow lists */
+  ul + h2, 
+  ol + h2,
+  ul + h3,
+  ol + h3 {
+    margin-top: 3em;
+  }
+
+  /* Preserve spacing for paragraphs */
+  p {
+    margin: 1em 0;
   }
 
   /* Style for blockquotes */
@@ -100,7 +156,7 @@
     border-left: 4px solid var(--accent-color);
     padding-left: 1em;
     margin: 1em 0;
-    font-weight: 300; /* Make blockquotes lighter */
+    font-weight: 300;
   }
 
   /* Responsive adjustments for all devices */
@@ -117,10 +173,6 @@
       margin-top: 0.75em;
       margin-bottom: 0.5em;
     }
-
-    p, li, blockquote {
-      margin: 0.75em 0;
-    }
   }
 
   @media screen and (max-width: 480px) {
@@ -135,10 +187,6 @@
     em, i {
       font-weight: 500;
     }
-
-    p, li, blockquote {
-      margin: 0.5em 0;
-    }
   }
 
   /* Ensure content is always visible and scrollable */
@@ -152,13 +200,6 @@
   a, button {
     min-height: 44px;
     min-width: 44px;
-  }
-
-  /* Improve readability on high-DPI screens */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    body {
-      -webkit-font-smoothing: subpixel-antialiased;
-    }
   }
 </style>
   </head>
