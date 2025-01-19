@@ -4,14 +4,14 @@ title: Damek Davis
 ---
 # Damek Davis
 
-[Publications](#publications) <span>|</span> [Research](research.html) <span>|</span> [CV](cv.pdf) <span>|</span> [X](https://twitter.com/damekdavis) <span>|</span> [Github (current)](https://github.com/damek) <span>|</span> [Github (old)](https://github.com/COR-OPT) <span>|</span> [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en)
+[Publications](#publications) | [Research](research.html) | [CV](cv.pdf) | [X](https://X.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
 
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI).
 
 **Interests.** Optimization and machine learning.
 
-**Selected Works.** I recently developed exponential of accelerations <a href="https://x.com/damekdavis/status/1841596498204880924">gradient descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">semismooth Newton</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">the subgradient method</a>. Read more about my research [here](research.html).
+**Selected Works.** I recently developed exponential of accelerations <a href="https://x.com/damekdavis/status/1841596498204880924">gradient descent</a>, <a href="https://x.com/damekdavis/status/1596616542396944384">semismooth Newton</a>, and <a href="https://x.com/damekdavis/status/1682737261727866882?s=20">the subgradient method</a>. Read more about my research [here](research.html).
 
 
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
