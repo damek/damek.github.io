@@ -73,6 +73,23 @@
     text-align: justify;
   }
 
+  /* Navigation bars only */
+  p:first-of-type:has(a[href="#publications"]),
+  p:has(a[href="#preprints"]) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: flex-start;
+    white-space: normal;
+  }
+
+  @media screen and (max-width: 768px) {
+    p:first-of-type:has(a[href="#publications"]),
+    p:has(a[href="#preprints"]) {
+      gap: 0.3em;
+    }
+  }
+
   /* Publication entries */
   #publications p,
   #preprints p,
