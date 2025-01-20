@@ -56,23 +56,6 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
     - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in Lean. 
         - As of Jan 2025, no LLM can complete the proof.
 
-<!-- **Some Unsolicited Advice.**
-- Make contact with reality as often as possible. 
-    - Release work, ask for help, talk to people, fail often.
-- Nothing is scary because everything is improvised.
-    - The more you resist improvisation in an act, the harder it becomes.
-    - Planning is a struggle against reality, an attempt to bend it to your will. In most circumstances, you can't do this.
-    - This is not an invitation to not prepare. You should prepare as best as possible and then stay open and willing to be surprised.
-- You are always exactly where you are supposed to be in the current moment.
-	- There is no complaining. There is no whining. You are supposed to be here.
-	- This does not mean you stay in a bad situation. You can aim for better. You can adjust your life. But you are where you are and have to accept it in each moment.
-- You should sometimes be in a state of personal crisis. 
-    - You should sometimes feel lost and aimless. 
-    - You should question whether you like what you're doing, find it meaningful, and whether you might do something different.
-- Write down your thought process as you work through complex thoughts and emotion: you can't hold a decision tree of depth three in your mind.
-- Every interaction with the world summons thoughts. They are just conjectures! You don't have to believe them!
-- It's a great gift to be asked for your opinion on a topic you care about. Especially if it will be taken seriously.
-- Humor and comedy are the best; cherish funny people. -->
 
 Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
 
