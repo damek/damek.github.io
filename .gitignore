@@ -1,6 +1,8 @@
 # Specific files to ignore
 /cv.tex
 /index_old.md
+/ndea/
+resume.tex
 
 # TeX files in root directory only
 /*.aux

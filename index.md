@@ -56,7 +56,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
     - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in Lean. 
         - As of Jan 2025, no LLM can complete the proof.
 
-**Some Unsolicited Advice.**
+<!-- **Some Unsolicited Advice.**
 - Make contact with reality as often as possible. 
     - Release work, ask for help, talk to people, fail often.
 - Nothing is scary because everything is improvised.
@@ -72,7 +72,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - Write down your thought process as you work through complex thoughts and emotion: you can't hold a decision tree of depth three in your mind.
 - Every interaction with the world summons thoughts. They are just conjectures! You don't have to believe them!
 - It's a great gift to be asked for your opinion on a topic you care about. Especially if it will be taken seriously.
-- Humor and comedy are the best; cherish funny people.
+- Humor and comedy are the best; cherish funny people. -->
 
 Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
 
