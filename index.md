@@ -7,9 +7,14 @@ title: Damek Davis
 [Publications](#publications) | [Research](research.html) | [CV](cv.pdf) | [X](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
 
 
-I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program).
+I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program). I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
+
+**Teaching.** I'm teaching [STAT 4830: "Optimization in PyTorch"](STAT-4830) in Spring 2025.
 
 **Research Interests.** Optimization and machine learning.
+
+**Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
+
 
 **Selected Works.** Read more about my research [here](research.md). Together with collaborators, I 
 - Developed exponential accelerations of <a href="https://x.com/damekdavis/status/1841596498204880924">gradient descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">semismooth Newton</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">the subgradient method</a>. 
@@ -18,7 +23,6 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - Developed the concept of a strict saddle point in nonsmooth optimization and showed [proximal methods](https://arxiv.org/abs/1912.07146) and [stochastic subgradient methods](https://arxiv.org/abs/2108.11832) avoid them.
 
 
-**Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
 
 **Students.** I've advised 5 PhD students. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting. I am an active advisor--students who work best with me tend to have energy levels that match or exceed mine.
 
@@ -32,10 +36,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - [Ben Grimmer](https://www.ams.jhu.edu/~grimmer/) → Johns Hopkins University (Assistant Professor)
 
 
-**Teaching.** I'm teaching [STAT 4830: "Optimization in PyTorch"](STAT-4830) in Spring 2025.
 
-
-**Service.** I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
 
 **You may not know that...** 
 - I started [programming](https://x.com/damekdavis/status/1627803139830317056) in html in '98. I made a Pokémon website.
