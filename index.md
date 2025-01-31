@@ -19,7 +19,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 **Selected Works.** Read more about my research [here](research.md). Together with collaborators, I 
 - Developed exponential accelerations of <a href="https://x.com/damekdavis/status/1841596498204880924">gradient descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">semismooth Newton</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">the subgradient method</a>. 
 - Proved first guarantees for SGD on [weakly convex](https://arxiv.org/abs/1803.06523) and [tame](https://arxiv.org/abs/1804.07795) functions, which covers essentially all neural networks.
-- Characterized the [asymptotic distribution of SGD in nonsmooth optimization](https://arxiv.org/abs/2108.11832).
+- Characterized the [asymptotic distribution of SGD in nonsmooth optimization](https://arxiv.org/abs/2301.06632).
 - Developed the concept of a strict saddle point in nonsmooth optimization and showed [proximal methods](https://arxiv.org/abs/1912.07146) and [stochastic subgradient methods](https://arxiv.org/abs/2108.11832) avoid them.
 
 
