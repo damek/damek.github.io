@@ -43,7 +43,10 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - I took up guitar In '99, played in bands, wrote and recorded music regularly into college. 
     - I played banjo from 2010-2012, mainly in clawhammer style.
     - I mostly play piano, now. I like to sing and sight read chord charts off of ultimate guitar.
-- I went to grad school at UCLA for pure math in 2010. I loved algebra.
+- I applied to one college, UC Irvine. It was close the beach. 
+    - I intended to study music and lived in the arts dorm. 
+    - I took calculus in my first semester. Then I couldn't stop taking math.
+- I went to grad school at UCLA for pure math in 2010. I loved [Algebra](https://link.springer.com/book/10.1007/978-1-4613-0041-0).
     - I learned ML was a thing in 2012 and took [learning from data](https://work.caltech.edu/telecourse) with set-theorist Bill Chen. 
     - I got excited about AI and joined [UCLA’s vision lab](http://vision.ucla.edu/people.html) in 2012.
     - A year in, I saw optimization was everywhere. I just understood nothing about it.
