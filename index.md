@@ -75,6 +75,9 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[Spectral norm bound for the product of random Fourier-Walsh matrices](https://arxiv.org/abs/2504.03148)
+Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
+Manuscript (2025)
 
 [Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth](https://arxiv.org/abs/2409.19791)
 Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
