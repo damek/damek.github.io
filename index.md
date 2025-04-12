@@ -50,7 +50,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
     - I took algebra with [Daqing Wan](https://www.math.uci.edu/~dwan/) in 2009; we worked on a [commutative algebra problem](http://www.ams.org/journals/proc/2011-139-03/S0002-9939-2010-10620-2/).
 - I went to grad school at UCLA for pure math in 2010. I loved [Algebra](https://link.springer.com/book/10.1007/978-1-4613-0041-0).
     - I learned ML was a thing in 2012 and took [learning from data](https://work.caltech.edu/telecourse) with set-theorist Bill Chen. 
-    - I got excited about AI and joined [UCLA’s vision lab](http://vision.ucla.edu/people.html) in 2012.
+    - I got excited about AI and joined [UCLA's vision lab](http://vision.ucla.edu/people.html) in 2012.
     - A year in, I saw optimization was everywhere. I just understood nothing about it.
     - I read [Nesterov's book](https://www.amazon.com/Introductory-Lectures-Convex-Optimization-Applied/dp/1402075537) in 2013. I tried to prove each theorem before reading the proof.
     - I took Wotao's course in F' 2013, and [solved an open problem](https://link.springer.com/chapter/10.1007/978-3-319-41589-5_4) he mentioned in class.
@@ -74,6 +74,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 [Preprints](#preprints) | [Conference papers](#conference-papers) | [Journal papers](#journal-papers) | [Book chapters](#book-chapters) | [Expository](#expository) | [Reports](#technical-reports)
 
 ### Preprints
+
+[Online Covariance Estimation in Nonsmooth Stochastic Approximation](https://arxiv.org/abs/2502.05305)
+Liwei Jiang, Abhishek Roy, Krishna Balasubramanian, Damek Davis, Dmitriy Drusvyatskiy, Sen Na
+Manuscript (2025)
 
 [Spectral norm bound for the product of random Fourier-Walsh matrices](https://arxiv.org/abs/2504.03148)
 Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
