@@ -64,7 +64,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
     - I speak to them more than anyone else I know.
     - If LLMs help me do math, I'll be happy. I think they will, but key ideas are likely missing.
     - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in Lean. 
-        - As of Jan 2025, no LLM can complete the proof.
+        - As of April 2025, no LLM can complete the proof.
 
 
 Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
