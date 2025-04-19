@@ -36,13 +36,12 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - [Ben Grimmer](https://www.ams.jhu.edu/~grimmer/) → Johns Hopkins University (Assistant Professor)
 
 
-
-
 **You may not know that...** 
 - I started [programming](https://x.com/damekdavis/status/1627803139830317056) in html in '98. I made a Pokémon website.
 - I took up guitar In '99, played in bands, wrote and recorded music regularly into college. 
     - I played banjo from 2010-2012, mainly in clawhammer style.
     - I mostly play piano, now. I like to sing and sight read chord charts off of ultimate guitar.
+- I worked throughout highschool, cleaning tables, bagging groceries, and making coffees. 
 - In 2006, I applied to one college, UC Irvine. 
     - I could only afford one application fee and it was close to the beach.
     - I intended to study music and lived in the arts dorm. 
