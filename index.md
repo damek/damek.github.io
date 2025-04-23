@@ -23,7 +23,6 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - Developed the concept of a strict saddle point in nonsmooth optimization and showed [proximal methods](https://arxiv.org/abs/1912.07146) and [stochastic subgradient methods](https://arxiv.org/abs/2108.11832) avoid them.
 
 
-
 **Students.** I've advised 5 PhD students. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting. I am an active advisor--students who work best with me tend to have energy levels that match or exceed mine.
 
 
