@@ -27,9 +27,8 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 **Students.** I've advised 5 PhD students. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting. I am an active advisor--students who work best with me tend to have energy levels that match or exceed mine.
 
 
-*Current*: [Tao Jiang](https://taotolojiang.github.io/) (Cornell) → Meta (Postdoc) 
-
 *Graduated PhD Students from Cornell*: 
+- [Tao Jiang](https://taotolojiang.github.io/) (Cornell) → Meta (Postdoc) 
 - [Liwei Jiang](https://liwei-jiang97.github.io/) →  Purdue (Assistant Professor)
 - [Vasilis Charisopoulos](https://vchariso.gitlab.io/) → UW, Seattle (Assistant Professor)
 - [Mateo Díaz](https://mateodd25.github.io/) → Johns Hopkins University (Assistant Professor)
