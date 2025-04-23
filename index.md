@@ -28,7 +28,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 
 
 *Graduated PhD Students from Cornell*: 
-- [Tao Jiang](https://taotolojiang.github.io/) (Cornell) → Meta (Postdoc) 
+- [Tao Jiang](https://taotolojiang.github.io/) → Meta (Postdoc) 
 - [Liwei Jiang](https://liwei-jiang97.github.io/) →  Purdue (Assistant Professor)
 - [Vasilis Charisopoulos](https://vchariso.gitlab.io/) → UW, Seattle (Assistant Professor)
 - [Mateo Díaz](https://mateodd25.github.io/) → Johns Hopkins University (Assistant Professor)
