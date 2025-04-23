@@ -46,7 +46,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
     - I could only afford one application fee and it was close to the beach.
     - I intended to study music and lived in the arts dorm. 
     - I took calculus my first semester and realized I loved math.
-    - I took algebra with [Daqing Wan](https://www.math.uci.edu/~dwan/) in 2009; we worked on a [commutative algebra problem](http://www.ams.org/journals/proc/2011-139-03/S0002-9939-2010-10620-2/).
+    - I took [algebra](https://www.math.uci.edu/~dwan/230-08) with [Daqing Wan](https://www.math.uci.edu/~dwan/) in 2009; we worked on a [commutative algebra problem](http://www.ams.org/journals/proc/2011-139-03/S0002-9939-2010-10620-2/).
 - I went to grad school at UCLA for pure math in 2010. I loved [Algebra](https://link.springer.com/book/10.1007/978-1-4613-0041-0).
     - I learned ML was a thing in 2012 and took [learning from data](https://work.caltech.edu/telecourse) with set-theorist Bill Chen. 
     - I got excited about AI and joined [UCLA's vision lab](http://vision.ucla.edu/people.html) in 2012.
