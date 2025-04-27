@@ -64,7 +64,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
         - As of April 2025, no LLM can complete the proof.
 
 
-Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to research questions, teaching, or other professional inquiries. 
+Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to consulting, research questions, teaching, or other professional inquiries. 
 
 ## Publications
 
