@@ -11,7 +11,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 
 **Research Interests.** Optimization and machine learning.
 
-**Teaching.** I teach theory and practice of optimization and machine learning.
+**Teaching.** I teach theory and practice of optimization and machine learning, e.g.,
 - [Optimization in PyTorch](STAT-4830) 
 - [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
 
