@@ -39,3 +39,19 @@ relative_links:
 skip_check_links:
   - STAT-4830
   - STAT-4830/*
+
+# …your existing config…
+
+collections:
+  random:
+    output: true          # render each file
+    permalink: /random/:slug/  # short, mnemonic URLs like /u/gelu-vs-sigmoid/
+
+defaults:                 # make them inherit your default.html wrapper
+  -
+    scope:
+      path: "_random"
+      type: random
+    values:
+      layout: random_note
+      title: ""           # optional, you can set per-file

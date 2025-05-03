@@ -1,0 +1,37 @@
+{% comment %}
+next (newer) on the left, previous (older) on the right
+title truncated to 6 words
+{% endcomment %}
+
+{% assign notes = site.random | sort: "date" | reverse %}
+{% assign total = notes | size %}
+
+{% for n in notes %}
+  {% if n.url == page.url %}
+    {% assign idx = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign newer_idx = idx | minus: 1 %}
+{% assign older_idx = idx | plus: 1 %}
+
+<nav class="post-nav">
+  {% if newer_idx >= 0 %}
+    {% assign newer = notes[newer_idx] %}
+    <a class="nav-note next-note"
+       href="{{ newer.url }}"
+       title="{{ newer.title | default:newer.slug }}">
+      ← {{ newer.title | default:newer.slug | truncatewords:6,'…' }}
+    </a>
+  {% endif %}
+
+  {% if older_idx < total %}
+    {% assign older = notes[older_idx] %}
+    <a class="nav-note prev-note"
+       href="{{ older.url }}"
+       title="{{ older.title | default:older.slug }}">
+      {{ older.title | default:older.slug | truncatewords:6,'…' }} →
+    </a>
+  {% endif %}
+</nav>

@@ -1,0 +1,16 @@
+<header class="rand-header">
+  <div class="rand-inner">
+    <!-- first line: site navigation -->
+    <nav class="rand-links">
+      <a href="{{ '/' | relative_url }}">home</a> |
+      <a href="{{ '/random/' | relative_url }}">index</a> |
+      <a href="{{ '/random/all/' | relative_url }}">view&nbsp;all</a> |
+      <a href="{{ '/random/pick/' | relative_url }}"">random&nbsp;pick</a>
+    </nav>
+
+    <!-- second line: prev / next (only on individual notes) -->
+    {% if page.collection == 'random' %}
+      {% include next-random.html %}
+    {% endif %}
+  </div>
+</header>

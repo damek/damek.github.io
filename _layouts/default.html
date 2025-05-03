@@ -191,10 +191,90 @@
     min-height: 44px;
     min-width: 44px;
   }
+/* ── floating header for random pages ─────────────────────────── */
+.rand-header{
+  position:fixed;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:650px;           /* same width as main text column */
+  max-width:90%;         /* shrink gracefully on phones */
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(6px);
+  z-index:1000;
+  font-size:14px;
+  padding:.6em 1em .4em;
+  text-align:left;
+  border-bottom:none;    /* no faint rule */
+}
+
+/* first-line nav  */
+.rand-links{ white-space:nowrap; }
+
+/* second-line: prev / next row */
+.post-nav{ display:flex; margin-top:.25em; }
+
+/* newer link → left edge */
+.next-note{
+  margin-right:auto;                 /* push right side away */
+  color:var(--accent-color);
+  text-decoration:none;
+  max-width:45%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* older link → right edge */
+.prev-note{
+  margin-left:auto;                  /* push left side away */
+  color:var(--accent-color);
+  text-decoration:none;
+  max-width:45%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.rand-header a:hover,
+.nav-note:hover{ text-decoration:none; }
+
+/* ── push content down *only* when the random bar is present ── */
+.rand-header + .wrapper{ padding-top:90px; }   /* desktop */
+@media (max-width:480px){
+  .rand-header + .wrapper{ padding-top:110px; }/* mobile: links may wrap */
+}
+
+/* ensure in-page anchor jumps clear the fixed bar */
+h1,h2,h3,h4,h5,h6{ scroll-margin-top:110px; }
+
+
 </style>
   </head>
+    <!-- Add MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>  
   <body>
+    {% if page.collection == 'random' or page.url contains '/random/' %}
+    {% include random-header.html %}
+    {% endif %}  
+
     <div class="wrapper">
+
       {{ content }}
 
       <section>

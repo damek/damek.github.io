@@ -4,7 +4,7 @@ title: Damek Davis
 ---
 # Damek Davis
 
-[Publications](#publications) | [Research](research.html) | [CV](cv.pdf) | [X](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) 
+[Papers](#publications) | [Research](research.html) | [CV](cv.pdf) | [X](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Google Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) | [Random](random)
 
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program). I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
@@ -32,6 +32,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - [Mateo Díaz](https://mateodd25.github.io/) → Johns Hopkins University (Assistant Professor)
 - [Ben Grimmer](https://www.ams.jhu.edu/~grimmer/) → Johns Hopkins University (Assistant Professor)
 
+**Random.** I sporadically post random notes [here](random).
 
 **You may not know that...** 
 - I started [programming](https://x.com/damekdavis/status/1627803139830317056) in html in '98. I made a Pokémon website.
