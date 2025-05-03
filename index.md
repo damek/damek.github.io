@@ -71,10 +71,6 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
-[Online Covariance Estimation in Nonsmooth Stochastic Approximation](https://arxiv.org/abs/2502.05305)
-Liwei Jiang, Abhishek Roy, Krishna Balasubramanian, Damek Davis, Dmitriy Drusvyatskiy, Sen Na
-Manuscript (2025)
-
 [Spectral norm bound for the product of random Fourier-Walsh matrices](https://arxiv.org/abs/2504.03148)
 Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
 Manuscript (2025)
@@ -85,6 +81,10 @@ Manuscript (2024)
 
 
 ###  Conference papers 
+
+[Online Covariance Estimation in Nonsmooth Stochastic Approximation](https://arxiv.org/abs/2502.05305)
+Liwei Jiang, Abhishek Roy, Krishna Balasubramanian, Damek Davis, Dmitriy Drusvyatskiy, Sen Na
+In Conference on Learning Theory (2025)
 
 [Aiming towards the minimizers: fast convergence of SGD for overparametrized problems](https://arxiv.org/abs/2306.02601)
 Chaoyue Liu, Dmitriy Drusvyatskiy, Mikhail Belkin, Damek Davis, Yi-An Ma
