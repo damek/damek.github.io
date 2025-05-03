@@ -9,12 +9,11 @@ title: Damek Davis
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program). I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
 
+**Research Interests.** Optimization and machine learning.
+
 **Teaching.** I teach theory and practice of optimization and machine learning.
 - [Optimization in PyTorch](STAT-4830) 
 - [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
-
-
-**Research Interests.** Optimization and machine learning.
 
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
 
