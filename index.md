@@ -11,9 +11,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 
 **Research Interests.** Optimization and machine learning.
 
-**Teaching.** I teach theory and practice of optimization and machine learning, e.g.,
-- [Optimization in PyTorch](STAT-4830) 
-- [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
+**Teaching.** I teach theory and practice of optimization and machine learning. I wrote lecture notes for [Optimization in PyTorch](STAT-4830) and [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
 
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
 
