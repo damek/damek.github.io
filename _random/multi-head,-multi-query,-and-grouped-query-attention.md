@@ -9,7 +9,7 @@ X\in\mathbb{R}^{T\times d},\qquad d = H\,d_k,\qquad
 {\rm softmax}(S)_{ij} = \exp(S_{ij}) \big/ \textstyle\sum_{m}\exp(S_{im}).
 $$
 
-##  (A) Multi-Head Attention (MHA) 
+###   multi-head attention (mha) 
 the total number of K/V heads is H
 $$
 \begin{aligned}
@@ -22,7 +22,7 @@ $$
 \end{aligned}
 $$
 
-##  (B) Multi-Query Attention (MQA)
+###  multi-query attention (mqa)
 the total number of K/V heads is 1
 $$
 \begin{aligned}
@@ -34,7 +34,7 @@ $$
 \end{aligned}
 $$
 
-##  (C) Grouped-Query Attention (GQA)
+##   grouped-query attention (gqa)
 the total number of K/V heads is G, where 1 < G < H
 $$
 \begin{aligned}
@@ -49,6 +49,5 @@ $$
 \end{aligned}
 $$
 
-##  (D) Purpose.
-smaller #K/V heads $\;\Rightarrow\;$ smaller [KV-cache](../what-is-kv-cache) $\;\Rightarrow\;$ lower memory-bandwidth during autoregressive decoding, hence higher tokens per second.  
-quality degrades monotonically with the reduction factor; $G$ is a hardware–quality dial.
+###  purpose
+smaller #K/V heads $\;\Rightarrow\;$ smaller [KV-cache](../what-is-kv-cache) $\;\Rightarrow\;$ lower memory-bandwidth during autoregressive decoding, hence higher tokens per second. quality degrades monotonically with the reduction factor; $G$ is a hardware–quality dial.

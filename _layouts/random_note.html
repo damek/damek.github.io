@@ -1,8 +1,16 @@
 ---
-layout: default          # inherit everything
+layout: default          # inherits wrapper, floating bar, etc.
 ---
-{% if page.title %}
-  <h1 class="note-title">{{ page.title }}</h1>
-{% endif %}
+
+{% capture last_updated %}
+  {{ page.updated | default:page.date }}
+{% endcapture %}
+
+<h1 class="note-title">{{ page.title }}</h1>
+
+<p class="meta-line">
+  last updated:
+  <time>{{ last_updated | date: "%Y-%m-%d" }}</time>
+</p>
 
 {{ content }}

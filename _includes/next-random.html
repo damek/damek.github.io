@@ -1,10 +1,9 @@
 {% comment %}
-next (newer) on the left, previous (older) on the right
-title truncated to 6 words
+newer (next) on left, older (prev) on right
+ordering matches /random/ index
 {% endcomment %}
 
-{% assign notes = site.random | sort: "date" | reverse %}
-{% assign total = notes | size %}
+{% assign notes = site.random | sort:"date" | sort:"updated" | reverse %}
 
 {% for n in notes %}
   {% if n.url == page.url %}
@@ -13,25 +12,25 @@ title truncated to 6 words
   {% endif %}
 {% endfor %}
 
-{% assign newer_idx = idx | minus: 1 %}
-{% assign older_idx = idx | plus: 1 %}
+{% assign newer_idx = idx | minus:1 %}
+{% assign older_idx = idx | plus:1 %}
 
 <nav class="post-nav">
   {% if newer_idx >= 0 %}
     {% assign newer = notes[newer_idx] %}
     <a class="nav-note next-note"
        href="{{ newer.url }}"
-       title="{{ newer.title | default:newer.slug }}">
-      ← {{ newer.title | default:newer.slug | truncatewords:6,'…' }}
+       title="{{ newer.title }}">
+      ← {{ newer.title | truncatewords:6,'…' }}
     </a>
   {% endif %}
 
-  {% if older_idx < total %}
+  {% if older_idx < notes.size %}
     {% assign older = notes[older_idx] %}
     <a class="nav-note prev-note"
        href="{{ older.url }}"
-       title="{{ older.title | default:older.slug }}">
-      {{ older.title | default:older.slug | truncatewords:6,'…' }} →
+       title="{{ older.title }}">
+      {{ older.title | truncatewords:6,'…' }} →
     </a>
   {% endif %}
 </nav>

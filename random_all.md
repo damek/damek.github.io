@@ -6,16 +6,14 @@ permalink: /random/all/
 
 ## random notes — full feed  
 
-{% assign notes = site.random | sort: "date" | reverse %}
+{% assign notes = site.random | sort: "date" | sort: "updated" | reverse %}
 {% for n in notes %}
 ---
-
-### {{ n.title | default: n.slug }}  
-<time datetime="{{ n.date }}">{{ n.date | date: "%Y-%m-%d" }}</time>
+### {{ n.title }}
+<time>{{ n.updated | default:n.date | date: "%Y-%m-%d" }}</time>
 
 {::nomarkdown}
 {{ n.content }}
 {:/nomarkdown}
-
 
 {% endfor %}
