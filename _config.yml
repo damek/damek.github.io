@@ -55,3 +55,5 @@ defaults:                 # make them inherit your default.html wrapper
     values:
       layout: random_note
       title: ""           # optional, you can set per-file
+
+static_files: [ "_random/figures" ]

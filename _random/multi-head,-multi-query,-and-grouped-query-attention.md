@@ -34,7 +34,7 @@ $$
 \end{aligned}
 $$
 
-##   grouped-query attention (gqa)
+###   grouped-query attention (gqa)
 the total number of K/V heads is G, where 1 < G < H
 $$
 \begin{aligned}
