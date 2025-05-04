@@ -191,6 +191,9 @@
     min-height: 44px;
     min-width: 44px;
   }
+  /* always reserve vertical scrollbar → stop header shift */
+html{ overflow-y: scroll; }   /* keeps layout stable even when page is short */
+
 /* ── floating header for random pages ─────────────────────────── */
 .rand-header{
   position:fixed;
