@@ -5,7 +5,7 @@ date: 2025-05-04
 
 ## tldr
 
-in the worst case, adapting models based on test set performance [exponentially inflates generalization bounds](https://x.com/damekdavis/status/1918019744348639453); the [ladder mechanism](https://arxiv.org/pdf/1502.04585) shows how to avoid this, if we precommit to an adaptation rule. 
+in the worst case, adapting models based on test set performance [exponentially inflates generalization bounds](https://x.com/damekdavis/status/1918019744348639453); the [ladder mechanism](https://arxiv.org/pdf/1502.04585) shows how to avoid this if we precommit to an adaptation rule. 
 
 ## the problem
 machine learning competitions use leaderboards to rank participants. participants submit models $f_1, \dots, f_k$ iteratively. they receive scores $R_1, \dots, R_k$ based on performance on a held-out test set $S$. participants use this feedback to create subsequent submissions $f_t$. this interaction creates an adaptive data analysis scenario where the analyst's choices depend on information derived from the test set $S$. this adaptivity poses a challenge: standard statistical guarantees about model performance can fail. the empirical loss $R_S(f_t)$ computed on $S$ might not accurately reflect the true generalization loss $R_D(f_t)$, because $f_t$'s dependence on $S$ through past scores means $f_t$ is not independent of $S$. participants might overfit the holdout set, leading to unreliable leaderboards. this work investigates this problem and introduces the ladder mechanism to maintain leaderboard reliability under such adaptive analysis.
