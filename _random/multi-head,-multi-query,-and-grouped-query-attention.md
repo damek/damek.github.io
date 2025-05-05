@@ -1,6 +1,7 @@
 ---
 title: "multi head, multi query, and grouped query attention"
 date: 2025-05-03
+description: "different ways to do attention"
 ---
 
 

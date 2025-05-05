@@ -1,6 +1,7 @@
 ---
 title: "weak baselines"
 date: 2025-05-04
+description: "be careful with empirical claims"
 ---
 
 - enjoyed this post on [weak baselines](https://x.com/lateinteraction/status/1918798801982160935). 

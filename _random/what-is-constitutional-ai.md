@@ -1,6 +1,7 @@
 ---
 title: "what is constitutional AI?"
 date: 2025-05-03
+description: "anthropic's way to do rlhf without the 'h'"
 ---
 
 [constitutional ai](https://arxiv.org/pdf/2212.08073) trains harmless ai using ai feedback, guided by principles (a 'constitution'), instead of human harm labels.

@@ -258,6 +258,60 @@ h1,h2,h3,h4,h5,h6{ scroll-margin-top:110px; }
   margin-bottom:1em;
 }
 
+.note-desc,
+.index-desc{
+  font-style:italic;
+  color:#666;
+  margin:.6em 0 1em 0;
+  border-left:4px solid var(--accent-color);
+  padding-left:1em;
+}
+.index-desc{ font-size:.9em; }
+/* ── tidy note list ───────────────────────────────────────────── */
+.notes{                 /* remove default bullets */
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.note-item{
+  margin:2.2em 0;      /* relaxed vertical rhythm */
+}
+
+.note-title{
+  color:var(--accent-color);
+  font-weight:500;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.note-title:hover{ text-decoration:none; }
+
+.note-date{            /* subtle, non-invasive date */
+  font-size:.8em;
+  color:#999;
+  margin-left:.6em;
+}
+
+/* tighter, slightly deeper quote block */
+.note-desc{
+  margin:-.25em 0 0 2.2em;           /* closer to the title */
+  padding-left:.75em;         /* extra indent */
+  border-left:3px solid var(--accent-color);
+  font-style:italic;
+  color:#555;
+}
+
+/* optional: slightly tighter on very small screens */
+@media(max-width:480px){
+  .note-item{ margin:1.8em 0; }
+}
+/* plain heading color on individual note pages */
+h1.note-title{
+  color: var(--base-text-color);   /* same grey you use for body text */
+}
+
+
 </style>
   </head>
     <!-- Add MathJax -->
