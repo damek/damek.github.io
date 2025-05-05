@@ -15,3 +15,35 @@ layout: default          # inherits wrapper, floating bar, etc.
 
 
 {{ content }}
+
+  
+  {% assign slug_with  = page.url | relative_url %}                 
+  {% assign len        = slug_with | size %}
+  {% assign len_minus1 = len | minus: 1 %}
+  {% assign slug_noend = slug_with | slice: 0, len_minus1 %}        
+  
+  {% assign backlinks = "" | split:"" %}
+  
+  {% for n in site.random %}
+    {% if n.url != page.url %}
+      {% assign html = n.content %}
+  
+      {%- comment -%} skip nav-note links {%- endcomment -%}
+      {% assign html = html | replace: 'class="nav-note"', '' %}
+  
+      {% if html contains slug_with or html contains slug_noend %}
+        {% assign backlinks = backlinks | push: n %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  
+  {% if backlinks.size > 0 %}
+  <hr>
+  <h3 id="backlinks">links to this note</h3>
+  <ul class="backlinks">
+    {% for b in backlinks %}
+      <li><a href="{{ b.url }}">{{ b.title }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+    

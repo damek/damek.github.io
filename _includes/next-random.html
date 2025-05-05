@@ -27,10 +27,9 @@ ordering matches /random/ index
 
   {% if older_idx < notes.size %}
     {% assign older = notes[older_idx] %}
-    <a class="nav-note prev-note"
-       href="{{ older.url }}"
-       title="{{ older.title }}">
-      {{ older.title | truncatewords:6,'…' }} →
+    <a class="nav-note prev-note" href="{{ older.url }}">
+      <span class="nav-text">{{ older.title | truncatewords:6,'…' }}</span>
+      <span class="arrow" aria-hidden="true">→</span>
     </a>
   {% endif %}
 </nav>

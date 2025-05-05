@@ -248,6 +248,19 @@ html{ overflow-y: scroll; }   /* keeps layout stable even when page is short */
   .rand-header + .wrapper{ padding-top:110px; }/* mobile: links may wrap */
 }
 
+.nav-note{
+  display:inline-flex;        /* keeps arrow outside the truncation area */
+  align-items:center;
+  max-width:45%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.nav-text{ overflow:hidden; text-overflow:ellipsis; }  /* the part that can shrink */
+
+.arrow{ flex:none; margin-left:.25em; }                 /* always visible */
+
 /* ensure in-page anchor jumps clear the fixed bar */
 h1,h2,h3,h4,h5,h6{ scroll-margin-top:110px; }
 

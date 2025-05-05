@@ -51,4 +51,4 @@ $$
 $$
 
 ###  purpose
-smaller #K/V heads $\;\Rightarrow\;$ smaller [KV-cache](../what-is-kv-cache) $\;\Rightarrow\;$ lower memory-bandwidth during autoregressive decoding, hence higher tokens per second. quality degrades monotonically with the reduction factor; $G$ is a hardware–quality dial.
+smaller #K/V heads $\;\Rightarrow\;$ smaller [KV-cache](/random/what-is-kv-cache) $\;\Rightarrow\;$ lower memory-bandwidth during autoregressive decoding, hence higher tokens per second. quality degrades monotonically with the reduction factor; $G$ is a hardware–quality dial.
