@@ -1,14 +1,13 @@
 ---
 layout: default
-title: "random notes"
+title: "Notes"
 permalink: /random/
 ---
 
 
 
-# random notes
 
-this is an attempt to collate some of the random notes i write while i'm doing research or scrolling online. many times they are small summaries of papers. other times they're a concept i hear about again and again and eventually decide to investigate. maybe it will be useful to someone else? you shouldn't take them too seriously. you should also know that i've likely also collaborated with a language model to help me write them in a succinct way. 
+This is an attempt to collate some of the notes I write while I'm doing research or scrolling online. Many times they are small summaries of papers. Other times they're a concept I hear about again and again and eventually decide to investigate. Maybe it will be useful to someone else? You shouldn't take them too seriously. You should also know that I've likely also collaborated with a language model to help me write them in a succinct way.
 
 
 {% assign notes = site.random | sort:"date" | sort:"updated" | reverse %}

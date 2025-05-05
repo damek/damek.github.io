@@ -1,7 +1,7 @@
 ---
-title: "multi head, multi query, and grouped query attention"
+title: "Multi head, multi query, and grouped query attention"
 date: 2025-05-03
-description: "different ways to do attention"
+description: "Different ways to do attention"
 ---
 
 
@@ -10,8 +10,8 @@ X\in\mathbb{R}^{T\times d},\qquad d = H\,d_k,\qquad
 {\rm softmax}(S)_{ij} = \exp(S_{ij}) \big/ \textstyle\sum_{m}\exp(S_{im}).
 $$
 
-###   multi-head attention (mha) 
-the total number of K/V heads is H
+###  Multi-head attention (MHA) 
+The total number of K/V heads is H
 $$
 \begin{aligned}
 (1)\;& Q_h = X W_{Q,h},\; K_h = X W_{K,h},\; V_h = X W_{V,h}; \\[2pt]
@@ -23,8 +23,8 @@ $$
 \end{aligned}
 $$
 
-###  multi-query attention (mqa)
-the total number of K/V heads is 1
+###  Multi-query attention (MQA)
+The total number of K/V heads is 1
 $$
 \begin{aligned}
 (1)\;& Q_h = X W_{Q,h},\qquad K = X W_K,\qquad V = X W_V; \\[2pt]
@@ -35,8 +35,8 @@ $$
 \end{aligned}
 $$
 
-###   grouped-query attention (gqa)
-the total number of K/V heads is G, where 1 < G < H
+###  Grouped-query attention (GQA)
+The total number of K/V heads is G, where 1 < G < H
 $$
 \begin{aligned}
 (1)\;& \text{partition heads into groups }g=1,\dots,G\ \text{of size }H/G; \\[2pt]
@@ -50,5 +50,5 @@ $$
 \end{aligned}
 $$
 
-###  purpose
-smaller #K/V heads $\;\Rightarrow\;$ smaller [KV-cache](/random/what-is-kv-cache) $\;\Rightarrow\;$ lower memory-bandwidth during autoregressive decoding, hence higher tokens per second. quality degrades monotonically with the reduction factor; $G$ is a hardware–quality dial.
+###  Purpose
+Smaller #K/V heads $\;\Rightarrow\;$ smaller [KV-cache](/random/what-is-kv-cache) $\;\Rightarrow\;$ lower memory-bandwidth during autoregressive decoding, hence higher tokens per second. Quality degrades monotonically with the reduction factor; $G$ is a hardware–quality dial.

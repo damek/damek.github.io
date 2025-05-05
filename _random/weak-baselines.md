@@ -1,20 +1,20 @@
 ---
-title: "weak baselines"
+title: "Weak baselines"
 date: 2025-05-04
-description: "be careful with empirical claims"
+description: "Be careful with empirical claims"
 ---
 
-- enjoyed this post on [weak baselines](https://x.com/lateinteraction/status/1918798801982160935). 
+- Enjoyed this post on [weak baselines](https://x.com/lateinteraction/status/1918798801982160935). 
 
 ![weak baselines](/assets/figures/weak-baselines.png)
 
-- been making [similar points myself](https://x.com/damekdavis/status/1911512233491964219).
+- Been making [similar points myself](https://x.com/damekdavis/status/1911512233491964219).
 
 ![benchmarking](/assets/figures/benchmarking-is-hard.png)
 
-- i emphasized in my class on [benchmarking optimizers](https://damekdavis.com/STAT-4830/section/10/notes.md), that one shouldn't try to make such empirical claims unless one has the tuning budget of google. 
-- [my lecture](https://damekdavis.com/STAT-4830/section/11/notes.md) on the [deep learning tuning playbook](https://github.com/google-research/tuning_playbook) discussed how to choose  an initial baseline and then iteratively improve it: "hill climbing on baselines." 
-- theory papers should focus on finding the strongest baseline, too. if you look into the optimization literature, one might be surprised by how many do not improve any quantifiable metric, but instead develop a more "flexible and general method." this is a problem with methods driven research. some better ways to set the baseline in theory of optimization include showing your method provably:
+- I emphasized in my class on [benchmarking optimizers](https://damekdavis.com/STAT-4830/section/10/notes.md), that one shouldn't try to make such empirical claims unless one has the tuning budget of Google. 
+- [My lecture](https://damekdavis.com/STAT-4830/section/11/notes.md) on the [deep learning tuning playbook](https://github.com/google-research/tuning_playbook) discussed how to choose  an initial baseline and then iteratively improve it: "hill climbing on baselines." 
+- Theory papers should focus on finding the strongest baseline, too. If you look into the optimization literature, one might be surprised by how many do not improve any quantifiable metric, but instead develop a more "flexible and general method." This is a problem with methods driven research. Some better ways to set the baseline in theory of optimization include showing your method provably:
     - has a larger initialization region
     - accelerates over sota in a neighborhood of the solution
     - "works" for a class of problems where no principled method worked before

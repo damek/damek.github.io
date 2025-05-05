@@ -1,7 +1,7 @@
 ---
-title: "what is kv cache?"
+title: "What is kv cache?"
 date: 2025-05-03
-description: "a simple concept with a complicated name"
+description: "A simple concept with a complicated name"
 ---
 
 $$
