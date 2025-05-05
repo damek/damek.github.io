@@ -1,6 +1,7 @@
 ---
 title: "What is constitutional AI?"
 date: 2025-05-03
+tags: [ai-alignment]
 description: "Anthropic's way to do RLHF without the 'H'"
 ---
 

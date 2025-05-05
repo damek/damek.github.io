@@ -1,6 +1,7 @@
 ---
 title: "The ladder mechanism for ml competitions"
 date: 2025-05-04
+tags: [adaptive-data-analysis, benchmarks]
 description: "How to adapt models to the test set without exponentially inflating generalization bounds"
 ---
 

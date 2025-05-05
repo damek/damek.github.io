@@ -1,6 +1,7 @@
 ---
 title: "Adaptive data analysis via subsampling"
 date: 2025-05-05
+tags: [adaptive-data-analysis]
 description: "A general recipe for building estimators based on adaptive queries"
 ---
 

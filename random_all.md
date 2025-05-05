@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "random notes – view all"
+title: "Notes – view all"
 permalink: /random/all/
 ---
 
-## random notes — full feed  
+## Notes — full feed  
 
 {% assign notes = site.random | sort: "date" | sort: "updated" | reverse %}
 {% for n in notes %}

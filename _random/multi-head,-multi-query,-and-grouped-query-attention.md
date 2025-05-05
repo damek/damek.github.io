@@ -1,6 +1,7 @@
 ---
 title: "Multi head, multi query, and grouped query attention"
 date: 2025-05-03
+tags: [transformers]
 description: "Different ways to do attention"
 ---
 

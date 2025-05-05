@@ -1,6 +1,7 @@
 ---
 title: "Weak baselines"
 date: 2025-05-04
+tags: [half-baked]
 description: "Be careful with empirical claims"
 ---
 

@@ -17,6 +17,15 @@ This is an attempt to collate some of the notes I write while I'm doing research
   <li class="note-item">
     <a class="note-title" href="{{ n.url }}">{{ n.title }}</a>
     <span class="note-date">{{ n.updated | default:n.date | date: "%Y-%m-%d" }}</span>
+
+    {% if n.tags %}
+      <span class="chips">
+        {% for t in n.tags %}
+          <a href="/random/tags/#{{ t | slugify }}">{{ t }}</a>{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      </span>
+    {% endif %}
+
     {% if n.description %}
       <blockquote class="note-desc">{{ n.description }}</blockquote>
     {% endif %}
