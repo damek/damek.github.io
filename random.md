@@ -7,7 +7,7 @@ permalink: /random/
 # Notes
 
 
-This is an attempt to collate notes I write while I'm doing research or scrolling online. Expect small summaries of papers / technical results and half-baked thoughts. Maybe it will be useful to someone else? You shouldn't take them too seriously. You should also know that I may have collaborated with a language model to help me organize my thoughts and decide what not to write.
+This is an attempt to collate notes I write while I'm doing research or scrolling online. Expect small summaries of papers / technical results and half-baked thoughts. Maybe it will be useful to you? You shouldn't take them too seriously. You should also know that I may have collaborated with a language model to help me organize my thoughts and decide what not to write.
 
 {% assign notes = site.random | sort:"date" | sort:"updated" | reverse %}
 
