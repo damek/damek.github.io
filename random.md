@@ -9,25 +9,37 @@ permalink: /random/
 
 This is an attempt to collate notes I write while I'm doing research or scrolling online. Expect small summaries of papers / technical results and half-baked thoughts. Maybe it will be useful to you? You shouldn't take them too seriously. You should also know that I may have collaborated with a language model to help me organize my thoughts and decide what not to write.
 
-{% assign notes = site.random | sort:"date" | sort:"updated" | reverse %}
+{% assign updated_notes = site.random
+     | where_exp:"d","d.updated"
+     | sort:"updated" | reverse %}
+
+{% assign fresh_notes = site.random
+     | where:"updated", nil
+     | sort:"date" | reverse %}
+
+{% assign notes = updated_notes | concat: fresh_notes %}
 
 <ul class="notes">
 {% for n in notes %}
-  <li class="note-item">
+<li class="note-item">
+  <div class="note-row">
+    <span class="note-date">{{ n.updated | default:n.date | date:"%Y-%m-%d" }}</span>
     <a class="note-title" href="{{ n.url }}">{{ n.title }}</a>
-    <span class="note-date">{{ n.updated | default:n.date | date: "%Y-%m-%d" }}</span>
+  </div>
 
-    {% if n.tags %}
-      <span class="chips">
-        {% for t in n.tags %}
-          <a href="/random/tags/#{{ t | slugify }}">{{ t }}</a>{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      </span>
-    {% endif %}
+  {% if n.description %}
+    <blockquote class="note-desc">{{ n.description }}</blockquote>
+  {% endif %}
 
-    {% if n.description %}
-      <blockquote class="note-desc">{{ n.description }}</blockquote>
-    {% endif %}
-  </li>
+  {% if n.tags %}
+    <div class="chips">
+      {% for t in n.tags %}
+        <a href="/random/tags/#{{ t | slugify }}">{{ t }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</li>
+
+
 {% endfor %}
 </ul>

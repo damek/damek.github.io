@@ -292,22 +292,34 @@ h1,h2,h3,h4,h5,h6{ scroll-margin-top:110px; }
 }
 
 .note-item{
-  margin:2.2em 0;      /* relaxed vertical rhythm */
+  margin:0em 0;      /* relaxed vertical rhythm */
+}
+/* .note-item:not(:last-child){border-bottom:1px solid #f2f2f2; padding-bottom:0em; padding-top:1.5em;} */
+
+.note-item {
+  padding: 1em 0 1.5em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
 }
 
-.note-title{
-  color:var(--accent-color);
-  font-weight:500;
-  text-decoration:none;
-  display:inline-block;
+
+/* Make red titles slightly larger with better spacing */
+.note-title {
+  font-size: 1.2em;
+  margin: 0.3em 0 0.6em;
+  transition: color 0.2s ease;
+  line-height: 1.3;
+  display: block;
 }
 
 .note-title:hover{ text-decoration:none; }
 
-.note-date{            /* subtle, non-invasive date */
-  font-size:.8em;
-  color:#999;
-  margin-left:.6em;
+.note-date {
+  color: #999;
+  font-size: 0.85em;
+  margin-bottom: 0.3em;
+  display: block;
 }
 
 /* tighter, slightly deeper quote block */
@@ -317,6 +329,28 @@ h1,h2,h3,h4,h5,h6{ scroll-margin-top:110px; }
   border-left:3px solid var(--accent-color);
   font-style:italic;
   color:#555;
+}
+
+/* Fix the blockquote styling for note descriptions */
+blockquote, .note-desc {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 0.9em;
+  margin: 0.6em 0 1em 0.5em;
+  color: #555;
+  font-style: italic;
+  line-height: 1.4;
+  background-color: #fcfcfc;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent-color);
+  background-color: #fafafa;
+  padding: 0.7em 1em;
+  margin: 0.8em 0 1em 0.5em;
+  color: #555;
+  font-style: italic;
+  line-height: 1.4;
+  border-radius: 0 3px 3px 0;
 }
 
 /* optional: slightly tighter on very small screens */
@@ -337,10 +371,18 @@ h1.note-title{
 .backlinks li{ margin:.3em 0; }
 .backlinks a{ color:var(--accent-color); text-decoration:none; }
 
-.chips a{
+/* chips now sit on their own line, flush left */
+.chips{
+  margin:2em 0 0em 0;    /* top, right, bottom, left */
+  display:flex;
+  flex-wrap:wrap;
+  gap:.25em .6em;          /* row gap, column gap */
   font-size:.75em;
-  color:#999;
-  margin-left:.4em;
+  color:#666;
+}
+
+.chips a{
+  color:#666;
   text-decoration:none;
 }
 
@@ -349,6 +391,30 @@ h1.note-title{
   .note-desc{
     font-size:.9em;           /* bump size a little */
     color:#444;               /* darker text */
+  }
+}
+
+/* Add a subtle left accent to each note */
+.note-item::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .note-title {
+    font-size: 1.05em;
+  }
+  
+  blockquote {
+    margin-left: 0.5em;
   }
 }
 </style>
