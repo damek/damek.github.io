@@ -73,7 +73,7 @@ $$\nabla_{\psi} \log \pi_\theta(w) = (\|w-\mu\|^2/\sigma^2 - d),$$
 
 where $d$ is the dimension of $w$. The variance of its gradient estimate also depends on $R(w,z)$ and $\sigma$.
 
-Note that an interesting consequence of optimization $L$ via the PGT approach is that $R(w,z)$ can be non-differentiable with respect to $w$. Indeed, we only need to calculate the gradient $\nabla_\theta$ for policy parameters. This flexibility is exchanged for managing the variance of $\hat{g}_t$. Well, that and the $J$ is generally nonconvex in $\sigma$, even if $L$ is convex.
+Note that an interesting consequence of optimization $L$ via the PGT approach is that $R(w,z)$ can be non-differentiable with respect to $w$. Indeed, we only need to calculate the gradient for policy parameters. This flexibility is exchanged for managing the variance of $\hat{g}_t$. Well, that and the fact that $J$ is generally nonconvex in $\sigma$, even if $L$ is convex.
 
 #### Aside: Connection to Gaussian Smoothing
 If the policy is $w \sim N(\mu, \sigma_0^2 I_d)$ with fixed $\sigma_0^2$ (so $\theta = \mu$), and $R(w) = -L(w)$, then 
