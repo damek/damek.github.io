@@ -1,6 +1,8 @@
 ---
 title: "Getting the hang of policy gradients by reframing optimization as RL"
-date: 2025-05-07
+date: 2025-05-08
+tags: ["reinforcement learning", "policy gradients", "optimization"]
+description: "How to make your life harder and learn something about policy gradients"
 ---
 
 
@@ -39,12 +41,11 @@ The way $R(w)$ (or $R(w,z)$) is defined based on $L(w)$ or $\ell(w,z)$ directly 
     *   This reward provides direct information about $L(w)$ for each sampled $w$.
 2.  **Unbiased Randomized Reward:** $R(w,z) = -\ell(w,z)$, where $z \sim D_z$.
     *   This reward uses individual data instances $z$. $R(w,z)$ is noisy, but $\mathbb{E}\_z[R(w,z)] = -L(w)$.
-3.  **Batch Reward (Proxy for Hacking):** $R(w) = -\frac{1}{\|S\_{train}\|} \sum\_{z\_i \in S\_{train}} \ell(w,z\_i)$. $S\_{train}$ is a fixed data batch.
-    *   If $S\_{train}$ is unrepresentative, optimizing this $R(w)$ can illustrate reward hacking.
-4.  **Discrete Rewards (Sparsity):** $R(w) = \mathbb{1}\_{-L(w) > \text{tol}}$, where $\text{tol}$ is a threshold.
+3.  **Proxy Rewards (via a fixed batch):** $R(w) = -\frac{1}{\|S\_{train}\|} \sum\_{z\_i \in S\_{train}} \ell(w,z\_i)$. $S\_{train}$ is a fixed data batch.
+    *   If $S\_{train}$ is unrepresentative, optimizing this $R(w)$ illustrates RL with a learned proxy reward.
+4.  **Sparse Rewards:** $R(w) = \mathbb{1}\_{-L(w) > \text{tol}}$, where $\text{tol}$ is a threshold.
     *   This yields a binary signal. If the condition is met infrequently, the reward is sparse.
-5.  **Sparse Continuous Rewards:** $R(w) = -L(w) \cdot \mathbb{1}\_{-L(w) > \text{tol}}$.
-    *   This reward is also sparse but provides magnitude information once the performance threshold is crossed.
+
 
 ### The Policy Gradient in a Stateless Setting
 
@@ -112,7 +113,7 @@ This reduces variance at the cost of $N_s$ reward evaluations per policy update.
 
 #### Stepsize Selection and Convergence
 
-The objective $J(\theta)$ is generally non-convex. For non-convex $J(\theta)$, convergence rate analysis focuses on metrics like $E[\|\nabla J(\theta_k)\|^2] \to 0$ (or to a noise floor for constant $\alpha$). In more restricted settings, for example, if $J(\theta)$ is (locally) strongly convex around an optimum $\theta^\*$, metrics like $E[\|\theta_k-\theta^*\|^2]$ or $J(\theta^\*) - J(\theta_k)$ can be analyzed. The stepsize (or learning rate [^1]) $\alpha$ affects convergence. (if none of this is familiar to you, see my lecture notes on [stochastic gradient descent for mean estimation](https://damek.github.io/STAT-4830/section/6/notes.html))
+The objective $J(\theta)$ is generally non-convex. For non-convex $J(\theta)$, convergence rate analysis focuses on metrics like $E[\|\nabla J(\theta_k)\|^2] \to 0$ (or to a noise floor for constant $\alpha$). In more restricted settings, for example, if $J(\theta)$ is (locally) strongly convex around an optimum $\theta^\*$, metrics like $E[\|\theta_k-\theta^*\|^2]$ or $J(\theta^\*) - J(\theta_k)$ can be analyzed. The stepsize (or learning rate[^1]) $\alpha$ affects convergence. (if none of this is familiar to you, see my lecture notes on [stochastic gradient descent for mean estimation](https://damek.github.io/STAT-4830/section/6/notes.html))
 
 1.  **Constant Stepsize:** For a constant $\alpha$, $\theta\_k$ oscillates around a region where $\nabla J(\theta) \approx 0$. A convergence metric $M\_k(\alpha)$ (e.g., $E[\|\nabla J(\theta\_k)\|^2]$ for non-convex or $E[\|\theta\_k-\theta^\*\|^2]$ for locally convex) usually scales as:
 
@@ -127,7 +128,9 @@ There are of course issues with these bounds when we take $\sigma$ to zero, sinc
 
 Gradient clipping replaces $\hat{g}\_t$ with $c\frac{\hat{g}\_t}{\|\|\hat{g}\_t\|\|}$ if $\|\|\hat{g}\_t\|\| > c$ for a user specified constant $c$. Since the gradient of the score function explodes as $\sigma$ tends to zero, this becomes necessary.
 
-### Illustrative Example: Policy Gradient for a Quadratic Loss
+### Illustrative experiments: Policy Gradient for a Quadratic Loss
+
+[View this on colab]()
 
 We apply these concepts to an agent (everything's an agent now!) learning to sample $w$ to minimize 
 
@@ -137,130 +140,97 @@ for a target $w^\ast$.
 
 A stochastic version of the loss is 
 
-$$\ell(w,z) = \frac{1}{2}(w - w^\ast)^2 + z,$$
+$$\ell(w,z) = \frac{1}{2}(w -(w^\ast + z))^2,$$
 
 where $z \sim N(0, \sigma_z^2)$.
 
 The agent's policy $\pi\_\theta(w)$ is $N(w\|\mu, \sigma^2)$, for scalar $w$ (i.e., $d=1$). The learnable parameters are $\theta = (\mu, \psi)$, where $\psi = \log\sigma$. This parameterization ensures $\sigma = e^\psi > 0$ when $\psi$ is optimized without constraints.
 
-The score functions for this policy (with $d=1$) are:
-
-$$\begin{aligned}
-\nabla_\mu \log \pi_\theta(w) &= \frac{w-\mu}{\sigma^2} \\
-\nabla_\psi \log \pi_\theta(w) &= \frac{(w-\mu)^2}{\sigma^2} - 1
-\end{aligned}$$
-
-*(Continuing from the previous draft)*
-
-### Experiments: Illustrating Reward Design and SGD Effects
-
-We present results from numerical experiments applying the policy gradient approach to the quadratic loss $L(w) = \frac{1}{2}(w - w^\ast)^2$ with target $w^\ast=5.0$. The policy is $\pi\_\theta(w) = N(w\|\mu, \sigma^2)$ parameterized by $\theta = (\mu, \psi)$ where $\psi=\log\sigma$. All experiments start from an initial policy $\mu\_0=0.0$, $\sigma\_0=2.0$ (i.e., $\psi\_0=\log 2$) and use gradient clipping with a maximum norm of 10.0. We examine the five reward formulations (R1-R5) described earlier. For R1 and R2, we investigate the effects of learning rate, baselines, diminishing stepsizes, and batching. For R3, R4, and R5, we show results from a single representative configuration.
+We now present results from numerical experiments applying the policy gradient approach to the quadratic loss $L(w) = \frac{1}{2}(w - w^\ast)^2$ with target $w^\ast=5.0$. All experiments start from an initial policy $N(0,4)$ and use gradient clipping with norm 10.0. We examine the five reward formulations (R1-R4). For R1 and R2, we investigate the effects of learning rate, baselines, diminishing stepsizes, and batching. For R3, R4, and R5, we show specific illustrative runs.
 
 #### R1: True Reward
 
-The reward is $R(w) = -L(w) = -\frac{1}{2}(w - w^\ast)^2$. This provides direct, dense feedback based on the true objective. All experiments for R1 run for $10^4$ episodes.
+The reward is $R(w) = -L(w) = -\frac{1}{2}(w - w^\ast)^2$. Runs use $10^4$ episodes.
 
 **Learning Rate Comparison (Set A):**
-We compare three constant learning rates: $\alpha=0.01$ (High), $\alpha=0.001$ (Medium), $\alpha=0.0001$ (Low). All runs use an EMA baseline and batch size $N_s=1$.
+
 
 ![Figure R1-LR](/assets/figures/R1_True-Learning-Rate-Comparison.png)
-*Figure 1: R1 (True Reward) - Effect of Learning Rate. Comparison of policy mean $\mu$ and standard deviation $\sigma$ convergence for different constant learning rates ($\alpha$). All runs use EMA baseline, $N_s=1$, $10^4$ episodes.*
+*Figure 1: R1 (True Reward) - Learning Rate Comparison. Compares constant $\alpha \in \{0.01, 0.001, 0.0001\}$. All use EMA baseline, $N_s=1$. Higher $\alpha$ converges $\mu$ faster towards $w^\ast=5.0$ and decreases $\sigma$ faster. Lower $\alpha$ converges slower.*
 
-*Description:* Figure 1 displays the evolution of $\mu$ and $\sigma$. The highest learning rate ($\alpha=0.01$) converges $\mu$ rapidly to $w^\ast=5.0$, reaching it within about 2000 episodes. The final $\sigma$ approaches approximately $0.07$. This run exhibits visible oscillation in $\mu$ around $w^\ast$, indicating a noise floor. The medium learning rate ($\alpha=0.001$) converges $\mu$ slower, reaching $w^\ast$ near episode 8000, with $\sigma$ converging towards $0.24$. The oscillations are less pronounced than with $\alpha=0.01$. The lowest learning rate ($\alpha=0.0001$) shows very slow progress; after $10^4$ episodes, $\mu$ is only around $2.3$ and $\sigma$ is still above 1.1. These results illustrate the trade-off with constant stepsizes: faster convergence with larger $\alpha$ comes at the cost of a higher asymptotic noise floor.
 
 **Baseline Comparison (Set B):**
-We compare using an EMA baseline versus no baseline ($b_t=0$) for the medium learning rate ($\alpha=0.001$), with $N_s=1$.
+
 
 ![Figure R1-Baseline](/assets/figures/R1_True-Baseline-Comparison.png)
-*Figure 2: R1 (True Reward) - Effect of Baseline. Comparison of runs with EMA baseline vs. no baseline ($b_t=0$). Both use $\alpha=0.001$, $N_s=1$, $10^4$ episodes.*
+*Figure 2: R1 (True Reward) - Baseline Comparison. Compares EMA baseline vs. no baseline ($b_t=0$) for $\alpha=0.001$, $N_s=1$. The EMA baseline stabilizes the decrease of $\sigma$, avoiding the large initial increase seen without a baseline.*
 
-Description:* Figure 2 compares learning with and without an EMA baseline. In this deterministic reward setting, both runs converge $\mu$ towards $w^\ast=5.0$. The run without a baseline shows significant initial instability in $\sigma$, which increases substantially before decreasing. The final $\sigma$ without baseline is approximately $0.31$, compared to $0.24$ with the EMA baseline. The EMA baseline run shows a smoother, monotonic decrease in $\sigma$. This suggests the baseline helps stabilize learning, particularly for the policy variance parameter $\sigma$, even when rewards are deterministic.
 
 **Stepsize Schedule Comparison (Set C):**
-We compare a diminishing learning rate schedule ($\alpha_k = 0.01 / (1 + k/K_{decay})$ with $K_{decay}=2000$) against a constant learning rate $\alpha=0.01$. Both use EMA baseline, $N_s=1$.
 
 
 ![Figure R1-Stepsize](/assets/figures/R1_True-Stepsize-Schedule-Comparison.png)
-*Figure 3: R1 (True Reward) - Stepsize Schedule Comparison. Compares constant $\alpha=0.01$ vs. a diminishing schedule starting at $\alpha_0=0.01$. Both use EMA baseline, $N_s=1$, $10^4$ episodes.*
+*Figure 3: R1 (True Reward) - Stepsize Schedule Comparison. Compares constant $\alpha=0.01$ vs. a diminishing schedule starting at $\alpha_0=0.01$. Both use EMA baseline, $N_s=1$. Performance is comparable over this number of episodes; the diminishing schedule shows slightly less oscillation in $\mu$ near the end.*
 
-*Description:* Figure 3 compares constant versus diminishing stepsizes. Both runs converge $\mu$ quickly to $w^\ast=5.0$. The constant stepsize ($\alpha=0.01$) run shows persistent oscillations in $\mu$ around $w^\ast$, indicative of the noise floor, with $\sigma$ settling near $0.07$. The diminishing stepsize run also converges quickly initially. As $\alpha_k$ decreases, the oscillations in $\mu$ are visibly reduced, and $\sigma$ continues to decrease, reaching approximately $0.12$ by the end and appearing to still trend downwards. This illustrates that a diminishing stepsize schedule satisfying the Robbins-Monro conditions can mitigate the noise floor and allow parameters to converge more precisely to the optimal values.
 
 **Batch Gradient Estimator Comparison (Set D):**
-We compare using a single sample ($N_s=1$) versus a batch of $N_s=10$ samples to estimate the gradient. Both use the medium learning rate ($\alpha=0.001$) and EMA baseline.
+
 
 ![Figure R1-Batching](/assets/figures/R1_True-Batch-Gradient-Estimator-Comparison.png)
-*Figure 4: R1 (True Reward) - Batch Gradient Comparison. Compares gradient estimates using $N_s=1$ vs. $N_s=10$ samples per update. Both use $\alpha=0.001$, EMA baseline, $10^4$ episodes.*
+*Figure 4: R1 (True Reward) - Batch Gradient Comparison. Compares $N_s=1$ vs. $N_s=10$. Both use $\alpha=0.001$, EMA baseline. Using $N_s=10$ results in visibly smoother trajectories for $\mu$ and $\sigma$, demonstrating variance reduction per update.*
 
-*Description:* Figure 4 shows the effect of mini-batching. The run using $N_s=10$ samples per gradient estimate exhibits smoother trajectories for both $\mu$ and $\sigma$ compared to the $N_s=1$ run. The final $\sigma$ is slightly lower for $N_s=10$ ($\approx 0.22$) compared to $N_s=1$ ($\approx 0.24$). This smoothing effect is due to the reduction in the variance of the gradient estimate $\bar{g}_t$ when averaged over more samples ($\text{Var}(\bar{g}_t) = \text{Var}(\hat{g}_t)/N_s$). While requiring more computation per update, batching provides a more reliable gradient estimate.
 
 #### R2: Randomized Reward
 
-The reward is $R(w,z) = -\ell(w,z) = -(\frac{1}{2}(w - (w^\ast+z))^2)$, where $z \sim N(0, 1)$. This reward is an unbiased estimate of $-L(w)$ plus a noise term. All experiments for R2 run for $10^4$ episodes.
+The reward is $R(w,z) = -\ell(w,z) = -(\frac{1}{2}(w - (w^\ast+z))^2)$, where $z \sim N(0, 1)$. Runs use $10^4$ episodes.
 
 **Learning Rate Comparison (Set A):**
-Comparison of constant LRs: $\alpha=0.01, 0.001, 0.0001$. All use EMA baseline, $N_s=1$.
+
 
 ![Figure R2-LR](/assets/figures/R2_Randomized-Learning-Rate-Comparison.png)
-*Figure 5: R2 (Randomized Reward) - Effect of Learning Rate. Comparison for different constant learning rates ($\alpha$). All use EMA baseline, $N_s=1$, $10^4$ episodes.*
+*Figure 5: R2 (Randomized Reward) - Learning Rate Comparison. Compares constant $\alpha \in \{0.01, 0.001, 0.0001\}$. All use EMA baseline, $N_s=1$. Higher $\alpha$ converges faster but exhibits significant oscillations around $w^\ast=5.0$ (noise floor). Lower $\alpha$ reduces oscillation variance but converges slower.*
 
-*Description:* Figure 5 shows the learning rate effect with stochastic rewards. The noise in $R(w,z)$ significantly impacts performance. The high learning rate ($\alpha=0.01$) converges $\mu$ to the vicinity of $w^\ast=5.0$ quickly but results in large, persistent oscillations (high noise floor). The final $\mu$ is $4.86$ and $\sigma$ is $0.33$. The medium LR ($\alpha=0.001$) converges $\mu$ more slowly but with much smaller oscillations, reaching $\mu \approx 4.94$ and $\sigma \approx 0.33$. The low LR ($\alpha=0.0001$) converges very slowly, with $\mu \approx 2.2$ after $10^4$ episodes. The noise floor effect, scaling with $\alpha \cdot \text{Var}(\hat{g}\_t)$, is clearly exacerbated by the stochasticity of the reward compared to R1.
 
 **Baseline Comparison (Set B):**
-Comparison of EMA baseline vs. no baseline ($b_t=0$) for medium LR ($\alpha=0.001$), $N_s=1$.
 
 
 ![Figure R2-Baseline](/assets/figures/R2_Randomized-Baseline-Comparison.png)
-*Figure 6: R2 (Randomized Reward) - Effect of Baseline. Comparison of runs with EMA baseline vs. no baseline ($b_t=0$). Both use $\alpha=0.001$, $N_s=1$, $10^4$ episodes.*
+*Figure 6: R2 (Randomized Reward) - Baseline Comparison. Compares EMA baseline vs. no baseline ($b_t=0$) for $\alpha=0.001$, $N_s=1$. The EMA baseline enables stable convergence of $\mu$ and $\sigma$. Without the baseline, learning is highly unstable, especially for $\sigma$.*
 
-*Description:* Figure 6 highlights the importance of the baseline for stochastic rewards. The run using the EMA baseline shows relatively stable convergence of $\mu$ towards $w^\ast=5.0$ (final $\mu \approx 4.94$) and $\sigma$ decreasing to about $0.33$. The run without a baseline exhibits significant instability. $\sigma$ increases dramatically initially and remains high and erratic. $\mu$ also fails to converge stably (final $\mu \approx 5.04$, but highly variable). The baseline effectively centers the noisy rewards $R(w,z)$, providing a more stable advantage signal $(R(w,z)-b_t)$ and enabling effective learning.
 
 **Stepsize Schedule Comparison (Set C):**
-Comparison of diminishing $\alpha_k$ vs. constant $\alpha=0.01$. Both use EMA baseline, $N_s=1$.
 
 
 ![Figure R2-Stepsize](/assets/figures/R2_Randomized-Stepsize-Schedule-Comparison.png)
-*Figure 7: R2 (Randomized Reward) - Stepsize Schedule Comparison. Compares constant $\alpha=0.01$ vs. a diminishing schedule starting at $\alpha_0=0.01$. Both use EMA baseline, $N_s=1$, $10^4$ episodes.*
+*Figure 7: R2 (Randomized Reward) - Stepsize Schedule Comparison. Compares constant $\alpha=0.01$ vs. diminishing schedule starting at $\alpha_0=0.01$. Both use EMA baseline, $N_s=1$. The diminishing stepsize significantly reduces the oscillations (noise floor) seen with the constant stepsize.*
 
-*Description:* Figure 7 compares stepsize schedules with noisy rewards. The constant LR ($\alpha=0.01$) run converges $\mu$ to the vicinity of $w^\ast$ but maintains substantial oscillations due to the noise floor (final $\mu \approx 4.86$, $\sigma \approx 0.33$). The diminishing LR run also converges $\mu$ quickly initially. As $\alpha_k$ decays, the oscillations in $\mu$ decrease significantly, allowing $\mu$ to settle nearer to $w^\ast$ (final $\mu \approx 5.07$). $\sigma$ also decreases more effectively under the diminishing schedule (final $\sigma \approx 0.23$). This demonstrates that diminishing stepsizes are required to mitigate the noise floor and achieve more precise convergence with stochastic rewards.
 
 **Batch Gradient Estimator Comparison (Set D):**
-Comparison of $N_s=1$ vs. $N_s=10$. Both use medium LR ($\alpha=0.001$) and EMA baseline.
 
 
 ![Figure R2-Batching](/assets/figures/R2_Randomized-Batch-Gradient-Estimator-Comparison.png)
-*Figure 8: R2 (Randomized Reward) - Batch Gradient Comparison. Compares gradient estimates using $N_s=1$ vs. $N_s=10$ samples per update. Both use $\alpha=0.001$, EMA baseline, $10^4$ episodes.*
-
-*Description:* Figure 8 shows the impact of batching with stochastic rewards. Using $N_s=10$ yields significantly smoother learning curves for both $\mu$ and $\sigma$ compared to $N_s=1$. The final parameters are $\mu \approx 5.03, \sigma \approx 0.23$ for $N_s=10$, compared to $\mu \approx 4.94, \sigma \approx 0.33$ for $N_s=1$. Reducing gradient variance through batching leads to more stable updates and potentially better convergence within the same number of *episodes* (parameter updates), albeit at higher computational cost per episode.
-
-#### R3: Hacking Reward (Fixed Batch Proxy)
-
-The reward is $R(w) = -\frac{1}{10} \sum_{z_i \in S_{train}} \frac{1}{2}(w - (w^\ast + z_i))^2$, where $S_{train}$ is a fixed batch of 10 noise samples $z_i \sim N(0,1)$. We run a single configuration: High STD LR ($\alpha=0.01$), EMA baseline, $N_s=1$, Clip=10, for $10^4$ episodes. The plot target is the true $w^\ast=5.0$.
+*Figure 8: R2 (Randomized Reward) - Batch Gradient Comparison. Compares $N_s=1$ vs. $N_s=10$. Both use $\alpha=0.001$, EMA baseline. Using $N_s=10$ yields noticeably smoother trajectories for $\mu$ and $\sigma$, reducing the impact of reward noise.*
 
 
-![Figure R3-Single](/assets/figures/R3_Hacking-Single-Run.png)
-*Figure 9: R3 (Hacking Reward) - Single Run. Agent optimizes reward based on a fixed batch $S_{train}$ of 10 noise samples. Uses $\alpha=0.01$, EMA baseline, $N_s=1$, $10^4$ episodes. Target line is true $w^\ast=5.0$.*
+#### R3: Proxy Reward Optimization (Fixed Batch)
 
-*Description:* Figure 9 illustrates reward hacking. The agent optimizes the reward function defined by the fixed batch $S_{train}$. The policy mean $\mu$ converges rapidly and stably (final $\mu \approx 5.45$), and $\sigma$ decreases effectively (final $\sigma \approx 0.07$). However, the converged value of $\mu$ is significantly different from the true optimum $w^\ast=5.0$. This occurs because the minimum of the sample-average loss (defined by $S_{train}$) is likely shifted from $w^\ast$. The agent has successfully optimized the proxy reward provided, demonstrating reward hacking where the solution converges precisely to the minimizer of the available, potentially flawed, objective.
+This experiment investigates optimizing a proxy reward based on a fixed batch $S\_{train}$. The reward is $R(w) = -\text{avg}\_{z\_i \in S\_{train}}[\ell(w, z_i)]$, where $\ell(w, z\_i) = \frac{1}{2}(w - (w^\ast + z\_i))^2$ and $S\_{train}$ contains $N_s$ samples of $z\_i \sim N(0,1)$ generated once. We compare results for batch sizes $N_s=1, 5, 10, 20$. All runs use $\alpha=0.01$, EMA baseline, and $10^4$ episodes.
+
+
+![Figure R3-ProxyBatchSize](/assets/figures/R3_Proxy-Batch-Size-Comparison.png)
+*Figure 9: R3 Proxy Reward (Fixed Batch) - Batch Size Comparison. Compares optimizing the empirical average reward over fixed batches $S_{train}$ of size $N_s \in \{1, 5, 10, 20\}$. All use $\alpha=0.01$, EMA baseline. Convergence of $\mu$ appears closer to the true $w^\ast=5.0$ as $N_s$ increases, illustrating how optimizing a small fixed batch (a proxy objective) can lead to solutions biased away from the true optimum.*
+
 
 #### R4: Discrete Sparse Reward
 
-The reward is $R(w) = 1$ if $(w-w^\ast)^2 < 0.25$, else $0$. We run a single configuration: High STD LR ($\alpha=0.01$), EMA baseline, $N_s=1$, Clip=10, for $5 \times 10^4$ episodes (Note: plot x-axis).
+The reward is $R(w) = 1$ if $(w-w^\ast)^2 < 0.25$, else $0$. We show a single run with $\alpha=0.01$, EMA baseline, $N\_s=1$, for $5 \times 10^4$ episodes.
 
 
 ![Figure R4-Single](/assets/figures/R4_DiscreteSparse-Single-Run.png)
-*Figure 10: R4 (Discrete Sparse Reward) - Single Run. Reward is 1 if $|w-w^\ast|<0.5$, else 0. Uses $\alpha=0.01$, EMA baseline, $N_s=1$, $5 \times 10^4$ episodes.*
-
-*Description:* Figure 10 shows learning with a discrete, sparse reward. The agent initially makes slow progress, as samples $w$ from the initial policy $N(0, 2^2)$ rarely fall within the rewarding region $(4.5, 5.5)$. $\mu$ only begins moving significantly towards $w^\ast=5.0$ around episode 15,000. During this initial phase, $\sigma$ increases, likely promoting exploration. Once rewards become more frequent as $\mu$ nears $w^\ast$, $\sigma$ begins to decrease, and $\mu$ converges close to $w^\ast$ (final $\mu \approx 5.01$, $\sigma \approx 0.11$). The baseline value remains near zero until rewards become consistent, after which it rises towards the average reward (which is less than 1, as not all samples land in the region). This illustrates the exploration challenge posed by sparse rewards.
-
-#### R5: Sparse Continuous Reward (Shifted)
-
-The reward is $R(w) = \max(0, -0.5(w-w^\ast)^2 + 0.125)$, positive only if $\|w-w^\ast\|<0.5$. We run a single configuration: VSparse LR ($\alpha=0.1$), EMA baseline, $N_s=1$, Clip=10, for $5 \times 10^4$ episodes (Note: plot x-axis).
+*Figure 10: R4 (Discrete Sparse Reward) - Single Run. Reward is 1 if $|w-w^\ast|<0.5$, else 0. Uses $\alpha=0.01$, EMA baseline, $N_s=1$. Learning shows a long initial phase with slow progress in $\mu$ while $\sigma$ increases (exploration). Once the rewarding region is found, $\mu$ converges towards $w^\ast$ and $\sigma$ decreases.*
 
 
-![Figure R5-Single](/assets/figures/R5_SparseContinuous-Single-Run.png)
-*Figure 11: R5 (Sparse Continuous Reward, Shifted) - Single Run. Reward is $\max(0, -0.5(w-w^\ast)^2 + 0.125)$. Uses $\alpha=0.1$, EMA baseline, $N_s=1$, $5 \times 10^4$ episodes.*
 
-*Description:* Figure 11 shows learning with the sparse continuous (and shifted non-negative) reward. Similar to R4, learning is initially slow due to sparsity, with $\mu$ starting to move towards $w^\ast$ around episode 20,000. $\sigma$ again increases initially to explore. Once the rewarding region is found, the shaped reward provides magnitude information. Combined with the high learning rate ($\alpha=0.1$), this leads to rapid convergence of $\mu$ to $w^\ast=5.0$ (final $\mu \approx 5.00$) and a very effective decrease in $\sigma$ (final $\sigma \approx 0.01$). The baseline tracks the average positive reward obtained within the region. This suggests that shaped rewards, even if sparse, can lead to precise convergence once discovered, and that higher learning rates may be effective in exploiting the signal within the sparse region for this reward type.
+#### Footnotes
 
-
-[1] I think I've completely given up and no longer care whether I say stepsize or learning rate. 
+[^1]: I think I've completely given up and no longer care whether I say stepsize or learning rate. 
