@@ -119,9 +119,9 @@ The objective $J(\theta)$ is generally non-convex. For non-convex $J(\theta)$, c
 
 1.  **Constant Stepsize:** For a constant $\alpha$, $\theta\_k$ oscillates around a region where $\nabla J(\theta) \approx 0$. A convergence metric $M\_k(\alpha)$ (e.g., $E[\|\nabla J(\theta\_k)\|^2]$ for non-convex or $E[\|\theta\_k-\theta^\*\|^2]$ for locally convex) usually scales as:
 
-    $$ M_k(\alpha) \approx \frac{C_0 \cdot (\text{Initial Error})}{\text{poly}(k) \cdot \alpha} + \frac{C_1 \cdot \alpha \cdot \text{Var}(\text{single sample } \hat{g}_t)}{N_s} $$
+    $$ M_k(\alpha) \approx \frac{C_0 \cdot (\text{Initial Error})}{h(k) \cdot \alpha} + \frac{C_1 \cdot \alpha \cdot \text{Var}(\text{single sample } \hat{g}_t)}{N_s} $$
 
-    where $N_s$ is the batch size for $\hat{g}_t$ ($N_s=1$ if no batching). As $k \to \infty$, the first term (bias reduction) vanishes, leaving the second term (noise floor). A larger $\alpha$ speeds initial progress but gives a higher noise floor.
+    where $h$ is some function of $k$ (e.g., $k^{-1/2}$) and $N_s$ is the batch size for $\hat{g}_t$ ($N_s=1$ if no batching). As $k \to \infty$, the first term (bias reduction) vanishes, leaving the second term (noise floor). A larger $\alpha$ speeds initial progress but gives a higher noise floor.
 2.  **Diminishing Stepsize:** For $M_k(\alpha_k) \to 0$, $\alpha_k$ must diminish, for instance, satisfying the Robbins-Monro conditions: $\sum_{k=0}^\infty \alpha_k = \infty$ and $\sum_{k=0}^\infty \alpha_k^2 < \infty$.
 
 There are of course issues with these bounds when we take $\sigma$ to zero, since the variance explodes. To actually achieve convergence, we would need to increase the batch size sufficiently fast. *Or*, we could 
