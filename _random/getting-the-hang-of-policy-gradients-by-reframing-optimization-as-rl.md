@@ -130,7 +130,7 @@ Gradient clipping replaces $\hat{g}\_t$ with $c\frac{\hat{g}\_t}{\|\|\hat{g}\_t\
 
 ### Illustrative experiments: Policy Gradient for a Quadratic Loss
 
-[View this on colab]()
+[View this on colab](https://colab.research.google.com/github/damek/damek.github.io/blob/main/notebooks/policy-gradient-for-optimization/policy-gradient-for-optimization.ipynb).
 
 We apply these concepts to an agent (everything's an agent now!) learning to sample $w$ to minimize 
 
@@ -230,7 +230,6 @@ The reward is $R(w) = 1$ if $(w-w^\ast)^2 < 0.25$, else $0$. We show a single ru
 *Figure 10: R4 (Discrete Sparse Reward) - Single Run. Reward is 1 if $|w-w^\ast|<0.5$, else 0. Uses $\alpha=0.01$, EMA baseline, $N_s=1$. Learning shows a long initial phase with slow progress in $\mu$ while $\sigma$ increases (exploration). Once the rewarding region is found, $\mu$ converges towards $w^\ast$ and $\sigma$ decreases.*
 
 
-
-#### Footnotes
+### Footnotes
 
 [^1]: I think I've completely given up and no longer care whether I say stepsize or learning rate. 
