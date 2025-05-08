@@ -244,7 +244,7 @@ Under suitable conditions (e.g., ergodicity of the Markov chain induced by $\pi\
 
 One could in priciple optimize $L\_{\theta\_{old}}^{IS}(\theta)$ directly using the above estimate strategy. However, if $\rho\_t(\theta)$ becomes very large or very small (i.e., $\pi\_\theta$ significantly differs from $\pi\_{\theta\_{old}}$), the variance of the gradient of $L\_{\theta\_{old}}^{IS}(\theta)$ (when estimated from samples) can be large. PPO is an attempt to address this by further modifying this surrogate objective. 
 
-The PPO clipped objective $L^{CLIP}(\theta)$ builds upon this same principle of empirical estimation. It is an average where, for each observed time step $t$ in the collected batch, the core term $\rho_t(\theta) \hat{A}_t^{\theta_{old}}$ is first subject to the clipping mechanism before being included in the average:
+The PPO clipped objective $L^{CLIP}(\theta)$ builds upon this same principle of empirical estimation. It is an average where, for each observed time step $t$ in the collected batch, the core term $\rho\_t(\theta) \hat{A}\_t^{\theta_{old}}$ is first subject to the clipping mechanism before being included in the average:
 
 $$
 L^{CLIP}(\theta) = \hat{E}_t \left[ \min\left( \rho_t(\theta) \hat{A}_t^{\theta_{old}} , \operatorname{clip}(\rho_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t^{\theta_{old}} \right) \right]
