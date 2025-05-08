@@ -6,7 +6,7 @@ description: "How to make your life harder and learn something about policy grad
 ---
 
 
-We can gain insight into Reinforcement Learning (RL) training mechanisms by taking a general optimization problem and reframing it as a "stateless RL problem." In this reframing, the task is to find optimal parameters for a probability distribution that generates candidate solutions. The distribution's parameters are adjusted based on rewards received for sampled solutions, aiming to increase the probability of generating high-reward solutions. This perspective isolates aspects of policy optimization from complexities such as state-dependent decision making, which allows for a focused study of certain RL mechanisms.
+We can gain insight into Reinforcement Learning (RL) training mechanisms by taking a general optimization problem and reframing it as a "stateless RL problem." In this reframing, the task is to find optimal parameters for a probability distribution that generates candidate solutions. The distribution's parameters are adjusted based on rewards received for sampled solutions, aiming to increase the probability of generating high-reward solutions. This perspective isolates aspects of policy optimization from complexities such as state-dependent decision making.
 
 ### From Optimization to a Stateless RL 
 
