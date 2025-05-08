@@ -8,6 +8,8 @@ description: "How to make your life harder and learn something about policy grad
 
 We can gain insight into Reinforcement Learning (RL) training mechanisms by taking a general optimization problem and reframing it as a "stateless RL problem." In this reframing, the task is to find optimal parameters for a probability distribution that generates candidate solutions. The distribution's parameters are adjusted based on rewards received for sampled solutions, aiming to increase the probability of generating high-reward solutions. This perspective isolates aspects of policy optimization from complexities such as state-dependent decision making.
 
+Note: while writing this I remembered that Mr. Ben Recht wrote a [blog post](https://archives.argmin.net/2018/02/20/reinforce/) that considered a similar reframing back in 2018. 
+
 ### From Optimization to a Stateless RL 
 
 Consider the general problem of finding a vector $w$ that minimizes a loss function $L(w)$:
