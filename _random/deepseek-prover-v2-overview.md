@@ -2,7 +2,7 @@
 title: "DeepSeek-Prover-V2 overview"
 date: 2025-05-12
 tags: [reinforcement-learning, lean, ai-for-math]
-description: An exciting new model 
+description: An exciting new model for theorem proving
 ---
 
 ### TLDR
