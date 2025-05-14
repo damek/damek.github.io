@@ -72,6 +72,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[Iteratively reweighted kernel machines efficiently learn sparse functions](https://arxiv.org/abs/2505.08277)
+Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
+Manuscript (2025)
+
 [Spectral norm bound for the product of random Fourier-Walsh matrices](https://arxiv.org/abs/2504.03148)
 Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
 Manuscript (2025)
