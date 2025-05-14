@@ -1,7 +1,7 @@
 ---
 title: "Getting the hang of policy gradients by reframing optimization as RL"
 date: 2025-05-08
-tags: ["reinforcement learning", "policy gradients", "optimization"]
+tags: ["reinforcement learning", "policy gradient", "optimization"]
 description: "How to make your life harder and learn something about policy gradients"
 ---
 
