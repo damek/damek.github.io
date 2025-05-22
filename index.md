@@ -4,14 +4,14 @@ title: Damek Davis
 ---
 # Damek Davis
 
-[Papers](#publications) | [CV](cv.pdf) | [X](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) | [Notes](random)
+[Papers](#publications) | [CV](cv.pdf) | [X](https://twitter.com/damekdavis) | [Github (current)](https://github.com/damek) | [Github (old)](https://github.com/COR-OPT) | [Scholar](https://scholar.google.com/citations?user=uGdPyZQAAAAJ&hl=en) | [Blog](random)
 
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program). I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
 
 **Research Interests.** Optimization and machine learning.
 
-**Teaching.** I teach theory and practice of optimization and machine learning. I wrote lecture notes for [Optimization in PyTorch](STAT-4830) and [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
+**Teaching.** I teach theory and practice of optimization and machine learning. I sometimes write lecture notes, e.g., [Optimization in PyTorch](STAT-4830) and [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
 
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
 
@@ -20,6 +20,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - Proved first guarantees for SGD on [weakly convex](https://arxiv.org/abs/1803.06523) and [tame](https://arxiv.org/abs/1804.07795) functions, which covers essentially all neural networks.
 - Characterized the [asymptotic distribution of SGD in nonsmooth optimization](https://arxiv.org/abs/2301.06632).
 - Developed the concept of a strict saddle point in nonsmooth optimization and showed [proximal methods](https://arxiv.org/abs/1912.07146) and [stochastic subgradient methods](https://arxiv.org/abs/2108.11832) avoid them.
+- Developed [kernel methods](https://arxiv.org/abs/2505.08277) that efficiently learn sparse hierarchical functions.
 
 
 **Students.** I've advised 5 PhD students. If you are a Penn student and wish to discuss advising/collaboration, send me a concise, informative email to set up a meeting. I am an active advisor--students who work best with me tend to have energy levels that match or exceed mine.
@@ -32,7 +33,11 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 - [Mateo Díaz](https://mateodd25.github.io/) → Johns Hopkins University (Assistant Professor)
 - [Ben Grimmer](https://www.ams.jhu.edu/~grimmer/) → Johns Hopkins University (Assistant Professor)
 
-**Notes.** I sporadically post notes [here](random).
+**Blog.** I sporadically post notes [here](random).
+
+Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to consulting, research questions, teaching, or other professional inquiries. 
+
+---
 
 **You may not know that...** 
 - I started [programming](https://x.com/damekdavis/status/1627803139830317056) in html in '98. I made a Pokémon website.
@@ -57,14 +62,14 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
         - The first helped me appreciate writing.
         - The second taught me how to structure text so a busy reader could appreciate it.
     - I think writing improves when you become more comfortable with rejection.
+    - I decided to do more writing in public in 2025.
+        - In the spring semester, I wrote [course notes for optimization in PyTorch](http://optimizationinpytorch.com).
+        - In May, I started writing [notes](random) on what I've been thinking about.
 - I've regularly read research on LLMs since mid 2022.
     - I speak to them more than anyone else I know.
     - If LLMs help me do math, I'll be happy. I think they will, but key ideas are likely missing.
     - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in Lean. 
         - As of April 2025, no LLM can complete the proof.
-
-
-Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for correspondence related to consulting, research questions, teaching, or other professional inquiries. 
 
 ## Publications
 
