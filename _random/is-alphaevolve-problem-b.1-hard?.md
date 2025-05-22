@@ -5,7 +5,7 @@ tags: [ai-for-math]
 description: "Is AlphaEvolve problem B.1 hard? Yes"
 ---
 
-Google released [AlphaEvolve](https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/). I tried to get a sense of whether the problems it solved were hard. I focused on one Problem B.1. 
+Google released [AlphaEvolve](https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/). I tried to get a sense of whether the problems it solved were hard. I focused on Problem B.1:
 > # B.1. First autocorrelation inequality
 > For any function $f:\mathbb{R} \rightarrow \mathbb{R}$, define the *autoconvolution* of $f$, written $f*f$, as
 > \begin{equation}
