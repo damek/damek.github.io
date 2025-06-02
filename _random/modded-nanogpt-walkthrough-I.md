@@ -5,7 +5,9 @@ tags: [pytorch, transformers, optimization]
 description: "Part 1 of a two part series on the modded-nanogpt repo"
 ---
 
-The [`modded-nanogpt` repository](https://github.com/KellerJordan/modded-nanogpt/) demonstrated the ability to train a GPT-2 scale model (~124M parameters) to a target validation loss (comparable to [Karpathy's `nanoGPT`](https://github.com/karpathy/nanoGPT)) in a significantly reduced time. The best reported figure was about 3 minutes on 8xH100 GPUs. This is a two part series that gives a walkthrough of the [`train_gpt.py` script](https://github.com/KellerJordan/modded-nanogpt/blob/master/train_gpt.py) from the repo, focusing on the code's mechanisms for parallelism, numerical precision, and specific Transformer architectural choices. Part I discusses the initial setup, compiler config, and custom FP8 operations. I am mainly writing this to summarize my points of confusion while I read it.
+The [`modded-nanogpt` repository](https://github.com/KellerJordan/modded-nanogpt/) demonstrated the ability to train a GPT-2 scale model (~124M parameters) to a target validation loss (comparable to [Karpathy's `nanoGPT`](https://github.com/karpathy/nanoGPT)) in a significantly reduced time. The best reported figure was about 3 minutes on 8xH100 GPUs. This is a two part series that gives a walkthrough of the [`train_gpt.py` script](https://github.com/KellerJordan/modded-nanogpt/blob/master/train_gpt.py) from the repo, focusing on the code's mechanisms for parallelism, numerical precision, and specific Transformer architectural choices. Part I discusses the initial setup, compiler config, and custom FP8 operations. [Part II](/random/modded-nanogpt-walkthrough-ii) discusses the optimizer, parallelism, attention mechanisms, and the `GPT` class.
+
+I am mainly writing this to summarize my points of confusion while I read the code base initially. It is based on an extremely long conversation I had with ChatGPT 4.5, when I was trying to get a sense of how the model behaved. I then fed that conversation to Gemini 2.5 Pro and had it help me scope a walkthrough. Writing is by default bad with LLMs, so I went through extensive rounds of feedback and reorganization. It was the only way I could write a piece this long on this topic. But I learned a lot! 
 
 ### Initial Configuration and Environment (Lines 1-22)
 
@@ -19,7 +21,7 @@ with open(sys.argv[0]) as f:
 ```
 `sys.argv` is the path to the script itself. Reading and storing its content in the variable `code` (which is later logged if `master_process`) allows a given training run's log to be precisely associated with the exact code version that produced it. This is good practice for reproducibility in experiments and benchmarks.
 
-**CUDA Environment Settings (Lines 13-15)**
+**CUDA Environment Settings**
 
 Two lines configure aspects of the CUDA environment:
 ```python
@@ -32,7 +34,7 @@ torch.empty(1, device="cuda", requires_grad=True).backward() # prevents a bug on
 ```
 This line performs a minimal GPU operation that also engages the autograd engine. Its purpose is to ensure the CUDA context within the PyTorch process is fully initialized. On some systems, or with specific CUDA driver and PyTorch version combinations, the first complex GPU operation can trigger latent initialization overheads or, in rare cases, issues. This small, preemptive operation helps ensure the CUDA runtime is "warmed up" before more substantial computations begin.
 
-**Core PyTorch Imports and Compiler Configuration (Lines 20-21)**
+**Core PyTorch Imports and Compiler Configuration**
 The script imports `flex_attention` from `torch.nn.attention.flex_attention`, a PyTorch component that enables more control over attention patterns. It's useful for optimizing performance of attention patterns that are not standard, like sparse or block-wise attention.
 
 A configuration line for `torch.compile`'s Inductor backend is commented out:
@@ -70,7 +72,7 @@ This script uses E4M3 for forward pass activations and weights, and E5M2 for gra
 
 With these FP8 formats in mind, let's look at how the script implements the forward pass for an FP8 matrix multiplication.
 
-**B. `mm_op`: Forward Pass (Lines 27-43)**
+**B. `mm_op`: Forward Pass**
 This function, named `mm_op`, defines the custom forward operation for computing $Y = XW^T$ using FP8 arithmetic.
 ```python
 @torch.library.custom_op("nanogpt::mm", mutates_args=())
@@ -105,7 +107,7 @@ Here is what's going on:
     - The output `out` is in `bfloat16`, yet another floating point format, that we won't go into.
     - `use_fast_accum=True` can enable hardware accumulators that might use lower internal precision for speed. The factor `grad_s` is for the backward pass. `x_f8` and `w_f8` are saved.
 
-**C. `mm_op.register_fake`: A "Meta" Implementation for Tracing (Lines 45-51)**
+**C. `mm_op.register_fake`: A "Meta" Implementation for Tracing**
 
 After defining the custom forward operation `mm_op`, the script registers a "fake" implementation for it. This is a mechanism used by PyTorch's JIT compilation tools, particularly `TorchDynamo` (the Python frontend for `torch.compile`).
 ```python
@@ -118,15 +120,7 @@ def _(x: Tensor, w: Tensor, x_s: float, w_s: float, grad_s: float): # Matched si
     assert x.device == w.device
     assert x.is_contiguous() and w.is_contiguous()
     
-    # Return tuple with shapes and dtypes mirroring the real mm_op's output:
-    # 1. Output of matmul: shape based on x and w.T, dtype bfloat16 (as in real op)
-    # 2. Saved x_f8: shape of x, dtype float8_e4m3fn
-    # 3. Saved w_f8: shape of w, dtype float8_e4m3fn
-    # The actual matmul x @ w.T is just a placeholder for shape calculation.
-    # The dtype of the first element is implicitly bfloat16 because _scaled_mm outputs bfloat16.
-    # The fake function should ideally explicitly cast the first element to bfloat16 if there's ambiguity.
-    # However, PyTorch's fake tensor propagation might infer this correctly from the real op's signature.
-    # For robustness, one might write: (x @ w.T).to(torch.bfloat16)
+
     return x @ w.T, x.to(torch.float8_e4m3fn), w.to(torch.float8_e4m3fn)
 ```
 When `TorchDynamo` traces a model containing `mm_op`, it doesn't necessarily execute the full, potentially complex, `@torch.compile`d `impl` function of `mm_op` with actual data. Instead, it can run this registered `_` fake function with "fake tensors." These fake tensors carry metadata (like shape, dtype, device) but not actual numerical data.
@@ -137,7 +131,7 @@ The purpose of this fake implementation is to allow the tracer to:
 
 This information allows `TorchDynamo` to construct an accurate graph of operations and their dependencies. Based on this graph, Inductor (the backend) can generate optimized code. The fake function provides a lightweight way to simulate the op's behavior at the metadata level, without the overhead of running the real computation or needing specialized hardware (like FP8 support) during the tracing phase itself. 
 
-**D. `mm_backward_op`: Backward Pass (Lines 54-81)**
+**D. `mm_backward_op`: Backward Pass**
 
 When defining a custom forward operation like `mm_op` that involves specific numerical representations (FP8) and scaling, PyTorch's automatic differentiation engine needs to be explicitly provided with the corresponding backward logic. If our forward operation is $Y = XW^T$, and $L$ is the overall loss function, autograd works by propagating $\frac{\partial L}{\partial Y}$ backward and requires functions that can compute the terms needed for $\frac{\partial L}{\partial X}$ and $\frac{\partial L}{\partial W}$. These are vector-Jacobian products (VJPs). For a matrix multiplication $Y=XW^T$, the relationships are (more on Jacobians [here](https://damek.github.io/STAT-4830/section/5/notes.html#extending-to-higher-dimensions-the-jacobian)):
 
@@ -230,7 +224,7 @@ $$ \left( \left(\frac{X}{x_s}\right)_{FP8}^T \cdot x_s \right) \left( \left(\fra
 
 The final `.T` transposes this result to yield $\frac{\partial L}{\partial W}$. This gradient for the weights is stored in `float32`. Using a higher precision like `float32` for weight gradients is common practice since optimizers accumulate gradient statistics over time and that can cause a loss of precision. The activation gradients (`grad_x`), which flow backward to earlier layers, are kept in `bfloat16`; this attempts to balance precision with memory and computational efficiency.
 
-**E. Autograd Integration (Lines 87-102)**
+**E. Autograd Integration**
 
 Since `mm_op` (and its backward logic `mm_backward_op`) are custom operations defined outside PyTorch's standard library of differentiable functions, we need to explicitly tell PyTorch's automatic differentiation engine (autograd) how to handle them. This is achieved by defining two helper functions, conventionally a `backward` function and a `setup_context` function (or `save_for_backward` if subclassing `torch.autograd.Function`), and then registering them.
 
@@ -274,4 +268,4 @@ This line informs PyTorch that whenever `mm_op` is used in a computation graph w
 
 ### Up next
 
-I planned to write this in one post, but ran out of time. In part 2 of this post, I will introduce the Muon optimizer, the GPT-2 model architecture, and discuss the parallelism strategies for running the code across multiple GPUs.
+I planned to write this in one post, but ran out of time. In [part II](/random/modded-nanogpt-walkthrough-ii) of this post, I will introduce the Muon optimizer, the GPT-2 model architecture, and discuss the parallelism strategies for running the code across multiple GPUs.
