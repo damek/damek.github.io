@@ -9,6 +9,14 @@ The [`modded-nanogpt` repository](https://github.com/KellerJordan/modded-nanogpt
 
 > I am mainly writing this to summarize my points of confusion when I read the codebase in March. It is based on an extremely long conversation I had with ChatGPT 4.5 (I was using this as an opportunity to see how the model behaved / understand the repo). I then fed that conversation to Gemini 2.5 Pro and had it help me scope a walkthrough. Writing is by default bad with LLMs, so I went through extensive rounds of feedback and reorganization. It was the only way I could write a piece this long on this topic. But I learned a lot! 
 
+### Table of Contents
+
+- [Initial Configuration and Environment](#initial-configuration-and-environment)
+- [Custom FP8 Operations](#custom-fp8-operations)
+- [Autograd Integration](#autograd-integration)
+- [Up next](#up-next)
+
+
 ### Initial Configuration and Environment
 
 The script begins by importing standard Python modules. An interesting thing I hadn't thought of doing before: the script logs it's own source code.

@@ -8,13 +8,29 @@ description: "Part II: Muon optimizer, GPT architecture details, and distributed
 
 In [Part I](/random/modded-nanogpt-walkthrough-i) of this walkthrough, we covered the initial setup, compiler configurations, and custom FP8 operations within the `modded-nanogpt` repository's `train_gpt.py` script. This second part continues the walkthrough of `train_gpt.py`. We will look at the Muon optimizer, GPT model architecture, and the distributed training strategies.
 
+### Table of Contents
+
+- [The Muon Optimizer: Iterative Orthogonalization for Updates](#the-muon-optimizer-iterative-orthogonalization-for-updates)
+  - [A. `zeropower_via_newtonschulz5`: Orthogonalizating the gradient](#a-zeropower_via_newtonschulz5-orthogonalizating-the-gradient)
+  - [B. The `Muon` Optimizer Class](#b-the-muon-optimizer-class)
+- [GPT Model Architecture: Component Details](#gpt-model-architecture-component-details)
+  - [A. Core Building Blocks](#a-core-building-blocks)
+  - [C. The `GPT` Model Assembly](#c-the-gpt-model-assembly)
+- [Parallelism and Distributed Training](#parallelism-and-distributed-training)
+  - [B. Distributed Data Loading](#b-distributed-data-loading)
+  - [C. Setting the Stage: Hyperparameters and Environment](#c-setting-the-stage-hyperparameters-and-environment)
+  - [D. Model, Optimizers, and Schedules](#d-model-optimizers-and-schedules)
+  - [E. Pre-computation and Synchronization: Warmup and Gradient Overlap](#e-pre-computation-and-synchronization-warmup-and-gradient-overlap)
+  - [F. The Main Training Loop](#f-the-main-training-loop)
+  - [G. Finalization](#g-finalization)
+
 ### The Muon Optimizer: Iterative Orthogonalization for Updates
 
 The `train_gpt.py` script introduces a custom optimizer called `Muon`, that is specifically used with the matrix layers of the transformer model. (For the nonmatrix layers, they use an Adam method.) In short, Muon replaces the matrix blocks of the gradient[^0] with a new matrix with better conditioning and the same row/column space. This is achieved by applying an iterative algorithm called the Newton-Schulz.
 
 Why do they do this? From my read of the literature (up to June 02, 2025), there has been no strong theoretical justification for doing so. Although we can realize it as a variant of gradient descent in a block spectral norm, we don't know why it's good to do gradient descent in the spectral norm for transformer models. 🤷
 
-**A. `zeropower_via_newtonschulz5`: Orthogonalizating the gradient**
+#### A. `zeropower_via_newtonschulz5`: Orthogonalizating the gradient
 
 The function `zeropower_via_newtonschulz5` applies Newton-Schulz to an input matrix $G$. Classically, the method was designed to do the following: 
 
@@ -67,7 +83,7 @@ you are correct. the explanation of the `step()` method's internals became somew
 here is a revised version of section b that integrates the detailed explanation of parameter grouping and the `update_buffer` more smoothly at the start, and then refers to those concepts when walking through the `step()` method, avoiding repetition while keeping the core detailed explanation verbatim as requested.
 
 
-**B. The `Muon` Optimizer Class**
+#### B. The `Muon` Optimizer Class
 
 The `Muon` class, defined by inheriting from `torch.optim.Optimizer`, implements the custom update rule for 2D matrix parameters.
 
@@ -176,7 +192,7 @@ is applied. Here, $\eta$ is `group["lr"]` and $\alpha_{\text{shape}} = \sqrt{\ma
 
 The model implemented in `train_gpt.py` is a decoder-only Transformer, with several specific architectural choices.
 
-**A. Core Building Blocks**
+#### A. Core Building Blocks
 
 1.  **Normalization: `norm()`**
     ```python
@@ -350,7 +366,7 @@ The model implemented in `train_gpt.py` is a decoder-only Transformer, with seve
 
     Normalization (`norm()`) is applied before the attention and MLP components.
 
-**C. The `GPT` Model Assembly**
+#### C. The `GPT` Model Assembly
 ```python
 class GPT(nn.Module):
     def __init__(self, vocab_size: int, num_layers: int, num_heads: int, model_dim: int, max_seq_len: int):
@@ -551,7 +567,7 @@ Per Training Step:
 
 We will now examine the specific code sections that implement these distributed operations, starting with the data loading.
 
-**B. Distributed Data Loading**
+#### B. Distributed Data Loading
 
 1.  **`_load_data_shard()`**
     ```python
@@ -624,7 +640,7 @@ We will now examine the specific code sections that implement these distributed 
     ```
     Each GPU's generator independently takes its slice. After yielding its batch, each generator instance advances its *local* `pos` by the *global* `batch_size`. This prepares it to look for the *next* global batch segment in the current shard on its next call. Because all generators advance `pos` by the same global amount and use their `rank` to offset, they continue to pick up distinct, contiguous portions of the overall data stream defined by the sequence of shard files.
 
-**C. Setting the Stage: Hyperparameters and Environment**
+#### C. Setting the Stage: Hyperparameters and Environment
 
 With the data loading mechanism understood, the script next establishes the fixed configuration for the training run and prepares the multi-GPU environment. This setup is crucial for reproducibility and coordinated parallel execution.
 
@@ -698,7 +714,7 @@ With the data loading mechanism understood, the script next establishes the fixe
     ```
     A unique `run_id` is generated for logging. The `print0` function ensures that print statements are executed only by the `master_process` and are written to a uniquely named log file. The script logs its own source code, Python and PyTorch versions, and the output of `nvidia-smi` to fully document the execution environment.
 
-**D. Model, Optimizers, and Schedules**
+#### D. Model, Optimizers, and Schedules
 
 This phase constructs the GPT model, defines how different sets of its parameters will be optimized, and establishes schedules for dynamically adjusting the learning rate and attention window size during training.
 
@@ -767,7 +783,7 @@ This phase constructs the GPT model, defines how different sets of its parameter
     ```
     To maximize the model's execution speed on the GPU, the script employs `torch.compile(model, dynamic=False)`. TThis command invokes PyTorch's TorchInductor backend (the default JIT compiler for GPUs) to transform the Python-defined GPT model into optimized code. By specifying `dynamic=False`, the script signals to the compiler that the tensor shapes encountered during training will be largely static. This allows the compiler to apply more aggressive optimizations, such as fusing multiple operations into single GPU kernels and generating code specialized for the exact operations and shapes used. This compilation process introduces an initial overhead when the model is first executed, with the aim of improving subsequent runtime performance through these optimized kernels.
 
-**E. Pre-computation and Synchronization: Warmup and Gradient Overlap**
+#### E. Pre-computation and Synchronization: Warmup and Gradient Overlap
 
 This part of the script prepares the GPU kernels for optimal performance and implements a mechanism to overlap gradient computation with the communication needed for synchronization across GPUs.
 
@@ -875,7 +891,7 @@ This part of the script prepares the GPU kernels for optimal performance and imp
 
     Note: I discuss this bucketing strategy [in my lecture notes.](https://damek.github.io/STAT-4830/section/12/notes.html#61-data-parallelism-dp){:target="_blank"}
 
-**F. The Main Training Loop: Iteration by Iteration**
+#### F. The Main Training Loop
 
 This is where all components are brought together to iteratively train the model.
 
@@ -960,7 +976,7 @@ This is where all components are brought together to iteratively train the model
 
         With updated hyperparameters and synchronized gradients, `opt.step()` is called for both the Adam and Muon optimizers, directing them to update their respective model parameters. Finally, `model.zero_grad(set_to_none=True)` clears gradients for the next step, and the master process logs the step's timing.
 
-**G. Finalization**
+#### G. Finalization
 ```python
     print0(f"peak memory allocated: {torch.cuda.max_memory_allocated() // 1024 // 1024} MiB "
         f"reserved: {torch.cuda.max_memory_reserved() // 1024 // 1024} MiB", console=True)
