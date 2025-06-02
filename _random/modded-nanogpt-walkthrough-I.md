@@ -7,9 +7,9 @@ description: "Part 1 of a two part series on the modded-nanogpt repo"
 
 The [`modded-nanogpt` repository](https://github.com/KellerJordan/modded-nanogpt/) demonstrated the ability to train a GPT-2 scale model (~124M parameters) to a target validation loss (comparable to [Karpathy's `nanoGPT`](https://github.com/karpathy/nanoGPT)) in a significantly reduced time. The best reported figure was about 3 minutes on 8xH100 GPUs. This is a two part series that gives a walkthrough of the [`train_gpt.py` script](https://github.com/KellerJordan/modded-nanogpt/blob/master/train_gpt.py) from the repo, focusing on the code's mechanisms for parallelism, numerical precision, and specific Transformer architectural choices. Part I discusses the initial setup, compiler config, and custom FP8 operations. [Part II](/random/modded-nanogpt-walkthrough-ii) discusses the optimizer, parallelism, attention mechanisms, and the `GPT` class.
 
-I am mainly writing this to summarize my points of confusion while I read the code base initially. It is based on an extremely long conversation I had with ChatGPT 4.5, when I was trying to get a sense of how the model behaved. I then fed that conversation to Gemini 2.5 Pro and had it help me scope a walkthrough. Writing is by default bad with LLMs, so I went through extensive rounds of feedback and reorganization. It was the only way I could write a piece this long on this topic. But I learned a lot! 
+I am mainly writing this to summarize my points of confusion when I read the codebase in March. It is based on an extremely long conversation I had with ChatGPT 4.5 (I was using this as an opportunity to see how the model behaved). I then fed that conversation to Gemini 2.5 Pro and had it help me scope a walkthrough. Writing is by default bad with LLMs, so I went through extensive rounds of feedback and reorganization. It was the only way I could write a piece this long on this topic. But I learned a lot! 
 
-### Initial Configuration and Environment (Lines 1-22)
+### Initial Configuration and Environment
 
 The script begins by importing standard Python modules. An interesting thing I hadn't thought of doing before: the script logs it's own source code.
 ```python
@@ -43,7 +43,7 @@ A configuration line for `torch.compile`'s Inductor backend is commented out:
 ```
 `torch.compile`  can JIT-compile `nn.Module`s or functions into optimized executables. Inductor is its default GPU backend, translating PyTorch operations into Triton or CUDA C++ code for GPU kernels. A GPU kernel is a function executed in parallel by many GPU cores. Inductor performs optimizations like operator fusion (merging multiple operations into a single kernel to reduce launch overheads and memory traffic). The `coordinate_descent_tuning=True` flag instructs Inductor to perform an extensive search for optimal kernel parameters (e.g., tile sizes, loop unrolling factors) using coordinate descent. While this could speed up the code, the tuning process itself is time-intensive (the comment suggests 30 minutes). It is disabled here, likely to prioritize faster iteration during development and for the "speedrun" context, relying on Inductor's default heuristics.
 
-### Custom FP8 Operations: Numerical Aspects (Lines 23-103)
+### Custom FP8 Operations: Numerical Aspects
 
 While torch.compile can optimize standard PyTorch operations, achieving maximum performance on specific hardware like H100 GPUs can sometimes involve more direct control over numerical precision. This script takes such a step by defining custom operations for matrix multiplication using 8-bit floating-point (FP8) numbers. Matrix multiplications are computationally intensive and ubiquitous in [Transformer models](https://damek.github.io/STAT-4830/section/12/notes.html#2-transformers-anatomy-of-a-large-model) forming the core of:
 1.  **Self-Attention:** Projections to Query (Q), Key (K), and Value (V) vectors ($XW_Q, XW_K, XW_V$), and the output projection ($(\text{Attention})W_O$).
