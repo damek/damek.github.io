@@ -78,11 +78,6 @@ $$ X_{k+1} = a X_k + (b(X_k X_k^T) + c(X_k X_k^T)^2) X_k $$
 
 The constants $a, b, c$ are `(3.4445, -4.7750, 2.0315)`. This iteration runs for a specified number of `steps` (the default `ns_steps` for Muon is 5[^1]). Finally, if `X` was initially transposed, it is transposed back. The `@torch.compile` decorator is used to optimize this function into efficient GPU kernels.
 
-you are correct. the explanation of the `step()` method's internals became somewhat redundant after incorporating the detailed footnote-like explanation at the beginning of section b.
-
-here is a revised version of section b that integrates the detailed explanation of parameter grouping and the `update_buffer` more smoothly at the start, and then refers to those concepts when walking through the `step()` method, avoiding repetition while keeping the core detailed explanation verbatim as requested.
-
-
 #### B. The `Muon` Optimizer Class
 
 The `Muon` class, defined by inheriting from `torch.optim.Optimizer`, implements the custom update rule for 2D matrix parameters.
