@@ -1,7 +1,6 @@
 ---
 title: "Modded-NanoGPT Walkthrough II: Muon Optimizer, Model Architecture, and Parallelism"
-date: 2025-05-22
-updated: 2025-06-02
+date: 2025-06-02
 tags: [pytorch, transformers, optimization, distributed]
 description: "Part II: Muon optimizer, GPT architecture details, and distributed training in modded-nanogpt."
 ---
