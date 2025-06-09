@@ -240,14 +240,14 @@ This process is illustrated by the example in Figure 3.
 _Figure 3: Layout conversion via warp shuffles from the paper. The labels `t_i` denote 3-bit logical address vectors. Note that the `t0,..,t7` in the top right corner are not threads, they are just labels for the basis vectors._
 
 #### 1. Determine the Exchange Vector ($V$)
-First, the compiler identifies data that can be moved as a single vector. This data corresponds to the intersection of the register-related column subspaces, `A_{reg} \cap B_{reg}`. Any data in this subspace maintains its relative position within the registers during the conversion.
+First, the compiler identifies data that can be moved as a single vector. This data corresponds to the intersection of the register-related column subspaces, $A_{reg} \cap B_{reg}$. Any data in this subspace maintains its relative position within the registers during the conversion.
 
 Because this block of data is structurally invariant, it can be moved as a single unit. The compiler selects a basis $V$ for the largest possible subspace within this intersection whose total data size does not exceed the hardware's 32-bit `shfl.sync` payload limit. This basis $V$ defines the vector that will be moved in each shuffle instruction.
 
 #### 2. Decompose the Address Space
 The compiler creates a plan by decomposing the logical address space, which combines register and thread addresses. It computes bases for several subspaces.
 
-*   $I = \text{span}(A_thr) \cap \text{span}(B_thr)$: Data that does not move between threads.
+*   $I = \text{span}(A_{thr}) \cap \text{span}(B_{thr})$: Data that does not move between threads.
 *   $E = A_{thr} \setminus I$ and $F = B_{thr} \setminus I$: Subspaces of data to be sent and received.
 *   $G = \{e_i \oplus f_i\}$: The set of displacement vectors. The paper specifies that $G$ is constructed "After choosing an ordering for $E$ and $F$." This implies a one-to-one pairing $(e_i, f_i)$ based on the chosen ordering of the basis vectors. This pairing is necessary because the conversion is a permutation: each source data element $e_i$ has a unique destination $f_i$.
 *   $R$: A basis for the intra-thread (register) address space. This is a basis for the complement of the thread space not already covered by the vectorized subspace $V$, $\text{span}(A_{thr} \cup B_{thr} \cup V)$.
