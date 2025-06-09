@@ -229,18 +229,45 @@ The compiler checks the structure of $C$ in order of cost, from cheapest to most
 
 3.  **Inter-warp Conversion via Shared Memory:** If neither of the above conditions is met, data must move between different warps. This is the most expensive conversion and requires using on-chip shared memory as an intermediary. Data from the source warps is written to shared memory and then read by the destination warps.
 
-#### Generating Warp Shuffles
+### Generating Warp Shuffles
 
-When a conversion requires an intra-warp exchange, the compiler generates a sequence of hardware shuffle instructions (`shfl.sync`) to move data between threads.
+When a conversion requires an intra-warp data exchange, the compiler generates a sequence of hardware **`shfl.sync`** instructions. A receiving thread executes `shfl.sync(value, srcLane)` to fetch a `value` from the registers of a sending thread, identified by its lane index `srcLane`. The linear layout framework provides a direct method for calculating these parameters.
 
-* Determining Vectorization Size: The amount of data moved by a single shuffle instruction is the vectorization size. It is determined by the part of the register layout that is structurally identical in both the source layout $A$ and destination layout $B$. This corresponds to the intersection of the column subspaces $A_{reg} \cap B_{reg}$. This intersection represents the data that can be moved as a contiguous vector.
+This process is illustrated by the example in Figure 3.
 
-    The hardware's `shfl.sync` instruction can only operate on a fixed-width vector (e.g., 32 bits). The compiler selects the largest possible data vector from within the $A_{reg} \cap B_{reg}$ intersection that fits this hardware constraint. This is the vectorization size for the exchange. If the intersection is empty, the vector size is one element.
+![Figure 3: Layout conversion via warp shuffles.](/assets/figures/paper_figure_3.png)
+_Figure 3: Layout conversion via warp shuffles from the paper. The labels `t_i` denote 3-bit logical address vectors. Note that the `t0,..,t7` in the top right corner are not threads, they are just labels for the basis vectors._
 
-* Sequence the Exchange: A thread can hold more data than can be moved by a single shuffle instruction. The compiler must therefore partition the total data exchange into a sequence of `shfl.sync` instructions.
+#### 1. Determine the Exchange Vector ($V$)
+First, the compiler identifies data that can be moved as a single vector. This data corresponds to the intersection of the register-related column subspaces, `A_{reg} \cap B_{reg}`. Any data in this subspace maintains its relative position within the registers during the conversion.
 
-    Each instruction in the sequence moves one block of data of the vectorization size determined above. The number of instructions required is the total amount of data to be exchanged per thread divided by this vectorization size. The thread-related part of the conversion matrix $C$ defines which threads exchange data in each step of this sequence.
-    
+Because this block of data is structurally invariant, it can be moved as a single unit. The compiler selects a basis $V$ for the largest possible subspace within this intersection whose total data size does not exceed the hardware's 32-bit `shfl.sync` payload limit. This basis $V$ defines the vector that will be moved in each shuffle instruction.
+
+#### 2. Decompose the Address Space
+The compiler creates a plan by decomposing the logical address space, which combines register and thread addresses. It computes bases for several subspaces.
+
+*   $I = \text{span}(A_thr) \cap \text{span}(B_thr)$: Data that does not move between threads.
+*   $E = A_{thr} \setminus I$ and $F = B_{thr} \setminus I$: Subspaces of data to be sent and received.
+*   $G = \{e_i \oplus f_i\}$: The set of displacement vectors. The paper specifies that $G$ is constructed "After choosing an ordering for $E$ and $F$." This implies a one-to-one pairing $(e_i, f_i)$ based on the chosen ordering of the basis vectors. This pairing is necessary because the conversion is a permutation: each source data element $e_i$ has a unique destination $f_i$.
+*   $R$: A basis for the intra-thread (register) address space. This is a basis for the complement of the thread space not already covered by the vectorized subspace $V$, $\text{span}(A_{thr} \cup B_{thr} \cup V)$.
+
+
+#### 3. Sequence the Exchange
+A thread holds more data than one shuffle can move. The exchange is thus partitioned into rounds, one for each basis vector in $R$. A larger vectorization $V$ results in a smaller basis $R$ and fewer rounds.
+
+In Figure 3, $V$ is empty, $R$ has two vectors, $R(0)$ and $R(1)$, corresponding to the two data elements held by each thread.
+
+*   **Round 1 (`shuffle(1)`):** This round moves the data slice whose logical addresses are in the affine subspace $\text{span}(G \cup I) \oplus R(0)$. A single data element's logical address is $e_i \oplus R(0)$.
+    *   **`value` parameter:** The `value` is the vector defined by $V$ from the register slice selected by $R(0)$.
+    *   **`srcLane` parameter:** A receiving thread at a destination thread address $f_i$ uses its corresponding displacement $g_i$ to find its source thread address $e_i = f_i \oplus g_i$. The integer representation of this vector $e_i$ is used as the `srcLane`.
+
+*   **Round 2 (`shuffle(2)`):** This round moves the data slice corresponding to the second register, selected by $R(1)$. The logical addresses are $\text{span}(G \cup I) \oplus R(1)$. The `value` is now the data from the second register slice, but the `srcLane` for each thread is calculated using the same exchange pattern $G$ as in the first round.
+
+## Running Out of Steam
+
+There is a bunch of other cool stuff in the paper. I ideally wanted to present "optimal swizzling," but I timeboxed this post, and so I think I'll end it here. 
+
+
 ---
 
 [^0]: From what I can understand. I am not a GPU expert, but I will write like I am one for the purpose of this post.
