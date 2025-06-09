@@ -7,9 +7,9 @@ tags: [linear algebra, finite fields, triton, gpu]
 [@typedfemale posted the paper "Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using F2" on X (link to tweet).](https://x.com/typedfemale/status/1929601592522580126) It looked interesting. I [tweeted](https://x.com/damekdavis/status/1929607878245339524): 
 > "I will actually read this. it's always the very interesting things that use lin alg over finite fields. i remember in undergrad when i first saw a "real" application of it while learning the general number field sieve."
 
-I struggled with this paper. This post is the result of that effort. Hopefully, it is useful.
+I struggled with [this paper](https://arxiv.org/abs/2505.23819){:target="_blank"}. This post is the result of that effort. Hopefully, it is useful.
 
-My goal here is to explain their main idea: using linear algebra over the finite field $F_2$ to manage how tensor data is arranged for computation on GPUs. This is outside my usual area of optimization and machine learning, but anyway it looked like a fun read.
+My goal here is to just give a sense of their main idea: using linear algebra over the finite field $F_2$ to manage how tensor data is arranged for computation on GPUs. This is outside my usual area of optimization and machine learning, but anyway it looked like a fun read.
 
 ## 1. GPU and Tensor Layouts
 
@@ -141,13 +141,13 @@ We can use matrix products to represent how a GPU kernel moves data between a la
 
 Loading data from global memory is fastest when threads access contiguous blocks of memory, a pattern known as coalesced access. This suggests a simple, row-major layout. However, a specialized compute unit, like a Tensor Core, may require data to be presented in a completely different layout to perform its calculations. We can compute this conversion using matrix products.
 
-Let layout $A$ be the source (e.g., memory layout) and $B$ be the destination (e.g., compute layout). We need to find the transformation $C$ that maps a hardware resource $v_A$ in the source layout to its corresponding resource $v_B$ in the destination. The same logical data $w$ must satisfy $w = A * v_A$ and $w = B * v_B$.
+Let layout $A$ be the source (e.g., memory layout) and $B$ be the destination (e.g., compute layout). We need to find the transformation $C$ that maps a hardware resource $v_A$ in the source layout to its corresponding resource $v_B$ in the destination. The same logical data $w$ must satisfy $w = Av_A$ and $w = Bv_B$.
 
 For layout $B$ to be a valid destination, it must be surjective, i.e., its mapping can reach every element of the logical tensor. This guarantees that a right inverse $B^{-1}$ exists. By setting the expressions for $w$ equal, we find the conversion map:
 
-$$v_B = (B^{-1} * A) * v_A$$
+$$v_B = (B^{-1}A)v_A$$
 
-The structure of the resulting matrix $C = B^{-1} * A$ describes the hardware operations needed to move data. For example, if $C$ only permutes register bits, the conversion is a simple move between registers within each thread. If it mixes bits between different threads within a warp, it requires an "intra-warp shuffle," a hardware instruction that exchanges data between threads in the same execution group.
+The structure of the resulting matrix $C = B^{-1}A$ describes the hardware operations needed to move data. For example, if $C$ only permutes register bits, the conversion is a simple move between registers within each thread. If it mixes bits between different threads within a warp, it requires an "intra-warp shuffle," a hardware instruction that exchanges data between threads in the same execution group.
 
 ### Product Operator for Hierarchical Layout Design
 
@@ -175,7 +175,7 @@ If the division succeeds, the compiler can generate a sequence of `ldmatrix` ins
 
 In Triton's legacy system, conversions between different layout types led to a "quadratic explosion" of custom implementations. Each pair of layouts required a unique, manually-coded conversion function. This made the compiler complex and difficult to extend, as adding a new layout type required implementing new conversion paths to all existing types.
 
-The paper proves that all of Triton's legacy layouts can be represented as linear layouts (Theorem 4.9). This result allows the compiler to replace the entire system of custom conversion functions with a single matrix operation. The conversion from any layout `A` to any layout `B` is now specified by the matrix product `B_inv * A`.
+The paper proves that all of Triton's legacy layouts can be represented as linear layouts (Theorem 4.9). This result allows the compiler to replace the entire system of custom conversion functions with a single matrix operation. The conversion from any layout $A$ to any layout $B$ is now specified by the matrix product $B^{-1}  A$.
 
 This simplifies compiler development. To add a new layout, a developer provides its matrix definition. Conversions to and from all other defined layouts are then handled by the existing matrix product operation.
 
@@ -199,7 +199,7 @@ Broadcasting is the replication of a single logical element across multiple hard
 
 Linear layouts provide a direct method for identifying this replication. Specifically, the duplication of a logical element across threads is represented in the layout matrix $A$ as a zero-column in the section corresponding to the thread ID bits.
 
-A zero-column means that changing the thread ID does not change the resulting logical address $w$ in the mapping $w = A * v$. The compiler inspects the matrix for this property to ensure each logical element is processed only once during a reduction.
+A zero-column means that changing the thread ID does not change the resulting logical address $w$ in the mapping $w = Av$. The compiler inspects the matrix for this property to ensure each logical element is processed only once during a reduction.
 
 ### Mixed-Precision Data Shuffling
 
@@ -213,19 +213,19 @@ The user specifies the logic of this shuffle with a high-level shape operation. 
 
 This shape operation is a linear transformation on the tensor's logical coordinates and is represented by a permutation matrix, $T_{shape}$. The compiler combines this with the original layout matrix, $A_{bf16}$, to compute the new, shuffled layout $A_{shuffled}$:
 
-$$A_{shuffled} = T_{shape} * A_{bf16}$$
+$$A_{shuffled} = T_{shape}A_{bf16}$$
 
 The compiler uses this resulting matrix $A_{shuffled}$ to generate the code that performs the physical memory copy for the shuffle.
 
 ### Generating Code for Layout Conversions
 
-To convert a tensor from a source distributed layout $A$ to a destination distributed layout $B$, the compiler first computes the conversion matrix $C = B^{-1} * A$. This matrix maps the source hardware resources to the destination hardware resources. The structure of $C$ determines the cheapest hardware primitive that can perform the conversion.
+To convert a tensor from a source distributed layout $A$ to a destination distributed layout $B$, the compiler first computes the conversion matrix $C = B^{-1}A$. This matrix maps the source hardware resources to the destination hardware resources. The structure of $C$ determines the cheapest hardware primitive that can perform the conversion.
 
 The compiler checks the structure of $C$ in order of cost, from cheapest to most expensive.
 
-1.  **Intra-thread Register Move:** This is the cheapest conversion. It is possible if the data movement is confined entirely within each thread. This is the case if the conversion matrix $C$ only permutes register bits, meaning the sub-matrix $(B^{-1} * A)_{reg}$ is a permutation matrix and the rest of $C$ is the identity.
+1.  **Intra-thread Register Move:** This is the cheapest conversion. It is possible if the data movement is confined entirely within each thread. This is the case if the conversion matrix $C$ only permutes register bits, meaning the sub-matrix $(B^{-1}A)_{reg}$ is a permutation matrix and the rest of $C$ is the identity.
 
-2.  **Intra-warp Shuffle:** If an intra-thread move is not possible, the compiler checks if the conversion can be done with warp shuffles. A warp shuffle is a hardware instruction that allows threads within the same warp to exchange data directly without using shared memory. This is possible if the conversion matrix $C$ does not move data between warps, which corresponds to the warp-related block of the matrix, $(B^{-1} * A)_{wrp}$, being the identity matrix.
+2.  **Intra-warp Shuffle:** If an intra-thread move is not possible, the compiler checks if the conversion can be done with warp shuffles. A warp shuffle is a hardware instruction that allows threads within the same warp to exchange data directly without using shared memory. This is possible if the conversion matrix $C$ does not move data between warps, which corresponds to the warp-related block of the matrix, $(B^{-1}A)_{wrp}$, being the identity matrix.
 
 3.  **Inter-warp Conversion via Shared Memory:** If neither of the above conditions is met, data must move between different warps. This is the most expensive conversion and requires using on-chip shared memory as an intermediary. Data from the source warps is written to shared memory and then read by the destination warps.
 
