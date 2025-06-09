@@ -1,7 +1,8 @@
 ---
 title: "Linear layouts, triton, and linear algebra over F_2"
-date: 2025-06-06
+date: 2025-06-09
 tags: [linear algebra, finite fields, triton, gpu]
+description: "Arranging tensor data for computation on GPUs using linear algebra over F_2"
 ---
 
 [@typedfemale posted the paper "Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using F2" on X (link to tweet).](https://x.com/typedfemale/status/1929601592522580126) It looked interesting. I [tweeted](https://x.com/damekdavis/status/1929607878245339524): 
