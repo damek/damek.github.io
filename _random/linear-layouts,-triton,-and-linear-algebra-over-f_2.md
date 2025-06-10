@@ -22,7 +22,7 @@ Triton is a language and compiler, originally developed by OpenAI, for writing c
 
 ## 2. Linear Layouts via Linear Algebra over $\mathbb{F}_2$
 
-The paper "Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using $\mathbb{F}_2$" defines a tensor layout using linear algebra over the finite field $\mathbb{F}_2 = \{0, 1\}$. Each layout is a matrix $A$ with entries in $\mathbb{F}_2$. This matrix $A$ specifies a linear map.
+The paper "Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using $\mathbb{F}_2$" defines a tensor layout using linear algebra over the finite field $\mathbb{F}_2 = \\{0, 1\\}$. Each layout is a matrix $A$ with entries in $\mathbb{F}_2$. This matrix $A$ specifies a linear map.
 
 For a *distributed layout*, this map assigns tensor data to specific hardware processing units and their local storage. The matrix $A$ maps an identifier for a hardware resource to the coordinates of a logical tensor element.
 *   The **input** to this map (the domain) is a vector $v \in \mathbb{F}\_2^n$. The bits of $v$ identify a unique hardware slot. This vector is a concatenation of bit vectors representing, for example, a register index $v\_{\text{reg}}$, a thread index $v\_{\text{thr}}$, and a warp index $v\_{\text{wrp}}$, so $v = [v\_{\text{reg}} \| v\_{\text{thr}} \| v\_{\text{wrp}}]$.
