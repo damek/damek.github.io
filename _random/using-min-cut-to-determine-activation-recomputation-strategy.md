@@ -1,6 +1,8 @@
 ---
 title: "Using min cut to determine activation recomputation strategy"
 date: 2025-06-11
+description: "Cleverly choosing activation recomputation strategy with min cut"
+tags: ["autograd", "min cut", "optimization"]
 ---
 
 
