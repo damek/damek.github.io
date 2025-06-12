@@ -32,7 +32,7 @@ A standard autograd system, as shown in the first figure, would save the `z` and
 This is a safe but suboptimal strategy. The total data transferred between the forward and backward passes for this strategy is the size of two tensors. We can do better. The key insight is that if we save only `z` (the output of `add_2`), we can recompute `cos(z)` on-the-fly inside the backward pass's fused kernel. This halves the memory traffic.
 
 
-#### The Min-Cut Formulation
+## The Min-Cut Formulation
 
 To find this optimal set of checkpointed tensors automatically, we model the problem as finding a minimum cut in a graph.
 
@@ -74,8 +74,6 @@ For our example, the algorithm compares the costs of all possible cuts:
 The minimum cost is `2B`, corresponding to cutting only the `add_2` edge. This means the optimal strategy is to checkpoint `add_2` (orange), recompute `cos` and `cos_1` (white), and feed the results to the tangent closure (red). 
 
 Thus, the min-cut formulation finds the checkpointing strategy that minimizes memory traffic under the fused computation model. These min-cut problems can be solved efficiently with standard [max-flow algorithms](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm).
-
-
 
 
 
