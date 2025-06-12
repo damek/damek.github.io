@@ -79,7 +79,9 @@ When processing the $j$-th block of a row $x_i$, which we denote $x_{i,j}$, we c
 1.  Compute the local statistics for the current block: $m_{i,j} = \max_k(x_{ik})$ and $l_{i,j} = \sum_k e^{x_{ik} - m_{i,j}}$.
 2.  Compute the new global maximum: $m_i^{\text{new}} = \max(m_i^{\text{old}}, m_{i,j})$.
 3.  Update the output value using the old and new statistics:
+
     $$ O_i^{\text{new}} = \frac{1}{l_i^{\text{new}}} \left( l_i^{\text{old}} e^{m_i^{\text{old}} - m_i^{\text{new}}} O_i^{\text{old}} + l_{i,j} e^{m_{i,j} - m_i^{\text{new}}} O_{i,j} \right) $$
+    
     where $O_{i,j}$ is the attention output computed using only the current block of $K$ and $V$, and $l_i^{\text{new}}$ is the appropriately rescaled sum.
 
 It's straightforward to see that by storing and updating these two scalars ($m_i, l_i$) per row, Flash attention can produce the exact output of the softmax operator without needing the whole row at once.
