@@ -19,7 +19,7 @@ Consider the function `f(a,b,c,d) = cos(cos(a+b+c+d))`. Let `z = a+b+c+d`. The f
 
 The chain rule dictates what the backward pass needs. To compute the gradients, it requires the intermediate values, or "activations," `z` and `cos(z)` to calculate `sin(z)` and `sin(cos(z))`: 
 ``` 
-dy             = incoming ∂L/∂y   (tangent placeholder)
+dy             = incoming ∂L/∂y   
 dcos           = dy * (-sin(x.cos()))
 dx             = dcos * (-sin(x))
 da,db,dc,dd    = dx    
