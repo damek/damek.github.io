@@ -10,7 +10,7 @@ Standard automatic differentiation saves many intermediate "activations" from th
 
 For a chain of pointwise operations (e.g., `add`, `relu`, `cos`), a fusing compiler can execute them in a single GPU kernel. The performance of this kernel is limited by memory bandwidth, the speed of reading from and writing to the GPU's global memory (HBM), not by the arithmetic operations themselves. This means that recomputing a sequence of fused pointwise operations is nearly free, provided the initial input to the sequence is available.
 
-Thus, the problem of choosing which activations to save in the forward pass is about minimizing memory traffic, not necessarily minimizing FLOPs. I came across a very clever strategy for doing this in a [blog post by Horace He](https://dev-discuss.pytorch.org/t/min-cut-optimal-recomputation-i-e-activation-checkpointing-with-aotautograd/467). There Horace frames the problem as a "min cut" on the computation graph and sees some nice improvements. I recommend reading the post for details. Here I'll mainly work out some details that I was confused about in Horace's original post.
+Thus, the problem of choosing which activations to save in the forward pass is about minimizing memory traffic, not necessarily minimizing FLOPs. I came across a very clever strategy for doing this in a [blog post by Horace He](https://dev-discuss.pytorch.org/t/min-cut-optimal-recomputation-i-e-activation-checkpointing-with-aotautograd/467). There, Horace frames the problem as a "min cut" on the computation graph and sees some nice improvements. I recommend reading the post for details. Here I'll mainly work out some details that I was confused about in Horace's original post. [^1]
 
 
 ## Backward and forward passes
@@ -78,3 +78,4 @@ Thus, the min-cut formulation finds the checkpointing strategy that minimizes me
 
 
 [^0]: An `s-t` cut is a set of edges whose removal disconnects all paths from `SRC` to `SNK`. 
+[^1]: See also [this paper](https://proceedings.mlsys.org/paper_files/paper/2023/file/8a27bb69950c0b46cdb36d10e5514cc8-Paper-mlsys2023.pdf){:target="_blank"}, which Horace pointed me to.
