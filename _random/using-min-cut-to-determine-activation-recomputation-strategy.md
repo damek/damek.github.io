@@ -44,7 +44,7 @@ To find this optimal set of checkpointed tensors automatically, we model the pro
     *   The **source set** represents the beginning of the forward pass. The `SRC` node is connected to all initial inputs of the model (e.g., `a, b, c, d`).
     *   The **sink set** represents the operations that *must* run in the backward pass. An operation must be in the backward pass if it depends on the incoming gradient. This set of operations is called the **tangent closure**. In the figures, these are the red nodes. The `SNK` node is connected to all nodes in the tangent closure.
 
-3.  **Edges and Costs (Capacities):**
+3.  **Edges and Costs:**
     The problem is transformed into a standard edge-cut problem via node splitting. Every operation node `v` is split into two nodes, `v_in` and `v_out`, connected by an edge.
 
     *   **Split Edges (`v_in -> v_out`):** These are the only edges with a finite cost, or. The cost of this edge is the cost of checkpointing the tensor `v`.
