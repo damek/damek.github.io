@@ -47,24 +47,24 @@ To find this optimal set of checkpointed tensors automatically, we model the pro
 3.  **Edges and Costs (Capacities):**
     The problem is transformed into a standard edge-cut problem via node splitting. Every operation node `v` is split into two nodes, `v_in` and `v_out`, connected by an edge.
 
-    *   **Split Edges (`v_in -> v_out`):** These are the only edges with a finite cost, or **capacity**. The capacity of this edge is the cost of checkpointing the tensor `v`.
-        *   `Capacity = 2 * B(v)` for an intermediate activation. This cost represents one `write` to global memory and one `read` from it.
-        *   `Capacity = 1 * B(v)` for a forward pass input that already exists in global memory. This cost represents just one `read`.
+    *   **Split Edges (`v_in -> v_out`):** These are the only edges with a finite cost, or. The cost of this edge is the cost of checkpointing the tensor `v`.
+        *   `Cost = 2 * B(v)` for an intermediate activation. This cost represents one `write` to global memory and one `read` from it.
+        *   `Cost = 1 * B(v)` for a forward pass input that already exists in global memory. This cost represents just one `read`.
         Here, `B(v)` is the size of the tensor in bytes.
-    *   **Data-Flow Edges (`u_out -> v_in`):** Edges representing the flow of data between operations have **infinite capacity**. This models our assumption that recomputation within a fused kernel is free.
+    *   **Data-Flow Edges (`u_out -> v_in`):** Edges representing the flow of data between operations have **infinite cost**. This models our assumption that recomputation within a fused kernel is free.
 
 4.  **The Cut:**
-    The min-cut algorithm finds the set of edges with the minimum total capacity that must be severed to separate `SRC` from `SNK`. Because only the split edges have finite capacity, the algorithm will only sever those.
+    The min-cut algorithm finds the set of edges with the minimum total cost that must be severed to separate `SRC` from `SNK`. Because only the split edges have finite cost, the algorithm will only sever those.
 
-    Mathematically, the algorithm solves for the `s-t` cut [^0] with minimum total capacity:
+    Mathematically, the algorithm solves for the `s-t` cut [^0] with minimum total cost:
     
     $$
-    \text{minimize} \sum_{(u \to v) \in \text{cut}} \text{capacity}(u \to v)
+    \text{minimize} \sum_{(u \to v) \in \text{cut}} \text{cost}(u \to v)
     $$
 
-    The sum is over all edges in the cut. Since data-flow edges have infinite capacity, a minimal cut will only ever consist of the finite-capacity "split edges." The problem is thus equivalent to finding the cheapest set of split edges to sever.
+    The sum is over all edges in the cut. Since data-flow edges have infinite cost, a minimal cut will only ever consist of the finite cost"split edges." The problem is thus equivalent to finding the cheapest set of split edges to sever.
 
-    An edge `v_in -> v_out` being cut means we have decided to pay its capacity and checkpoint the tensor `v`. The nodes whose edges are cut are colored orange. Nodes on the `SRC` side of the cut are inputs. Nodes on the `SNK` side are either part of the mandatory tangent closure (red) or are operations that will be recomputed (white).
+    An edge `v_in -> v_out` being cut means we have decided to pay its cost and checkpoint the tensor `v`. The nodes whose edges are cut are colored orange. Nodes on the `SRC` side of the cut are inputs. Nodes on the `SNK` side are either part of the mandatory tangent closure (red) or are operations that will be recomputed (white).
 
 For our example, the algorithm compares the costs of all possible cuts:
 *   **Cut at `add_2`:** Severs the `add_2_in -> add_2_out` edge. Cost = `2B`.
