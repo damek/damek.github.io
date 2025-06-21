@@ -10,7 +10,7 @@ I've been trying to get a better sense of how GPUs work. I've read a lot online,
 2. [What Shapes Do Matrix Multiplications Like?](https://www.thonking.ai/p/what-shapes-do-matrix-multiplications){:target="_blank"}
 3. [How to Optimize a CUDA Matmul Kernel for cuBLAS-like Performance: a Worklog](https://siboehm.com/articles/22/CUDA-MMM){:target="_blank"}
 
-This post collects various facts I learned from these resources. I've also read a lot of other posts, but I've forgotten them.
+This post collects various facts I learned from these resources.
 
 **Table of Contents**
 
