@@ -12,6 +12,8 @@ I've been trying to get a better sense of how GPUs work. I've read a lot online,
 
 This post collects various facts I learned from these resources.
 
+Acknowledgements: Thanks to [Alex McKinney](https://afmck.in/){:target="_blank"} for comments on [independent thread scheduling](https://docs.nvidia.com/cuda/ampere-compatibility-guide/#independent-thread-scheduling-compatibility){:target="_blank"}.
+
 **Table of Contents**
 
 - [Compute and memory hierarchy](#compute-and-memory-hierarchy)
@@ -68,7 +70,7 @@ Below is a diagram of the compute and memory hierarchy for an NVIDIA A100 GPU. T
 
 This diagram shows the performance hierarchy.[^0] **Global Memory (VRAM)** is the large, slow, off-chip memory pool where all data initially lives. A **Streaming Multiprocessor (SM)** is the GPU's unit of computation. To work, it must fetch data over the slow bus. To mitigate this, each SM has fast, on-chip **Shared Memory** (SRAM) with a bandwidth of 19.5 TB/s.[^1] Programmers use this as a manually-managed cache. 
 
-A **thread** is the smallest unit of execution. Each thread has a private set of **Registers** to hold values for immediate computation, with access speeds over ?? TB/s.[^2] The hardware groups threads into **Warps** of 32. All 32 threads in a warp execute the identical instruction at the same time on their own private data. On an A100, an SM has an upper limit of 64 warps. A programmer groups threads into a **Block**, a grid of threads that is guaranteed to run on a single SM. A block can be one, two, or three-dimensional. For simplicity, this post will focus on square two-dimensional blocks of `BLOCK_DIM x BLOCK_DIM` threads, where the total number of threads cannot exceed the hardware limit of 1024. All threads in a block share access to the same on-chip Shared Memory.
+A **thread** is the smallest unit of execution. Each thread has a private set of **Registers** to hold values for immediate computation, with access speeds over ?? TB/s.[^2] The hardware groups threads into **Warps** of 32. This post analyzes performance using the simplified model of **lockstep execution**, where all 32 threads in a warp execute the same instruction at the same time.[^10] On an A100, an SM has an upper limit of 64 warps. A programmer groups threads into a **Block**, a grid of threads that is guaranteed to run on a single SM. A block can be one, two, or three-dimensional. For simplicity, this post will focus on square two-dimensional blocks of `BLOCK_DIM x BLOCK_DIM` threads, where the total number of threads cannot exceed the hardware limit of 1024. All threads in a block share access to the same on-chip Shared Memory.
 
 ## The Two Performance Regimes
 
@@ -293,13 +295,13 @@ Loading columns directly from a row-major matrix is an uncoalesced, strided acce
 
 ### Synchronization
 
-The `__syncthreads()` call acts as a barrier. No thread in the block proceeds until all threads have reached this point. This ensures the `A_tile` and `B_tile` are fully loaded into Shared Memory before the compute phase begins.
+The `__syncthreads()` call acts as a barrier. No thread in the block proceeds until all threads have reached this point. This ensures the `A_tile` and `B_tile` are fully loaded into Shared Memory before the compute phase begins.[^sync]: 
 
 ### The On-Chip Hardware: Banks and Warps
 
 Shared Memory is a physical resource located on the Streaming Multiprocessor (SM). When a thread block is scheduled to run on an SM, it is allocated a portion of that SM's total Shared Memory for its exclusive use. 
 
-The Shared Memory is physically partitioned into 32 independent memory modules of equal size, called **banks**. These banks can service memory requests in parallel. This number is not arbitrary; it is matched to the **warp size**. Recall that a warp consists of 32 threads that execute instructions in lockstep, and it is the fundamental unit of memory access. The 32 banks are designed to serve the 32 parallel memory requests from a single warp in one clock cycle.
+The Shared Memory is physically partitioned into 32 independent memory modules of equal size, called **banks**. These banks can service memory requests in parallel. This number is not arbitrary; it is matched to the **warp size**. Recall that a warp consists of 32 threads that execute instructions in lockstep, and it is the fundamental unit of memory access. The 32 banks are designed to serve, in parallel, the 32 memory requests from a single warp in one clock cycle, provided those requests target different banks.
 
 Addresses, representing 4-byte words, are interleaved across the banks.
 ```
@@ -421,7 +423,8 @@ w   | (Wasted work)   | (Wasted work)   | (Wasted work)   |
 s   |                 |                 |                 |
     +-----------------+-----------------+-----------------+
 ```
-[According to NVIDIA](https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#tile-quant){:target="_blank"}, "While libraries ensure that invalid memory accesses are not performed by any of the tiles, all tiles will perform the same amount of math." My understanding of why this happens (I'm happy to be corrected): Boundary blocks perform wasted work because the kernel explicitly pads the data. Threads assigned to load elements from outside the matrix bounds are prevented from doing so by a guard condition. Instead, they write zero to their location in the on-chip Shared Memory tile. The arithmetic loops are not shortened. All 32 threads in a warp execute the same multiply-add instructions in lockstep. A thread whose data corresponds to a padded zero still executes the instruction; it just performs a useless computation, such as `C += A * 0`. The hardware resources are used, but the work is discarded.
+[According to NVIDIA](https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#tile-quant){:target="_blank"}, "While libraries ensure that invalid memory accesses are not performed by any of the tiles, all tiles will perform the same amount of math." My understanding of why this happens (I'm happy to be corrected): Boundary blocks perform wasted work because the kernel explicitly pads the data. Threads assigned to load elements from outside the matrix bounds are prevented from doing so by a guard condition. Instead, they write zero to their location in the on-chip Shared Memory tile. The arithmetic loops are not shortened. The kernel's logic is uniform across the tile. All threads in a warp execute the same multiply-add instructions. A thread whose data corresponds to a padded zero still executes the instruction; it just performs a useless computation, such as `C += A * 0`. The hardware resources are used, but the  work is discarded.
+
 
 ## Additional Performance Considerations
 
@@ -473,9 +476,7 @@ We tune the kernel's resource usage to balance the benefit of high AI against th
 
 ### Avoiding Thread Divergence
 
-All 32 threads in a warp execute the same instruction at the same time, in lockstep. A conditional branch (`if-else`) where threads disagree on the outcome causes **thread divergence**.
-
-The hardware resolves divergence by executing both paths of the branch serially. First, threads that take the `if` path execute it while the others are inactive. Then, the roles are reversed for the `else` path.
+A conditional branch (`if-else`) where threads in a warp disagree on the outcome causes **thread divergence**.[^12] When this occurs, the hardware resolves the divergence by executing the different code paths serially. First, threads that take the `if` path execute it while the others are inactive. Then, the roles are reversed for the `else` path.
 
 ```python
 # A warp of 32 threads encounters an `if` statement:
@@ -533,3 +534,9 @@ Quantization can therefore move us up and to the right on the Roofline plot.
 [^9]: The SM has a finite physical Register File (e.g., 65,536 32-bit registers on an A100). The total number of registers a block requires is `(threads per block) * (registers per thread)`. The SM can only host as many concurrent blocks as can fit within its Register File and Shared Memory capacity. Therefore, using more registers per thread reduces the number of blocks that can be resident, lowering occupancy. The compiler allocates registers to warps in fixed-size chunks, so, e.g., a kernel requesting 33 registers per thread may be allocated 40, further impacting this resource calculation.
 
 [^karpathy]: BTW as [pointed out by Horace He](https://www.thonking.ai/p/what-shapes-do-matrix-multiplications){:target="_blank"}), this effect explains why [padding a model's vocabulary size can improve performance](https://x.com/karpathy/status/1621578354024677377){:target="_blank"}.
+
+[^sync]: With Independent Thread Scheduling, we cannot rely on implicit synchronization between threads in a warp. Correctness requires an explicit barrier like `__syncthreads()` to guarantee that, for example, all data is written to Shared Memory before any thread reads it.
+
+[^10]: Modern GPUs (e.g., A100s) actually have [**Independent Thread Scheduling**](https://docs.nvidia.com/cuda/ampere-compatibility-guide/#independent-thread-scheduling-compatibility){:target="_blank"} (ITS). See page 14 and beyond of [this document](https://cuda-tutorial.github.io/part3.pdf) for a nice introduction to ITS. In particular, the authors write that in ITS, "[e]ach thread is given its own, individual program counter, meaning that theoretically, each thread can store its own unique instruction that it wants to perform next. The execution of threads still happens in warps, this has not changed. It is not possible for threads in a warp to perform different instructions in the same cycle. However, a warp may now bescheduled to progress at any of the different program counters that the threads within it are currently holding. Furthermore, ITS provides a“progress guarantee”: eventually, over a number of cycles, all individual program counters that the threads in a warp maintain will be visited. Thismeans that if, for instance, the execution has diverged and two branches, both are guaranteed to be executed sooner or later." While ITS allows one to write correct branching code a bit more easily than in older architectures, one should still strive to write code where warps operate as much as possible in lockstep, so we can take advantage of the maximal number of parallel lanes.
+
+[^12]: Independent Thread Scheduling does not eliminate the cost of divergence. While each thread has its own Program Counter (PC), a register pointing to the next instruction, the warp is still managed by a scheduler that can only issue an instruction from a single address per cycle. When PCs within a warp diverge, the scheduler must serially execute each unique path, leaving all other threads idle. The simplified `if-else` model in the main text is thus still an accurate description of thread divergence since serialization diminishes the warp's parallelism.
