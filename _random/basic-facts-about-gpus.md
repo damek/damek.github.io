@@ -11,8 +11,10 @@ I've been trying to get a better sense of how GPUs work. I've read a lot online,
 3. [How to Optimize a CUDA Matmul Kernel for cuBLAS-like Performance: a Worklog](https://siboehm.com/articles/22/CUDA-MMM){:target="_blank"}
 
 This post collects various facts I learned from these resources.
+- [Hacker news discussion](https://news.ycombinator.com/item?id=44365320){:target="_blank"}
+- [Twitter thread](https://x.com/damekdavis/status/1936496421743546488){:target="_blank"}
 
-Acknowledgements: Thanks to [Alex McKinney](https://afmck.in/){:target="_blank"} for comments on [independent thread scheduling](https://docs.nvidia.com/cuda/ampere-compatibility-guide/#independent-thread-scheduling-compatibility){:target="_blank"}.
+**Acknowledgements:** Thanks to [Alex McKinney](https://afmck.in/){:target="_blank"} for comments on [independent thread scheduling](https://docs.nvidia.com/cuda/ampere-compatibility-guide/#independent-thread-scheduling-compatibility){:target="_blank"}.
 
 **Table of Contents**
 
