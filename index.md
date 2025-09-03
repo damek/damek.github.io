@@ -65,11 +65,13 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
     - I decided to do more writing in public in 2025.
         - In the spring semester, I wrote [course notes for optimization in PyTorch](http://optimizationinpytorch.com).
         - In May, I started writing [notes](random) on what I've been thinking about.
-- I've regularly read research on LLMs since mid 2022.
-    - I speak to them more than anyone else I know.
-    - If LLMs help me do math, I'll be happy. I think they will, but key ideas are likely missing.
-    - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in Lean. 
-        - As of April 2025, no LLM can complete the proof.
+        - In July, I began [learning LLMs from scratch](https://x.com/damekdavis/status/1937275870663598216) from an [engineering perspective](https://x.com/damekdavis/status/1949507725626347825).
+- [Minerva](https://arxiv.org/abs/2206.14858) convinced me that LLMs would eventually accelerate mathematics research. Since then,
+    - I've spoken to LLMs more than anyone else I know, for math, coding, writing, and even negotiating medical bills.
+    - I've used LLMs to help me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in [Lean](https://lean-lang.org/). 
+        - As of April 2025, no LLM could complete the proof.
+    - I was [awarded a grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2523384&HistoricalAwards=false) on that aims to use AI techniques to solve the [Hadamard conjecture](https://en.wikipedia.org/wiki/Hadamard_matrix#Hadamard_conjecture).
+
 
 ## Publications
 
