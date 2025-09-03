@@ -70,7 +70,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - I've use them for math, coding, writing, and even negotiating medical bills.
     - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in [Lean](https://lean-lang.org/). 
         - As of April 2025, no LLM could complete the proof.
-    - I was [awarded a grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2523384&HistoricalAwards=false) that aims to use AI techniques to solve the [Hadamard conjecture](https://en.wikipedia.org/wiki/Hadamard_matrix#Hadamard_conjecture).
+    - I was [awarded a grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2523384&HistoricalAwards=false) that aims use AI to solve the [Hadamard conjecture](https://en.wikipedia.org/wiki/Hadamard_matrix#Hadamard_conjecture).
 
 
 ## Publications
