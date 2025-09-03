@@ -65,7 +65,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - In the spring semester, I wrote [course notes for optimization in PyTorch](http://optimizationinpytorch.com).
         - In May, I started writing [notes](random) on what I've been thinking about.
         - In July, I began [learning LLMs from scratch](https://x.com/damekdavis/status/1937275870663598216) from an [engineering perspective](https://x.com/damekdavis/status/1949507725626347825).
-- [Minerva](https://arxiv.org/abs/2206.14858) convinced me that LLMs would eventually accelerate mathematics research. Since then,
+- [Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs would eventually accelerate mathematics research. Since then,
     - I've spoken to LLMs more than anyone else I know, for math, coding, writing, and even negotiating medical bills.
     - I've used LLMs to help me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in [Lean](https://lean-lang.org/). 
         - As of April 2025, no LLM could complete the proof.
