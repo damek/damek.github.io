@@ -152,7 +152,6 @@ Bernoulli (to appear)
 [Asymptotic normality and optimality in nonsmooth stochastic approximation](https://arxiv.org/abs/2301.06632) 
 Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
 The Annals of Statistics (to appear)
-*[Second Place in INFORMS Optimization Society 2024 Student Paper Prize](https://connect.informs.org/optimizationsociety/prizes/students-prize/2024)*
 
 [A nearly linearly convergent first-order method for nonsmooth functions with quadratic growth](https://arxiv.org/abs/2205.00064) 
 Damek Davis, Liwei Jiang
@@ -209,7 +208,6 @@ Mathematics of Operations Research (2019) | [video](https://www.youtube.com/watc
 [Stochastic subgradient method converges on tame functions.](https://arxiv.org/abs/1804.07795) 
 Damek Davis, Dmitriy Drusvyatskiy, Sham Kakade, Jason D. Lee
 Foundations of Computational Mathematics (to appear)
-*Finalist for the Best Paper Prize for Young Researchers in Continuous Optimization (2019)*
 
 [The nonsmooth landscape of phase retrieval](https://academic.oup.com/imajna/article-abstract/40/4/2652/5684995) 
 Damek Davis, Dmitriy Drusvyatskiy, Courtney Paquette
