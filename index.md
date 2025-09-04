@@ -64,7 +64,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
     - I decided to do more writing in public in 2025.
         - In the spring semester, I wrote [course notes for optimization in PyTorch](http://optimizationinpytorch.com).
         - In May, I started writing [notes](random) on what I've been thinking about.
-        - In July, I began [learning LLMs from scratch](https://x.com/damekdavis/status/1937275870663598216) from an [engineering perspective](https://x.com/damekdavis/status/1949507725626347825).
+        - In July, I [began](https://x.com/damekdavis/status/1937275870663598216) learning [LLM engineering from scratch](https://x.com/damekdavis/status/1949507725626347825).
 - [Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs could eventually accelerate mathematics research. Since then,
     - I've spoken to LLMs more than anyone else I know.
         - I've use them for math, coding, writing, and even negotiating medical bills.
