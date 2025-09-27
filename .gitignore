@@ -75,3 +75,5 @@ out/
 # Local development files
 local/
 !morphlabs_blueprint.pdf
+!ResearchStatementDamekDavis.pdf
+*.tex
