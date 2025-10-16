@@ -79,6 +79,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[What is the objective of reasoning with reinforcement learning?](https://arxiv.org/abs/2510.13651)
+Damek Davis, Benjamin Recht
+Manuscript (2025)
+
 [Iteratively reweighted kernel machines efficiently learn sparse functions](https://arxiv.org/abs/2505.08277)
 Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
 Manuscript (2025)
@@ -87,12 +91,12 @@ Manuscript (2025)
 Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
 Manuscript (2025)
 
-[Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth](https://arxiv.org/abs/2409.19791)
-Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
-Manuscript (2024)
-
 
 ###  Conference papers 
+
+[Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth](https://arxiv.org/abs/2409.19791)
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
+Mathematical Programming (to appear)
 
 [Online Covariance Estimation in Nonsmooth Stochastic Approximation](https://arxiv.org/abs/2502.05305)
 Liwei Jiang, Abhishek Roy, Krishna Balasubramanian, Damek Davis, Dmitriy Drusvyatskiy, Sen Na
