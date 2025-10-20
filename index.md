@@ -65,6 +65,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - In the spring semester, I wrote [course notes for optimization in PyTorch](http://optimizationinpytorch.com).
         - In May, I started writing [notes](random) on what I've been thinking about.
         - In July-September, I [wrote about learning LLM engineering from scratch](https://x.com/damekdavis/status/1968079612044509347).
+        - In October, I [wrote about the objective of reasoning with reinforcement learning](https://arxiv.org/abs/2510.13651).
 - [Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs could eventually accelerate mathematics research. Since then,
     - I've spoken to LLMs more than anyone else I know.
         - I've use them for math, coding, writing, and even negotiating bills.
