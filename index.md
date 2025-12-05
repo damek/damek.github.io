@@ -67,11 +67,13 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - In May, I started writing [notes](random) on what I've been thinking about.
         - In July-September, I [wrote about learning LLM engineering from scratch](https://x.com/damekdavis/status/1968079612044509347).
         - In October, I [wrote about the objective of reasoning with reinforcement learning](https://arxiv.org/abs/2510.13651).
+        - In November, I [wrote about why spectral gradient methods help in deep learning](https://x.com/damekdavis/status/1996018764341805507?s=20).
 - [Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs could eventually accelerate mathematics research. Since then,
     - I've spoken to LLMs more than anyone else I know.
         - I've use them for math, coding, writing, and even negotiating bills.
     - LLMs sort of helped me [almost formalize](https://github.com/damek/gd-lean) convergence of gradient descent in [Lean](https://lean-lang.org/). 
         - As of April 2025, no LLM could complete the proof.
+        - As of December 2025, I think this has changed, but need to check.
     - I received a [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2523384&HistoricalAwards=false) that aims to make progress on the [Hadamard conjecture](https://en.wikipedia.org/wiki/Hadamard_matrix#Hadamard_conjecture) with RL tools.
 
 
