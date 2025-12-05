@@ -83,6 +83,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[When do spectral gradient updates help in deep learning?](https://arxiv.org/abs/2512.04299)
+Damek Davis and Dmitriy Drusvyatskiy
+Manuscript (2025)
+
 [What is the objective of reasoning with reinforcement learning?](https://arxiv.org/abs/2510.13651)
 Damek Davis, Benjamin Recht
 Manuscript (2025)
