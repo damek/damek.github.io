@@ -15,6 +15,7 @@ I'm an Associate Professor in Wharton's Department of Statistics and Data Scienc
 **Selected Awards.** I received a <a href="https://sloan.org/fellowships/">Sloan Research Fellowship in Mathematics</a>, an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2047637">NSF CAREER Award</a>, and the <a href="https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-opt-best-paper-prize">SIAM Activity Group on Optimization Best Paper Prize</a>. 
 
 **Selected Works.** Read more about my research [here](ResearchStatementDamekDavis.pdf). Together with collaborators, I 
+- Identified [when/why spectral gradient methods help in deep learning](https://x.com/damekdavis/status/1996018764341805507?s=20).
 - Developed exponential accelerations of <a href="https://x.com/damekdavis/status/1841596498204880924">gradient descent</a>, <a href="https://twitter.com/damekdavis/status/1596616542396944384">semismooth Newton</a>, and <a href="https://twitter.com/damekdavis/status/1682737261727866882?s=20">the subgradient method</a>. 
 - Proved first guarantees for SGD on [weakly convex](https://arxiv.org/abs/1803.06523) and [tame](https://arxiv.org/abs/1804.07795) functions, which covers essentially all neural networks.
 - Characterized the [asymptotic distribution of SGD in nonsmooth optimization](https://arxiv.org/abs/2301.06632).
