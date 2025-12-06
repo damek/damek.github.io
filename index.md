@@ -102,7 +102,6 @@ Manuscript (2025)
 
 ###  Conference papers 
 
-
 [Online Covariance Estimation in Nonsmooth Stochastic Approximation](https://arxiv.org/abs/2502.05305)
 Liwei Jiang, Abhishek Roy, Krishna Balasubramanian, Damek Davis, Dmitriy Drusvyatskiy, Sen Na
 In Conference on Learning Theory (2025)
