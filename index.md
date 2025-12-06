@@ -102,9 +102,6 @@ Manuscript (2025)
 
 ###  Conference papers 
 
-[Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth](https://arxiv.org/abs/2409.19791)
-Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
-Mathematical Programming (to appear)
 
 [Online Covariance Estimation in Nonsmooth Stochastic Approximation](https://arxiv.org/abs/2502.05305)
 Liwei Jiang, Abhishek Roy, Krishna Balasubramanian, Damek Davis, Dmitriy Drusvyatskiy, Sen Na
@@ -140,6 +137,10 @@ Damek Davis, Jonathan Balzer, Stefano Soatto
 In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2014)
 
 ### Journal papers 
+
+[Gradient descent with adaptive stepsize converges (nearly) linearly under fourth-order growth](https://arxiv.org/abs/2409.19791)
+Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
+Mathematical Programming (2025)
 
 [Active manifolds, stratifications, and convergence to local minima in nonsmooth optimization](https://arxiv.org/abs/2108.11832) 
 Damek Davis, Dmitriy Drusvyatskiy, Liwei Jiang
