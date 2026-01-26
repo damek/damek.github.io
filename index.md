@@ -74,6 +74,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - As of April 2025, no LLM could complete the proof.
         - As of December 2025, I think this has changed, but need to check.
     - I received a [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2523384&HistoricalAwards=false) that aims to make progress on the [Hadamard conjecture](https://en.wikipedia.org/wiki/Hadamard_matrix#Hadamard_conjecture) with RL tools.
+    - With Paata Ivanisvili and Terry Tao, I'm [curating a collection of optimization constants in mathematics](https://github.com/teorth/optimizationproblems?tab=readme-ov-file) that can serve as an AI benchmark/inspire progress by mathematicians.
 
 
 ## Publications
