@@ -62,11 +62,13 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - The second taught me how to structure text so a busy reader could appreciate it.
     - I think writing improves when you become more comfortable with rejection.
     - I decided to do more writing in public in 2025.
-        - In the spring semester, I wrote [course notes for optimization in PyTorch](http://optimizationinpytorch.com).
+        - In the spring semester, I wrote [the 2025 version of my course notes for optimization in PyTorch](https://damek.github.io/STAT-4830/archive/2025/toc.html).
         - In May, I started writing [notes](random) on what I've been thinking about.
         - In July-September, I [wrote about learning LLM engineering from scratch](https://x.com/damekdavis/status/1968079612044509347).
         - In October, I [wrote about the objective of reasoning with reinforcement learning](https://arxiv.org/abs/2510.13651).
-        - In November, I [wrote about why spectral gradient methods help in deep learning](https://x.com/damekdavis/status/1996018764341805507?s=20).
+        - In November and December, I [wrote about why spectral gradient methods help in deep learning](https://x.com/damekdavis/status/1996018764341805507?s=20).
+    - I continued writing in public in 2026. 
+        - In Spring semester, I completely revised my [course on optimization in PyTorch](http://optimizationinpytorch.com).
 - [Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs could eventually accelerate mathematics research. Since then,
     - I've spoken to LLMs more than anyone else I know.
         - I've use them for math, coding, writing, and even negotiating bills.
