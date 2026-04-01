@@ -88,6 +88,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[Counting partial Hadamard matrices in the cubic regime](https://arxiv.org/abs/2603.30013)
+Damek Davis
+Manuscript (2026)
+
 [When do spectral gradient updates help in deep learning?](https://arxiv.org/abs/2512.04299)
 Damek Davis and Dmitriy Drusvyatskiy
 Manuscript (2025)
