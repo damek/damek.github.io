@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    {% include head-custom.html %}
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --page-background: #ffffff;
+        --text-color: #24292f;
+        --muted-color: #57606a;
+        --link-color: #0969da;
+        --rule-color: #d0d7de;
+      }
+
+      html {
+        overflow-y: scroll;
+      }
+
+      body {
+        margin: 0;
+        padding: 10vh 1.5rem 4rem;
+        background: var(--page-background);
+        color: var(--text-color);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      main {
+        max-width: 540px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+        margin: 0 0 0.85rem;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.3;
+        margin: 2.2rem 0 0.85rem;
+      }
+
+      h3 {
+        font-size: 0.98rem;
+        font-weight: 600;
+        line-height: 1.35;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--muted-color);
+      }
+
+      p,
+      li,
+      blockquote {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      p,
+      ul,
+      ol,
+      blockquote {
+        margin: 0 0 1rem;
+      }
+
+      p + ul,
+      p + ol {
+        margin-top: -0.15rem;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.3rem;
+      }
+
+      li {
+        margin: 0.35rem 0;
+      }
+
+      li > ul,
+      li > ol {
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+      }
+
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      strong {
+        font-weight: 600;
+      }
+
+      em {
+        color: var(--muted-color);
+      }
+
+      hr {
+        border: 0;
+        border-top: 1px solid var(--rule-color);
+        margin: 2rem 0;
+      }
+
+      blockquote {
+        border-left: 3px solid var(--rule-color);
+        padding-left: 1rem;
+        margin-left: 0;
+        color: var(--muted-color);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 2rem 1rem 3rem;
+          font-size: 15px;
+        }
+
+        h1 {
+          font-size: 1.4rem;
+        }
+
+        h2 {
+          margin-top: 1.8rem;
+        }
+      }
+    </style>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    <main>
+      {{ content }}
+    </main>
+  </body>
+</html>
