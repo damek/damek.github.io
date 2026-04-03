@@ -1,6 +1,6 @@
 ---
-layout: hadamard_preview
+layout: oldsite_blue_preview
 title: Damek Davis
 ---
-{% assign homepage = site.pages | where: "url", "/" | first %}
-{{ homepage.content | markdownify }}
+{% assign old_homepage = site.pages | where: "name", "index_old.md" | first %}
+{{ old_homepage.content | markdownify }}
