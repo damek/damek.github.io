@@ -77,7 +77,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - As of December 2025, I think this has changed, but need to check.
         - As of February 2026, [Aristotle](https://aristotle.harmonic.fun/) has [completed the proof](https://github.com/damek/gd-lean).
     - I received a [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2523384&HistoricalAwards=false) that aims to make progress on the [Hadamard conjecture](https://en.wikipedia.org/wiki/Hadamard_matrix#Hadamard_conjecture) with RL tools.
-        - So far, I've released a paper on [Counting partial Hadamard matrices in the cubic regime](https://arxiv.org/abs/2603.30013) together with a [Lean formalization](https://damek.github.io/counting_hadamard/).
+        - So far, I've released a paper on [Counting partial Hadamard matrices in the cubic regime](https://arxiv.org/abs/2603.30013) ([thread](https://x.com/damekdavis/status/2039741829306847656?s=20)) together with a [Lean formalization](https://damek.github.io/counting_hadamard/).
     - With Paata Ivanisvili and Terry Tao, I'm [curating a collection of optimization constants in mathematics](https://github.com/teorth/optimizationproblems?tab=readme-ov-file) that can serve as an AI benchmark/inspire progress by mathematicians.
     - I [gave a talk](https://www.youtube.com/watch?v=vea5EJQ4uwg) on AI for math and an [interview](https://www.youtube.com/watch?v=Q2xeGFwyLE4) while visiting the IPAM AI for science kickoff meeting in February 2026. You can view a short snippet from that interview [here](https://www.youtube.com/shorts/CQqk2ropeyM).
     - With [Terry Tao](https://terrytao.wordpress.com/2026/03/13/mathematics-distillation-challenge-equational-theories/) and the [SAIR Foundation](https://competition.sair.foundation/competitions/mathematics-distillation-challenge-equational-theories-stage1/overview), I'm co-organizing a multi-stage [competition](https://x.com/damekdavis/status/2032985126146072737?s=20) to see whether one can boost the performance of weak LLMs on mathematics problems through the use of short human readable cheat sheets. The initial competition tests this ability on the implication graph of the [Equational Theories Project](https://teorth.github.io/equational_theories/).
@@ -89,10 +89,9 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
-[Counting partial Hadamard matrices in the cubic regime](https://arxiv.org/abs/2603.30013) 
-([Lean formalization](https://damek.github.io/counting_hadamard/))
+[Counting partial Hadamard matrices in the cubic regime](https://arxiv.org/abs/2603.30013)
 Damek Davis
-Manuscript (2026)
+Manuscript (2026) | [twitter thread](https://x.com/damekdavis/status/2039741829306847656?s=20) | [Lean formalization](https://damek.github.io/counting_hadamard/)
 
 [When do spectral gradient updates help in deep learning?](https://arxiv.org/abs/2512.04299)
 Damek Davis and Dmitriy Drusvyatskiy
