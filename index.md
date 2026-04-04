@@ -8,7 +8,7 @@ title: Damek Davis
 
 I'm an Associate Professor in Wharton's Department of Statistics and Data Science. I was previously an Associate Professor at Cornell ORIE, an NSF Postdoctoral Fellow, and a PhD student in Math at UCLA under Wotao Yin (Alibaba) and Stefano Soatto (AWS AI). I was a long term visitor at the Simon's Institute in Fall 2017 (bridging discrete and continuous optimization) and Fall 2024 (LLM program). I am currently an associate editor at <a href="https://www.springer.com/journal/10107">Mathematical Programming</a> and <a href="https://www.springer.com/journal/10208">Foundations of Computational Mathematics</a>.
 
-**Research Interests.** Optimization, machine learning, AI for math. 
+**Research Interests.** Optimization, machine learning, [AI for math](#ai-for-math). 
 
 **Teaching.** I teach theory and practice of optimization and machine learning. I sometimes write lecture notes, e.g., [Optimization in PyTorch](STAT-4830) and [Convex Analysis and First-Order Methods](https://damek.github.io/teaching/orie6300/ORIE6300Fall2023notes.pdf).
 
@@ -69,7 +69,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
         - In November and December, I [wrote about why spectral gradient methods help in deep learning](https://x.com/damekdavis/status/1996018764341805507?s=20).
     - I continued writing in public in 2026. 
         - In Spring semester, I completely revised my [course on optimization in PyTorch](http://optimizationinpytorch.com).
-- [Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs could eventually accelerate mathematics research. Since then,
+- <span id="ai-for-math"></span>[Minerva](https://arxiv.org/abs/2206.14858) convinced me LLMs could eventually accelerate mathematics research. Since then,
     - I've spoken to LLMs more than anyone else I know.
         - I've use them for math, coding, writing, and even negotiating bills.
     - LLMs sort of helped me [~~almost~~ formalize](https://github.com/damek/gd-lean) convergence of gradient descent in [Lean](https://lean-lang.org/). 
