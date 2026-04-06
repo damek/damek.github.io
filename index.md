@@ -91,7 +91,7 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 [The sharp one-dimensional convex sub-Gaussian comparison constant](https://arxiv.org/abs/2604.03170)
 Damek Davis and Sam Power
-Manuscript (2026) | [Lean formalization](https://damek.github.io/convex_subgaussian)
+Manuscript (2026) | [twitter thread](https://x.com/damekdavis/status/2040974040496525315) | [Lean formalization](https://damek.github.io/convex_subgaussian)
 
 [Counting partial Hadamard matrices in the cubic regime](https://arxiv.org/abs/2603.30013)
 Damek Davis
