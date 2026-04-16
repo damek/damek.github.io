@@ -89,6 +89,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[A short proof of near-linear convergence of adaptive gradient descent under fourth-order growth and convexity](https://arxiv.org/abs/2604.13393)
+Damek Davis and Dmitriy Drusvyatskiy
+Manuscript (2026)
+
 [The sharp one-dimensional convex sub-Gaussian comparison constant](https://arxiv.org/abs/2604.03170)
 Damek Davis and Sam Power
 Manuscript (2026) | [twitter thread](https://x.com/damekdavis/status/2040974040496525315) | [Lean formalization](https://damek.github.io/convex_subgaussian)
