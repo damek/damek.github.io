@@ -89,6 +89,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[Forbidden subgraphs in divisor graphs and an Erdős divisibility problem](https://github.com/damek/1062/blob/master/paper.pdf)
+Damek Davis
+Manuscript (2026)
+
 [A short proof of near-linear convergence of adaptive gradient descent under fourth-order growth and convexity](https://arxiv.org/abs/2604.13393)
 Damek Davis and Dmitriy Drusvyatskiy
 Manuscript (2026)
