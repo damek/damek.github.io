@@ -89,6 +89,10 @@ Please use [my email](mailto:damek@wharton.upenn.edu) sparingly for corresponden
 
 ### Preprints
 
+[Average Gradient Outer Product in kernel regression provably recovers the central subspace for multi-index models](https://arxiv.org/abs/2605.15082)
+Libin Zhu, Damek Davis, Dmitriy Drusvyatskiy, Maryam Fazel
+Manuscript (2026)
+
 [Forbidden subgraphs in divisor graphs and an Erdős divisibility problem](https://github.com/damek/1062/blob/master/paper.pdf)
 Damek Davis
 Manuscript (2026)
